@@ -1,43 +1,124 @@
-{{extend 'layout.html'}}
+<!DOCTYPE html>
+    <!--[if (gt IE 9)|!(IE)]><!--> <html class="no-js" lang="{{=T.accepted_language or 'en'}}"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <!-- www.phpied.com/conditional-comments-block-downloads/ -->
+        <!-- Always force latest IE rendering engine
+             (even in intranet) & Chrome Frame
+             Remove this if you use the .htaccess -->
+        <meta http-equiv="X-UA-Compatible" content="IE=edge{{=not request.is_local and ',chrome=1' or ''}}">
+        <!--  Mobile Viewport Fix
+              j.mp/mobileviewport & davidbcalhoun.com/2010/viewport-metatag
+              device-width: Occupy full width of the screen in its current orientation
+              initial-scale = 1.0 retains dimensions instead of zooming out if page height > device height
+              user-scalable = yes allows the user to zoom in -->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>{{=response.title or request.application}}</title>
+        <!-- http://dev.w3.org/html5/markup/meta.name.html -->
+        <meta name="Banana Joe's Ordering" content="{{=request.application}}">
+        <!-- Speaking of Google, don't forget to set your site up:
+             http://google.com/webmasters -->
+        <meta name="google-site-verification" content="">
+        <!-- include stylesheets -->
+        <link rel="stylesheet" href="{{=URL('static','css/bootstrap.min.css')}}"/>
+        <link rel="stylesheet" href="{{=URL('static','css/web2py-bootstrap4.css')}}"/>
+        <link rel="shortcut icon" href="{{=URL('static','images/favicon.ico')}}" type="image/x-icon">
+        <link rel="apple-touch-icon" href="{{=URL('static','images/favicon.png')}}">
+        <link rel="stylesheet" href="{{=URL('static','css/nav.css')}}"/>
+        <link rel="stylesheet" href="{{=URL('static', 'css/myapp.css')}}"/>
+        <!-- All JavaScript at the bottom, except for Modernizr which enables
+             HTML5 elements & feature detects -->
+        <script src="{{=URL('static','js/modernizr-2.8.3.min.js')}}"></script>
+        <script src="https://use.fontawesome.com/8c6f68fcc5.js"></script>
 
-{{block header}}
-<center style="background-color: #333; color:white; padding:30px">
-  <h1>/{{=request.application}}/{{=request.controller}}/{{=request.function}}
-</center>
-{{end}}
-
-{{if 'message' in globals():}}
-<h2>{{=message}}</h2>
-<p class="lead">{{=T('How did you get here?')}}</p>
-<ol>
-  <li>{{=T('You are successfully running web2py')}}</li>
-  <li>{{=XML(T('You visited the url %s', A(request.env.path_info,_href=request.env.path_info)))}}</li>
-  <li>{{=XML(T('Which called the function %s located in the file %s',
-    (A(request.function+'()',_href='#'),
-    A('web2py/applications/%(application)s/controllers/%(controller)s.py' % request,
-    _href=URL('admin','default','peek', args=(request.application,'controllers',request.controller+'.py'))))))}}</li>
-  <li>{{=XML(T('The output of the file is a dictionary that was rendered by the view %s',
-    A('web2py/applications/%(application)s/views/%(controller)s/index.html' % request,
-    _href=URL('admin','default','peek',args=(request.application,'views',request.controller,'index.html')))))}}</li>
-  <li>{{=T('You can modify this application and adapt it to your needs')}}</li>
-</ol>
-<center style="padding:50px">
-  <a class="btn btn-primary" href="{{=URL('admin','default','index')}}">
-    <i class="glyphicon glyphicon-cog"></i>
-    {{=T("admin")}}
-  </a>
-  <a class="btn btn-secondary" href="{{=URL('examples','default','index')}}">{{=T("Online examples")}}</a>
-  <a class="btn btn-secondary" href="http://web2py.com">web2py.com</a>
-  <a class="btn btn-secondary" href="http://web2py.com/book">{{=T('Documentation')}}</a>
-  <a class="btn btn-secondary" href="{{=URL('default','api_get_user_email')}}">{{=T('API Example')}}</a>
-  <a class="btn btn-secondary" href="{{=URL('default','grid/auth_user')}}">{{=T('Grid Example')}}</a>
-  <a class="btn btn-secondary" href="{{=URL('default','wiki')}}">{{=T('Wiki Example')}}</a>
-</center>
-{{elif 'content' in globals():}}
-{{=content}}
-{{else:}}
-{{=BEAUTIFY(response._vars)}}
-{{pass}}
-
-
-
+        <script src={{=URL('static','js/main.js')}}></script>
+        <!-- Favicons -->
+        {{include 'web2py_ajax.html'}} <!-- this includes jquery.js, calendar.js/.css and web2py.js -->
+        {{block head}}{{end}}
+    </head>
+    <body>
+        <!--
+        Color Palette
+        http://paletton.com/#uid=30v0u0kbJgs6Kqq9Jlgg2c7lHap
+        Brown: 836953
+        Blue: 3B4358
+        Green: 416743
+        -->
+        <nav id="nav">
+            <div id="nav-container">
+                <ul class="menu">
+                    <li><a href="#"><i class="fa fa-home"></i>&nbsp;&nbsp;Home</a></li>
+                    <li><a href="#"><i class="fa fa-cutlery"></i>&nbsp;&nbsp;Menu</a></li>
+                    <li><a href="#"><i class="fa fa-question"></i>&nbsp;&nbsp;FAQ</a></li>
+                </ul>
+            </div>
+        </nav>
+        <div id="container" class="container">
+            <div class="top">
+                <div class="account pointer"><i class="fa fa-user fa-3x"></i></div>
+                <div class="cart pointer"><i class="fa fa-shopping-cart fa-3x"></i></div>
+                <div class="menu-bars pointer"><i class="fa fa-bars fa-2x" onclick="openNav()"></i></div>
+                <div class="top-title"><h1 class="title">Banana Joe's</h1></div>
+            </div>
+            <div class="main" onclick="closeNav()">
+                <div class="media">
+                    <div class="album">
+                        <p style="color: white;">promotional video and featured items here</p>
+                    </div>
+                </div>
+                <div class="info">
+                    <div class="hours">
+                        <h1 class="center">Hours</h1>
+                        <table>
+                            <tr>
+                                <th>Day</th>
+                                <th>Hours</th>
+                            </tr>
+                            <tr>
+                                <td>Monday</td>
+                                <td>10AM - 11PM</td>
+                            </tr>
+                            <tr>
+                                <td>Tuesday</td>
+                                <td>10AM - 11PM</td>
+                            </tr>
+                            <tr>
+                                <td>Wednesday</td>
+                                <td>10AM - 11PM</td>
+                            </tr>
+                            <tr>
+                                <td>Thursday</td>
+                                <td>10AM - 11PM</td>
+                            </tr>
+                            <tr>
+                                <td>Friday</td>
+                                <td>10AM - 3PM</td>
+                            </tr>
+                            <tr>
+                                <td>Saturday</td>
+                                <td>Closed</td>
+                            </tr>
+                            <tr>
+                                <td>Sunday</td>
+                                <td>Closed</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="location">
+                        <h1 class="center">Location</h1>
+                        <div class="map">
+                            work on getting google maps embedded
+                        </div>
+                    </div>
+                    <div class="misc">
+                        <h1 class="center">Info</h1>
+                        <p>Located near the Crown College fountain this cafe and convenience store has everything you
+                        need all in one place. Banana Joe's also coordinates the UCSC online grocery. Cash, credit
+                        cards, flexi dollars, and meal equivalencies accepted.<br/><i class="fa fa-phone"></i> (831)
+                        459-1445<br><br>Managed by UCSC Dining</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
