@@ -25,7 +25,8 @@
         <link rel="shortcut icon" href="{{=URL('static','images/favicon.ico')}}" type="image/x-icon">
         <link rel="apple-touch-icon" href="{{=URL('static','images/favicon.png')}}">
         <link rel="stylesheet" href="{{=URL('static','css/nav.css')}}"/>
-        <link rel="stylesheet" href="{{=URL('static', 'css/myapp.css')}}"/>
+        <link rel="stylesheet" media="screen and (min-width:900px)" href="{{=URL('static', 'css/desktop.css')}}"/>
+        <link rel="stylesheet" media="screen and (max-width:600px)" href="{{=URL('static', 'css/mobile.css')}}"/>
         <!-- All JavaScript at the bottom, except for Modernizr which enables
              HTML5 elements & feature detects -->
         <script src="{{=URL('static','js/modernizr-2.8.3.min.js')}}"></script>
@@ -63,7 +64,10 @@
             <div class="main" onclick="closeNav()">
                 <div class="media">
                     <div class="album">
-                        <p style="color: white;">promotional video and featured items here</p>
+                        <img class="album-image" src=""/>
+                        <img class="album-image" src=""/>
+                        <img class="album-image" src=""/>
+                        <img class="album-image" src=""/>
                     </div>
                 </div>
                 <div class="info">
@@ -118,7 +122,14 @@
                         459-1445<br><br>Managed by UCSC Dining</p>
                     </div>
                 </div>
+                <div class="faq">
+                    <h1 class="center">FAQ</h1>
+                    <hr class="lightgrey"/>
+                    <div class="question">Question</div>
+                    <div class="answer">Answer</div>
+                </div>
             </div>
         </div>
     </body>
 </html>
+

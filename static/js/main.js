@@ -11,3 +11,6 @@ function closeNav() {
     document.body.style.backgroundColor = "white";
     document.getElementById("container").style.opacity = "1";
 }
+
+
+
