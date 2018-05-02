@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+	<head>
+		<!-- include stylesheets -->
+        <link rel="stylesheet" href="{{=URL('static','css/bootstrap.min.css')}}"/>
+        <link rel="stylesheet" href="{{=URL('static','css/web2py-bootstrap4.css')}}"/>
+		
+		<link href="{{=URL('static','css/stupid.css')}}" rel="stylesheet" type="text/css"/>
+		<link href="{{=URL('static','css/navbar.css')}}" rel="stylesheet" type="text/css"/>
+		
+        <link rel="shortcut icon" href="{{=URL('static','images/favicon.ico')}}" type="image/x-icon">
+        <link rel="apple-touch-icon" href="{{=URL('static','images/favicon.png')}}">
+		
+        <link rel="stylesheet" media="screen and (min-width:900px)" href="{{=URL('static', 'css/desktop.css')}}"/>
+        <link rel="stylesheet" media="screen and (max-width:600px)" href="{{=URL('static', 'css/mobile.css')}}"/>
+		
+        <script src="https://use.fontawesome.com/8c6f68fcc5.js"></script>
+        <script src="{{=URL('static','js/modernizr-2.8.3.min.js')}}"></script>
+        <script src={{=URL('static','js/main.js')}}></script>
+		{{include 'web2py_ajax.html'}}
+	</head>
+	
+	<body style="background-color:lightgray;">
+		<nav id="sidebar">
+			<a class="menu btn sidebar" onclick="closeNav()"><i class="fa fa-bars fa-3x"></i></a>
+            <div id="sidebar-container">
+                <ul class="sidebar links">
+                    <li class="highlight"><a href="{{=URL('default','index')}}"><i class="fa fa-home"></i>&nbsp;&nbsp;Home</a></li>
+                    <li class="highlight"><a href="{{=URL('default','menu')}}"><i class="fa fa-cutlery"></i>&nbsp;&nbsp;Menu</a></li>
+                    <li class="highlight"><a href="{{=URL('default','index#faq')}}"><i class="fa fa-question"></i>&nbsp;&nbsp;FAQ</a></li>
+                </ul>
+            </div>
+        </nav>
+		
+		<header class="blue">
+			<div class="navbar" id="navbar">
+				<div class="navbar container">
+					<!-- Expand Menu Icon -->
+					<div class="menu btn" onclick="openNav()"><i class="fa fa-bars fa-3x"></i></div>
+					<!-- BJ's Logo -->
+					<div class="navbar logo btn" id="logo_container">
+						<a href="{{=URL('default','index')}}"> <img src="{{=URL('static','images/BJsLogo.png')}}" class="logo"/> </a>
+					</div>
+					<!-- Account Icon -->
+					<a class="account btn expand" href="{{=URL('default','account')}}"><i class="fa fa-user fa-3x"></i></a>
+					<!-- Cart Icon -->
+					<a class="cart btn expand" href="{{=URL('default','cart')}}"><i class="fa fa-shopping-cart fa-3x"></i></a>
+				</div>
+			</div>
+		</header>
+	
+		<main id="main" onclick="closeNav()">
+		{{include}}
+		</main>
+	</body>
+</html>
