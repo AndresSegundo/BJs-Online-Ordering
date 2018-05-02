@@ -1,6 +1,6 @@
 function openNav() {
     document.getElementById("nav").style.width = "250px";
-    document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
+    document.body.style.backgroundColor = "rgba(61,61,68,0.4)";
     document.getElementById("container").style.opacity = "0.5";
     document.getElementById("nav-container").style.visibility = "visible";
 }
@@ -8,7 +8,7 @@ function openNav() {
 function closeNav() {
     document.getElementById("nav-container").style.visibility = "hidden";
     document.getElementById("nav").style.width = "0";
-    document.body.style.backgroundColor = "white";
+    document.body.style.backgroundColor = "#3D3D44";
     document.getElementById("container").style.opacity = "1";
 }
 

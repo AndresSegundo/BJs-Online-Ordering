@@ -24,7 +24,7 @@ body {
     top: 0;
     width: 100%;
     height: 100px;
-    background-color: #01589D;
+    background-color: #1D1D21;
     color: white;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
@@ -38,6 +38,7 @@ body {
 }
 .top-title>.title {
     font-size: 4em;
+    color: #FFFF00;
 }
 .top>.menu-bars {
     position: relative;
@@ -52,13 +53,45 @@ body {
     float: right;
     transition-duration: .3s;
 }
+i:hover {
+    color: yellow;
+    transform:scale(1.3);
+    transition-duration: .3s;
+}
+
+
 .top>.cart:hover, .top>.account:hover {
     color: #003D6E;
 }
 
 .main {
-    postion: absolute;
+    position: absolute;
     margin: 0 0 0 0;
+    color: #3D3D44;
+}
+
+.checkout-list {
+    background-image: url("../images/BJsChecklistPatch.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    min-width: 400px;
+    min-height: 700px;
+    position: center;
+    margin-top: 20px;
+    padding: 20px;
+}
+
+.checkout-list>.checkout-title {
+    color: white;
+    font-family: "Shrikhand", cursive;
+    margin-top: 40px;
+}
+
+.checkout-list>.checkout-columns {
+    color: white;
+    font-family: "Shrikhand", cursive;
+    margin-top: 40px;
 }
 
 .media {
