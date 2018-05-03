@@ -13,6 +13,11 @@ def checkout():
     response.flash = T("Hello World")
     return dict(message=T('Welcome to web2py!'))
 
+@auth.requires_login()
+def account():
+    response.flash = T("Hello World")
+    return dict(message=T('Welcome to web2py!'))
+
 # ---- API (example) -----
 @auth.requires_login()
 def api_get_user_email():

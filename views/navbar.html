@@ -4,7 +4,6 @@
         <link rel="stylesheet" href="{{=URL('static','css/bootstrap.min.css')}}"/>
         <link rel="stylesheet" href="{{=URL('static','css/web2py-bootstrap4.css')}}"/>
 		
-		<link href="{{=URL('static','css/stupid.css')}}" rel="stylesheet" type="text/css"/>
 		<link href="{{=URL('static','css/navbar.css')}}" rel="stylesheet" type="text/css"/>
 		
         <link rel="shortcut icon" href="{{=URL('static','images/favicon.ico')}}" type="image/x-icon">
@@ -41,7 +40,13 @@
 						<a href="{{=URL('default','index')}}"> <img src="{{=URL('static','images/BJsLogo.png')}}" class="logo"/> </a>
 					</div>
 					<!-- Account Icon -->
-					<a class="account btn expand" href="{{=URL('default','account')}}"><i class="fa fa-user fa-3x"></i></a>
+					<ul class="menu right">
+		              <li>{{=auth.navbar(mode='dropdown')}}
+		              	<a class="account btn expand" href="{{=URL('default','user')}}"><i class="fa fa-user fa-3x"></i> 
+		              	</a>
+		             </li>
+           			</ul>
+					
 					<!-- Cart Icon -->
 					<a class="cart btn expand" href="{{=URL('default','cart')}}"><i class="fa fa-shopping-cart fa-3x"></i></a>
 				</div>
