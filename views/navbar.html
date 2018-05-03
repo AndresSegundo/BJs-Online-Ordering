@@ -40,7 +40,13 @@
 						<a href="{{=URL('default','index')}}"> <img src="{{=URL('static','images/BJsLogo.png')}}" class="logo"/> </a>
 					</div>
 					<!-- Account Icon -->
-					<a class="account btn expand" href="{{=URL('default','account')}}"><i class="fa fa-user fa-3x"></i></a>
+					<ul class="menu right">
+		              <li>{{=auth.navbar(mode='dropdown')}}
+		              	<a class="account btn expand" href="{{=URL('default','user')}}"><i class="fa fa-user fa-3x"></i> 
+		              	</a>
+		             </li>
+           			</ul>
+					
 					<!-- Cart Icon -->
 					<a class="cart btn expand" href="{{=URL('default','cart')}}"><i class="fa fa-shopping-cart fa-3x"></i></a>
 				</div>
