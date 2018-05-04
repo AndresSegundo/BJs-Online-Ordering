@@ -53,12 +53,6 @@ body {
     float: right;
     transition-duration: .3s;
 }
-i:hover {
-    color: yellow;
-    transform:scale(1.3);
-    transition-duration: .3s;
-}
-
 
 .top>.cart:hover, .top>.account:hover {
     color: #003D6E;
@@ -119,7 +113,7 @@ i:hover {
     width: 33%;
     height: 400px;
     display: inline-block;
-    margin: 0;
+    margin: 0 0 20px 0;
     padding: 10px;
 }
 .info>.hours {
@@ -137,6 +131,27 @@ i:hover {
     border-left: 1px solid #C4C4C4;
     border-right: 1px solid #C4C4C4;
 }
+.hours h1, .location h1, .misc h1, .faq h1 {
+    font-family: "Yesteryear", cursive;
+}
+
+/*
+https://www.labnol.org/internet/embed-responsive-google-maps/28333/
+ */
+.map {
+    position: relative;
+    padding-bottom: 75%; // This is the aspect ratio
+    height: 0;
+    overflow: hidden;
+}
+.map iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100% !important;
+    height: 100% !important;
+}
+
 .info>.location .map {
     max-width: 100%;
 }
@@ -150,6 +165,13 @@ i:hover {
     max-width: 80%;
     margin: 20px auto 0 auto;
 }
-
+.faq>.question {
+    font-weight: bold;
+    font-size: 1.4em;
+}
+.faq>.answer {
+    font-style: italic;
+    margin: 0 0 20px 20px;
+}
 
 
