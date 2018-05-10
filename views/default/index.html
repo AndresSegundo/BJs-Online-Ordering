@@ -1,87 +1,84 @@
 {{extend 'navbar.html'}}
     <link rel="stylesheet" href="{{=URL('static','css/account.css')}}"/>
+    <link href="https://fonts.googleapis.com/css?family=Yesteryear" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src={{=URL('static','js/account.js')}}></script>
 {{block head}}
 {{end}}
-    <body>
-        <!--
-        Color Palette
-        http://paletton.com/#uid=30v0u0kbJgs6Kqq9Jlgg2c7lHap
-        Brown: 836953
-        Blue: 3B4358
-        Green: 416743
-        -->
-       
-
-                <div class="media">
-                    <div class="album">
-                        <img class="album-image" src=""/>
-                        <img class="album-image" src=""/>
-                        <img class="album-image" src=""/>
-                        <img class="album-image" src=""/>
-                    </div>
-                </div>
-                <div class="info">
-                    <div class="hours">
-                        <h1 class="center">Hours</h1>
-                        <table>
-                            <tr>
-                                <th>Day</th>
-                                <th>Hours</th>
-                            </tr>
-                            <tr>
-                                <td>Monday</td>
-                                <td>10AM - 11PM</td>
-                            </tr>
-                            <tr>
-                                <td>Tuesday</td>
-                                <td>10AM - 11PM</td>
-                            </tr>
-                            <tr>
-                                <td>Wednesday</td>
-                                <td>10AM - 11PM</td>
-                            </tr>
-                            <tr>
-                                <td>Thursday</td>
-                                <td>10AM - 11PM</td>
-                            </tr>
-                            <tr>
-                                <td>Friday</td>
-                                <td>10AM - 3PM</td>
-                            </tr>
-                            <tr>
-                                <td>Saturday</td>
-                                <td>Closed</td>
-                            </tr>
-                            <tr>
-                                <td>Sunday</td>
-                                <td>Closed</td>
-                            </tr>
-                        </table>
-                    </div>
-                    <div class="location">
-                        <h1 class="center">Location</h1>
-                        <div class="map">
-                            work on getting google maps embedded
-                        </div>
-                    </div>
-                    <div class="misc">
-                        <h1 class="center">Info</h1>
-                        <p>Located near the Crown College fountain this cafe and convenience store has everything you
-                        need all in one place. Banana Joe's also coordinates the UCSC online grocery. Cash, credit
-                        cards, flexi dollars, and meal equivalencies accepted.<br/><i class="fa fa-phone"></i> (831)
-                        459-1445<br><br>Managed by UCSC Dining</p>
-                    </div>
-                </div>
-                <div class="faq">
-                    <h1 class="center">FAQ</h1>
-                    <hr class="lightgrey"/>
-                    <div class="question">Question</div>
-                    <div class="answer">Answer</div>
-                </div>
-            </div>
+<!--
+Color Palette
+http://paletton.com/#uid=30v0u0kbJgs6Kqq9Jlgg2c7lHap
+Brown: 836953
+Blue: 3B4358
+Green: 416743
+-->
+<div class="media">
+    <div class="album">
+        <img class="album-image" src=""/>
+        <img class="album-image" src=""/>
+        <img class="album-image" src=""/>
+        <img class="album-image" src=""/>
+    </div>
+</div>
+<div class="info">
+    <div class="hours">
+        <h1 class="center">Hours</h1>
+        <table>
+            <tr>
+                <th>Day</th>
+                <th>Hours</th>
+            </tr>
+            <tr>
+                <td>Monday</td>
+                <td>10AM - 11PM</td>
+            </tr>
+            <tr>
+                <td>Tuesday</td>
+                <td>10AM - 11PM</td>
+            </tr>
+            <tr>
+                <td>Wednesday</td>
+                <td>10AM - 11PM</td>
+            </tr>
+            <tr>
+                <td>Thursday</td>
+                <td>10AM - 11PM</td>
+            </tr>
+            <tr>
+                <td>Friday</td>
+                <td>10AM - 3PM</td>
+            </tr>
+            <tr>
+                <td>Saturday</td>
+                <td>Closed</td>
+            </tr>
+            <tr>
+                <td>Sunday</td>
+                <td>Closed</td>
+            </tr>
+        </table>
+    </div>
+    <div class="location">
+        <h1 class="center">Location</h1>
+        <div class="map">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3186.4109672742848!2d-122.05661768473449!3d36.999990979907906!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x808e41a744ec8751%3A0x5618ffd70e784ec1!2sBanana+Joe&#39;s!5e0!3m2!1sen!2sus!4v1525461490280" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
         </div>
-    </body>
-</html>
+    </div>
+    <div class="misc">
+        <h1 class="center">Info</h1>
+        <p>Located near the Crown College fountain this cafe and convenience store has everything you
+        need all in one place. Banana Joe's also coordinates the UCSC online grocery. Cash, credit
+        cards, flexi dollars, and meal equivalencies accepted.<br/><i class="fa fa-phone"></i> (831)
+        459-1445<br><br>Managed by UCSC Dining</p>
+    </div>
+</div>
+<div id="faq" class="faq">
+    <h1 class="center">Frequently Asked Questions</h1>
+    <hr class="lightgrey"/>
+    <div class="question">What types of payment methods are accepted?</div>
+    <div class="answer">Flexi dollars, meal equivalencies, cash, credit, and debit cards.</div>
+    <div class="question">Do you deliver?</div>
+    <div class="answer">Currently Banana Joe's does not deliver food. After ordering food you must pick up your
+    order in person.</div>
+</div>
 
