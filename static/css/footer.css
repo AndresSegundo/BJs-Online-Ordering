@@ -1,0 +1,41 @@
+.ft {
+    padding: 0px;
+    margin: 0px;
+    position: absolute;
+    height: 150px;
+    width: 100%;
+    background-color: #1D1D21;
+    color: white;
+}
+
+.ft a, .bot-text a {
+    color: #0EAFAD;
+}
+
+.bot-bar {
+    position: absolute;
+    bottom: 0px;
+    height: 35%;
+    width: 100%;
+    background-color: #0B0B0D;
+}
+.bot-text {
+    line-height: 45px;
+    margin: 0 0 0 30px;
+    color: #969696;
+}
+.bot-text>.terms, .bot-text>.privacy {
+    float: right;
+    color: #0EAFAD;
+    display: inline-block;
+}
+.bot-text>.privacy {
+    margin: 0 50px 0 50px;
+}
+.bot-text>.terms {
+    margin: 0 30px 0 0;
+}
+
+
+
+
