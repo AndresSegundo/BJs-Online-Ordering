@@ -53,3 +53,42 @@ CREATE TABLE "auth_cas"(
     "renew" CHAR(1)
 );
 success!
+timestamp: 2018-05-17T15:55:36.714189
+CREATE TABLE "menu"(
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "name" CHAR(512),
+    "price" CHAR(512),
+    "allergens" CHAR(512),
+    "image" CHAR(512),
+    "description" CHAR(512),
+    "nutrition" CHAR(512),
+    "category" CHAR(512),
+    "ingredients" CHAR(512),
+    "is_featured" CHAR(512)
+);
+success!
+timestamp: 2018-05-17T15:56:32.065897
+CREATE TABLE "account"(
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "name" CHAR(512),
+    "email" CHAR(512),
+    "is_student" CHAR(512),
+    "phone_num" CHAR(512),
+    "order_hist" CHAR(512),
+    "cc_num" CHAR(512),
+    "cc_exp" CHAR(512),
+    "cc_cvc" CHAR(512),
+    "cc_name" CHAR(512),
+    "cc_address" CHAR(512),
+    "log_info" CHAR(512)
+);
+success!
+timestamp: 2018-05-17T15:56:43.206027
+CREATE TABLE "orders"(
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "user_email" CHAR(512),
+    "item_id" CHAR(512),
+    "comments" CHAR(512),
+    "updated_on" CHAR(512)
+);
+success!

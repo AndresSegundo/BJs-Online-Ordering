@@ -16,7 +16,7 @@ db.define_table('menu',
                 Field('is_featured')
                 )
 
-db.define_table('user',
+db.define_table('account',
                 Field('name'),
                 Field('email'),
                 Field('is_student'),
@@ -31,7 +31,7 @@ db.define_table('user',
                 Field('log_info'),
                 )
 
-db.define_table('order',
+db.define_table('orders',
                 Field('user_email'),
                 Field('item_id'),
                 Field('comments'),
