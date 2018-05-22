@@ -185,6 +185,9 @@ https://www.labnol.org/internet/embed-responsive-google-maps/28333/
 .faq>.answer {
     font-style: italic;
     margin: 0 0 20px 20px;
+.info .fa, .info .fa:hover {
+    color: #0EAFAD;
+}
 
  /*start of menu*/
 .topimg {
