@@ -5,11 +5,12 @@
         <link rel="stylesheet" href="{{=URL('static','css/web2py-bootstrap4.css')}}"/>
 		
 		<link href="{{=URL('static','css/navbar.css')}}" rel="stylesheet" type="text/css"/>
+		<link href="{{=URL('static','css/footer.css')}}" rel="stylesheet" type="text/css"/>
 		
         <link rel="shortcut icon" href="{{=URL('static','images/favicon.ico')}}" type="image/x-icon">
         <link rel="apple-touch-icon" href="{{=URL('static','images/favicon.png')}}">
 		
-        <link rel="stylesheet" media="screen and (min-width:900px)" href="{{=URL('static', 'css/desktop.css')}}"/>
+        <link rel="stylesheet" media="screen and (min-width:601px)" href="{{=URL('static', 'css/desktop.css')}}"/>
         <link rel="stylesheet" media="screen and (max-width:600px)" href="{{=URL('static', 'css/mobile.css')}}"/>
 		
         <script src="https://use.fontawesome.com/8c6f68fcc5.js"></script>
@@ -56,5 +57,21 @@
 		<main id="main" onclick="closeNav()">
 		{{include}}
 		</main>
+
+            <footer class="ft">
+		    <div class="bot-text">
+                <p>Banana Joe's is managed by UCSC Dining. <a href="#">Contact Us.</a></p>
+            </div>
+            <div class="bot-bar">
+                <div class="bot-text">
+                    &copy; <script type="text/javascript">
+                    var d = new Date();
+                    document.write(d.getFullYear());
+                    </script> Banana Joe's. All Rights Reserved.
+                    <a href="#" class="terms">Terms of Service</a>
+                    <a href="#" class="privacy">Privacy Statement</a>
+                </div>
+            </div>
+        </footer>
 	</body>
 </html>

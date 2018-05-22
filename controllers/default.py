@@ -13,7 +13,12 @@ def checkout():
     response.flash = T("Hello World")
     return dict(message=T('Welcome to web2py!'))
 
+
 def menu():
+    response.flash = T("Hello World")
+    return dict(message=T('Welcome to web2py!'))
+
+def cart():
     response.flash = T("Hello World")
     return dict(message=T('Welcome to web2py!'))
 
