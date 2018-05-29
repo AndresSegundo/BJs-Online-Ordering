@@ -92,3 +92,35 @@ CREATE TABLE "orders"(
     "updated_on" CHAR(512)
 );
 success!
+timestamp: 2018-05-22T16:13:51.772223
+CREATE TABLE "menu_data"(
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "menu_id" INTEGER REFERENCES "menu" ("id") ON DELETE CASCADE  ,
+    "original_filename" CHAR(512),
+    "data_blob" BLOB,
+    "mime_type" CHAR(512)
+);
+success!
+timestamp: 2018-05-24T16:35:06.325198
+CREATE TABLE "menuItems"(
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "name" CHAR(512),
+    "price" CHAR(512),
+    "allergens" CHAR(512),
+    "image" CHAR(512),
+    "description" CHAR(512),
+    "nutrition" CHAR(512),
+    "category" CHAR(512),
+    "ingredients" CHAR(512),
+    "is_featured" CHAR(512)
+);
+success!
+timestamp: 2018-05-24T16:35:36.877096
+CREATE TABLE "menuItems_data"(
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "menu_id" INTEGER REFERENCES "menuItems" ("id") ON DELETE CASCADE  ,
+    "original_filename" CHAR(512),
+    "data_blob" BLOB,
+    "mime_type" CHAR(512)
+);
+success!

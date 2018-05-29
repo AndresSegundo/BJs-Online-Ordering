@@ -9,202 +9,129 @@
 {{block head}}
 {{end}}
 
-
-
-
-    <div>
-        <img class="topimg" src="{{=URL('static','images/banana-joes-740.jpg')}}">
+<div class="menu_page">
+    <img class="topimg" src="{{=URL('static','images/banana-joes-740.jpg')}}">
+        <h1 class="menutitle">Menu</h1>
+    <div class="menusection">
+            <h3>Street Food</h3>
     </div>
-    <div class="menutitle">
-        <h1>Menu</h1>
-    </div>
-    <div class="row menusection">
-            <p>Beverages</p>
-    </div>
-    <div>
+    {{for menu in db(db.menuItems.id > 0).select():}}
+    <div style="display: inline-block">
         <ul class="sectiongrp">
             <ul class="sglitem">
-                <a href="#1" id="myhref" class="qvbtn">
+                <a onclick="openView({{=menu.id}})" href="#1" id="myhref" class="qvbtn">
                     <img  class="qvbutton" src="{{=URL('static','images/drink1.jpg')}}">
-                    <div class="itmname">
-                        Chocolate Shake
-                    </div>
+                    <div class="itmname">{{=menu.name}}</div>
                 </a>
-                <div id="quickview" class="qvback">
+                <div id="quickview{{=menu.id}}" class="qvback">
                     <div class="qv">
-                        <div class="qvimg">
-                            <img src="{{=URL('static','images/drink1.jpg')}}" >
-                        </div>
+                        <div class="qvimg"><img src="{{=URL('static','images/drink1.jpg')}}" ></div>
                         <div class="qvcontent">
-                                <div class="itmttl">
-                                    <h1>Chocolate Shake</h1>
-                                </div>
-                            <div class="qvcontentdis">
-                                Chocolate Shake featuring our deliciously creamy vanilla soft serve and chocolate syrup,
-                                   topped with whipped topping. Available in Small, Medium, and Large.
-                                <div class="ingsty">
-                                    <p>Ingredients: Milk, Sugar, Cream, Corn Syrup, Natural Flavor, Mono and Diglycerides,
-                                        Cellulose Gum, Guar Gum, Carrageenan, Vitamin A Palmitate.</p>
-                                </div>
-                            </div>
+                            <div class="itmttl"><h1>{{=menu.name}}</h1></div>
+                            <div class="qvcontentdis">{{=menu.description}}<div class="ingsty">
+                                <p>Ingredients: {{=menu.ingredients}}</p>
+                            </div></div>
                             <div class="allsym">
                                 <img src="{{=URL('static', 'images/eggs.jpg')}}" class="allpic">
                                 <img src="{{=URL('static', 'images/fish.jpg')}}" class="allpic">
-
                             </div>
-                            <div class="qty">
-                                <button  class="custom" id="cust">Customize</button>
+                            <div class="qty"><button class="custom" onclick="viewBack({{=menu.id}})" id="cust">
+                                Customize</button>
                             </div>
                         </div>
-                        <span class="close">&times;</span>
+                        <span onclick="closeView({{=menu.id}})" class="close">&times;</span>
                     </div>
                 </div>
-                <div id="custorder" class="qvback">
+                <div id="custorder{{=menu.id}}" class="qvback">
                     <div class="inglist">
                         <form action="/action_page.php" method="get">
                             <div class="listitems">
                                 <input type="checkbox" name="ingredient" value="Milk" checked> Milk<br>
-                                <input type="checkbox" name="ingriedient" value="Sugar" checked> Sugar<br>
+                                <input type="checkbox" name="ingredient" value="Sugar" checked> Sugar<br>
                                 <input type="checkbox" name="ingredient" value="Cream" checked> Cream<br>
-                                <input type="checkbox" name="ingriedient" value="Corn" checked> Corn<br>
+                                <input type="checkbox" name="ingredient" value="Corn" checked> Corn<br>
                             </div>
                             <input type="submit" class="atc" value="Add to Cart">
                         </form>
-                        <span class="back">&hookleftarrow;</span>
-                    </div>
-
-                </div>
-            </ul>
-            <ul class="sglitem">
-                <a href="#2" id="myhref" class="qvbtn">
-                    <img  class="qvbutton" src="{{=URL('static','images/drink2.jpg')}}">
-                    <div class="itmname">
-                        Strawberry Shake
-                    </div>
-                </a>
-                <div id="quickview" class="qvback">
-                    <div class="qv">
-                        <div class="qvimg">
-                            <img src="{{=URL('static','images/drink2.jpg')}}" >
-                        </div>
-                        <div class="qvcontent">
-                            <div class="itmttl">
-                                <h1>Strawberry Shake</h1>
-                            </div>
-                            <p>Strawberry Shake made with creamy vanilla soft serve, blended with strawberry flavored
-                                deliciousness, topped with whipped topping. Available in Small, Medium, and Large.
-                            </p>
-                            <div class="ingsty">
-                                <p>Ingredients: Milk, Sugar, Cream, Corn Syrup, Natural Flavor, Mono and Diglycerides,
-                                    Cellulose Gum, Guar Gum, Carrageenan, Vitamin A Palmitate,more stuff
-                                    and some more stuff.</p>
-                            </div>
-                            <div class="allsym">
-                                <img src="{{=URL('static', 'images/pork.jpg')}}" class="allpic">
-                                <img src="{{=URL('static', 'images/fish.jpg')}}" class="allpic">
-
-                            </div>
-                            <div class="qty">
-                                <button class="custom">Personalize</button>
-                                <!--<form action="http://127.0.0.1:8000/bjs/default/checkout">
-                                    <input type="button" class="qtybutn" value="+">
-                                    <input id="number" type="number" value="1" class="nmbx">
-                                    <!--<input type="button" class="qtybutn" value="-">
-                                    <input type="submit" value="Customize" class="atc">
-                                </form>-->
-                            </div>
-                        </div>
-                        <span class="close">&times;</span>
+                        <span onclick="closeBack({{=menu.id}})" class="back">&hookleftarrow;</span>
                     </div>
                 </div>
             </ul>
         </ul>
     </div>
-
-    <div class="row menusection">
-            <p>Sandwiches</p>
-    </div>
-    <ul class="sectiongrp">
-            <ul class="sglitem">
-                <a href="#1" id="myhref" class="qvbtn">
-                    <img  class="qvbutton" src="{{=URL('static','images/drink1.jpg')}}">
-                    <div class="itmname">
-                        Chocolate Shake
-                    </div>
-                </a>
-                <div id="quickview" class="qvback">
-                    <div class="qv">
-                        <div class="qvimg">
-                            <img src="{{=URL('static','images/drink1.jpg')}}" >
-                        </div>
-                        <div class="qvcontent">
-                            <div class="itmttl">
-                                <h1>Chocolate Shake</h1>
-                            </div>
-                            <p>Chocolate Shake featuring our deliciously creamy vanilla soft serve and chocolate syrup,
-                               topped with whipped topping. Available in Small, Medium, and Large.</p>
-                            <div class="ingsty">
-                                <p>Ingredients: Milk, Sugar, Cream, Corn Syrup, Natural Flavor, Mono and Diglycerides,
-                                    Cellulose Gum, Guar Gum, Carrageenan, Vitamin A Palmitate.</p>
-                            </div>
-                            <div class="allsym">
-                                <img src="{{=URL('static', 'images/eggs.jpg')}}" class="allpic">
-                                <img src="{{=URL('static', 'images/fish.jpg')}}" class="allpic">
-
-                            </div>
-
-                                <button  class="custom" id="cust">Customize</button>
-                                    <div id="custorder" class="qvback">
-                                        <div class="qv">
-                                            <p>plewgis</p>
-                                        </div>
-                                    </div>
-                                <!--<form action="http://127.0.0.1:8000/bjs/default/checkout">
-                                    <input type="button" class="qtybutn" value="+">
-                                    <input id="number" type="number" value="1" class="nmbx">
-                                    <!--<input type="button" class="qtybutn" value="-">
-                                    <input type="submit" value="Customize" class="atc">
-                                </form>-->
-
-                        </div>
-                        <span class="close">&times;</span>
-                    </div>
-                </div>
-            </ul>
-    </ul>
-
+    {{pass}}
+</div>
 
 <script>
-var modal = document.getElementById('quickview');
-var link = document.getElementById("myhref");
-var span = document.getElementsByClassName("close")[0];
-var span2 = document.getElementsByClassName("back")[0];
-var custom = document.getElementById("custorder");
-var custbtn = document.getElementById("cust");
-
-link.onclick = function() {
-    modal.style.display = "block";
-}
-
-span.onclick = function() {
-    modal.style.display = "none";
-}
-
-span2.onclick = function() {
-    custom.style.display = "none";
-    modal.style.display = "block";
-}
 
 window.onclick = function(event) {
-    if (event.target == modal || event.target == custom) {
-        modal.style.display = "none";
-        custom.style.display = "none";
-    }
-}
+    console.log(event.target);
+};
 
-custbtn.onclick = function () {
-    custom.style.display = "block";
-    modal.style.display = "none";
-}
+openView = function(id) {
+    var link = 'quickview' + id;
+    document.getElementById(link).style.display = "block";
+    document.getElementById(link).onclick = function(event) {
+        if (event.target == document.getElementById(link)) {
+            document.getElementById(link).style.display = "none";
+        }
+    }
+};
+
+closeView = function(id) {
+    var link = 'quickview' + id;
+    document.getElementById(link).style.display = "none";
+};
+
+viewBack = function(id) {
+    var link = 'custorder' + id;
+    var temp = 'quickview' + id;
+    document.getElementById(temp).style.display = "none";
+    document.getElementById(link).style.display = "block";
+    document.getElementById(link).onclick = function(event) {
+        if (event.target == document.getElementById(link)) {
+            document.getElementById(link).style.display = "none";
+        }
+    }
+};
+
+closeBack = function(id) {
+    var link = 'custorder' + id;
+    var temp = 'quickview' + id;
+    document.getElementById(link).style.display = "none";
+    document.getElementById(temp).style.display = "block";
+};
+
+// var modal = document.getElementById('quickview');
+// var link = document.getElementById("myhref");
+// var span = document.getElementsByClassName("close")[0];
+// var span2 = document.getElementsByClassName("back")[0];
+// var custom = document.getElementById("custorder");
+// var custbtn = document.getElementById("cust");
+
+// link.onclick = function() {
+//     modal.style.display = "block";
+// }
+
+// span.onclick = function() {
+//     modal.style.display = "none";
+// }
+
+// span2.onclick = function() {
+//     custom.style.display = "none";
+//     modal.style.display = "block";
+// }
+
+// window.onclick = function(event) {
+//     if (event.target == modal || event.target == custom) {
+//         modal.style.display = "none";
+//         custom.style.display = "none";
+//     }
+// }
+//
+// custbtn.onclick = function () {
+//     custom.style.display = "block";
+//     modal.style.display = "none";
+// }
 
 </script>

@@ -1,5 +1,5 @@
  /*start of menu*/
-.topimg {
+.menu_page>.topimg {
     width: 100%;
     max-height: 500px;
     margin: 0 0 0 0;
@@ -10,30 +10,26 @@
     color: black;
     text-align: center;
     margin: 20px;
-}
-.menutitle h1 {
     font-family: 'Yesteryear', cursive;
     font-size: 6em;
 }
-.row {
+
+.menu_page>.menusection {
     margin-left: 78px;
     margin-top: 25px;
-}
-
-.menusection {
     font-weight: bold;
     font-family: 'Yesteryear', cursive;
     font-size: 20px;
     float: top;
 }
 
-.row>.menuitems{
+.menusection>.menuitems{
     margin: 25px;
 }
 
 .sglitem {
   position: relative;
-  margin: 0 0 2px;
+  margin: 0 0 2px 0;
   float: left;
 }
 .sglitem > img {
@@ -42,8 +38,9 @@
 }
 
 .sectiongrp {
-  width: 100%;
-  margin: 0 auto;
+    width: 100%;
+    margin: 0 auto 0 auto;
+
 }
 .sectiongrp:after {
   content: "";
@@ -88,8 +85,6 @@
     float: left;
     padding-right: 20px;
 }
-
-
 
 .qvcontent {
     align-content: right;
