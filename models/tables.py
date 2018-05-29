@@ -3,7 +3,7 @@ import datetime
 def get_user_email():
     return auth.user.email if auth.user else None
 
-db.define_table('menu',
+db.define_table('menuItems',
                 Field('name'),
                 Field('price'),
                 Field('allergens'),
@@ -14,6 +14,13 @@ db.define_table('menu',
                 Field('id'),
                 Field('ingredients'),
                 Field('is_featured')
+                )
+
+db.define_table('menuItems_data',
+                Field('menu_id', 'reference menuItems'),
+                Field('original_filename'),
+                Field('data_blob', 'blob'),
+                Field('mime_type'),
                 )
 
 db.define_table('account',

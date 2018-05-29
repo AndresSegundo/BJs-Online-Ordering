@@ -1,13 +1,106 @@
 {{extend 'navbar.html'}}
-    <link rel="stylesheet" href="{{=URL('static','css/account.css')}}"/>
+    <link rel="stylesheet" href="{{=URL('static','css/admin.css')}}"/>
     <link href="https://fonts.googleapis.com/css?family=Yesteryear" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src={{=URL('static','js/account.js')}}></script>
 {{block head}}
+
+<script src="{{=URL('static', 'js/vue.js')}}"></script>
+<script>
+  var menuItems_url = "{{=URL('api', 'get_menuItems', user_signature=True, hash_vars=False)}}";
+  var add_item_url = "{{=URL('api', 'add_item', user_signature=True)}}";
+  var del_item_url = "{{=URL('api', 'del_item', user_signature=True)}}";
+  var get_insertion_id_url = "{{=URL('api', 'get_insertion_id', user_signature=True)}}";
+  var cleanup_url = "{{=URL('api', 'cleanup', user_signature=True)}}";
+</script>
+
+
 {{end}}
 
-<div class="admin_panel">
-    <h1>Menu Items</h1>
+<div id="vue-div" class="display:none">
 
+  <!--
+    form_name: null,
+    form_price: null,
+    form_allergens: null,
+    form_desc: null,
+    form_nutrition: null,
+    form_category: null,
+    form_id: null,
+    form_ingredients: null,
+    form_is_featured: false,
+-->
+    <div v-if="is_adding_item" id="add_item_div">
+        <form action="#" v-on:submit.prevent class="form-horizontal" enctype="multipart/form-data" method="post">
+            <div class="form-group" id="no_table_name_row"><div>
+                <input class="form-control string" id="no_table_name" v-model="form_name" placeholder="Item Name"
+                    type="text" />
+                <span class="help-block"></span>
+            </div></div>
+
+            <div class="form-group" id="no_table_price_row"><div>
+                <input class="form-control string" id="no_table_price" v-model="form_price" placeholder="Price"
+                    type="text" />
+                <span class="help-block"></span>
+            </div></div>
+
+            <div class="form-group" id="no_table_allergens_row"><div>
+                <input class="" id="no_table_allergens" v-model="form_allergens" type="checkbox">Contains Nuts<br />
+                <input class="" id="no_table_allergens" v-model="form_allergens" type="checkbox">Gluten Free<br />
+                <input class="" id="no_table_allergens" v-model="form_allergens" type="checkbox">Contains Dairy<br />
+                <input class="" id="no_table_allergens" v-model="form_allergens" type="checkbox">Contains Egg<br />
+                <input class="" id="no_table_allergens" v-model="form_allergens" type="checkbox">Contains Soy<br />
+                <input class="" id="no_table_allergens" v-model="form_allergens" type="checkbox">Halal<br />
+                <input class="" id="no_table_allergens" v-model="form_allergens" type="checkbox">Contains Fish/Shellfish<br />
+                <input class="" id="no_table_allergens" v-model="form_allergens" type="checkbox">Vegetarian<br />
+                <input class="" id="no_table_allergens" v-model="form_allergens" type="checkbox">Vegan<br />
+                <input class="" id="no_table_allergens" v-model="form_allergens" type="checkbox">Contains Beef<br />
+                <input class="" id="no_table_allergens" v-model="form_allergens" type="checkbox">Contains Pork<br />
+                <span class="help-block"></span>
+            </div></div>
+
+            <div class="form-group" id="no_table_desc_row"><div>
+                <input class="form-control string" id="no_table_description" v-model="form_description"
+                placeholder="Description" type="text" />
+                <span class="help-block"></span>
+            </div></div>
+
+        </form>
+
+        <button class="add_item" v-on:click="add_item()">Add Item</button>
+        <button class="cancel_add_item" v-on:click="cancel_add_item()">Cancel</button>
+
+    </div>
+
+    <div id="admin_panel" class="admin_panel">
+        <h1>Menu Items</h1>
+        <button class="add_item" v-on:click="add_item_button()">
+            <i class="fa fa-plus"></i>&nbsp;Add Menu Item
+        </button>
+        <div v-for="menu in menuItems">
+            <h3>${menu.name}</h3>
+            <ul>
+                <li>${menu.id}</li>
+                <li>$${menu.price}</li>
+                <li>${menu.description}</li>
+            </ul>
+
+        </div>
+        {{for menu in db(db.menuItems.id > 0).select():}}
+        <div>
+            <h3>{{=menu.name}}</h3>
+            <i class="fa fa-edit fa-2x"></i>
+            <i @click="delete_item({{=menu.id}})" class="fa fa-trash fa-2x"></i>
+            <ul>
+                <li><b>ID: </b>{{=menu.id}}</li>
+                <li><b>Price: </b>${{=menu.price}}</li>
+                <li><b>Desc: </b>{{=menu.description}}</li>
+            </ul>
+
+        </div>
+        {{pass}}
+    </div>
 </div>
+
+<script src="{{=URL('static', 'js/default_admin.js')}}"></script>
 
