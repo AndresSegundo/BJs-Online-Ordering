@@ -92,3 +92,4 @@ CREATE TABLE "orders"(
     "updated_on" CHAR(512)
 );
 success!
+success!

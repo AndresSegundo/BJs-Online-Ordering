@@ -5,15 +5,15 @@ def get_user_email():
 
 db.define_table('menu',
                 Field('name'),
-                Field('price'),
+                Field('price', 'integer'),
                 Field('allergens'),
                 Field('image'),
                 Field('description'),
                 Field('nutrition'),
                 Field('category'),
-                Field('id'),
+                Field('id', 'integer'),
                 Field('ingredients'),
-                Field('is_featured')
+                Field('is_featured', 'boolean', default = False)
                 )
 
 db.define_table('account',
