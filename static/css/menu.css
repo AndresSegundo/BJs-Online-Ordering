@@ -28,24 +28,27 @@
 }
 
 .sglitem {
-  position: relative;
-  margin: 0 0 2px 0;
-  float: left;
+
 }
 .sglitem > img {
-  display: block;
-  width: 100%;
+
 }
 
 .sectiongrp {
+    position: relative;
+    float: left;
     width: 100%;
-    margin: 0 auto 0 auto;
+    margin: 0 auto 2px auto;
 
 }
 .sectiongrp:after {
   content: "";
   display: table;
   clear: both;
+}
+.sectiongrp > img {
+    display: block;
+    width: 100%;
 }
 
 .qvback {

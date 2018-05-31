@@ -5,8 +5,8 @@ def get_user_email():
 
 db.define_table('menuItems',
                 Field('name'),
-                Field('price'),
-                Field('allergens'),
+                Field('price', 'double'),
+                Field('allergens', 'list:string'),
                 Field('image'),
                 Field('description'),
                 Field('nutrition'),
