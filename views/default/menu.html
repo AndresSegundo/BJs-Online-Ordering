@@ -12,10 +12,13 @@
 <div class="menu_page">
     <img class="topimg" src="{{=URL('static','images/banana-joes-740.jpg')}}">
         <h1 class="menutitle">Menu</h1>
+    <!-- Categories: -->
+    {{cate = ["Street Food", "Flatbread & Salads", "Grill", "Panini", "Fried", "Smoothies"]}}
+    {{for i in cate:}}
     <div class="menusection">
-            <h3>Street Food</h3>
+            <h3>{{=i}}</h3>
     </div>
-    {{for menu in db(db.menuItems.id > 0).select():}}
+    {{for menu in db(db.menuItems.category == i).select():}}
     <div style="display: inline-block">
         <ul class="sectiongrp">
             <ul class="sglitem">
@@ -59,6 +62,7 @@
             </ul>
         </ul>
     </div>
+    {{pass}}
     {{pass}}
 </div>
 
