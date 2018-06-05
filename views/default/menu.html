@@ -45,7 +45,7 @@
                                 <div class="qty"><button class="atc" onclick="viewBack({{=menu.id}})" id="cust">
                                     Customize</button>
                                 </div>
-                                <button onclick="add_cart({{=menu}})" class="atc">Add to Cart</button>
+                                <button onclick="add_cart(true, {{=menu.id}})" class="atc">Add to Cart</button>
                             </div>
                             <span onclick="closeView({{=menu.id}})" class="close">&times;</span>
                         </div>
@@ -59,7 +59,7 @@
                                     <input type="checkbox" name="ingredient" value="Cream" checked> Cream<br>
                                     <input type="checkbox" name="ingredient" value="Corn" checked> Corn<br>
                                 </div>
-                                <input type="submit" class="atc" value="Add to Cart">
+                                <button onclick="add_cart(false, {{=menu.id}})" class="atc">Add to Cart</button>
                             </form>
                             <span v-on:click="closeBack({{=menu.id}})" class="back">&hookleftarrow;</span>
                         </div>
