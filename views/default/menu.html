@@ -9,111 +9,70 @@
 {{block head}}
 {{end}}
 
-<div class="menu_page">
-    <img class="topimg" src="{{=URL('static','images/banana-joes-740.jpg')}}">
-        <h1 class="menutitle">Menu</h1>
-    <!-- Categories: -->
-    {{cate = ["Street Food", "Flatbread & Salads", "Grill", "Panini", "Fried", "Smoothies"]}}
-    {{for i in cate:}}
-    <div class="menusection">
-            <h3>{{=i}}</h3>
-    </div>
-    {{for menu in db(db.menuItems.category == i).select():}}
-    <div style="display: inline-block">
-        <div class="sectiongrp">
-
-            <!-- Menu Item -->
-            <a onclick="openView({{=menu.id}})" href="#{{=menu.id}}" id="myhref" class="qvbtn">
-                <img  class="qvbutton" src="{{=URL('static','images/drink1.jpg')}}">
-                <div class="itmname">{{=menu.name}}<br />${{='%.2f' % menu.price}}</div>
-            </a>
-
-            <!-- Card Popup -->
-            <div id="quickview{{=menu.id}}" class="qvback">
-                <div class="qv">
-                    <div class="qvimg"><img src="{{=URL('static','images/drink1.jpg')}}" ></div>
-                    <div class="qvcontent">
-                        <div class="itmttl"><h1>{{=menu.name}}</h1></div>
-                        <div class="">Price: ${{='%.2f' % menu.price}}</div>
-                        <div class="qvcontentdis">{{=menu.description}}<div class="ingsty">
-                            <p>Ingredients: {{=menu.ingredients}}</p>
-                        </div></div>
-                        <div class="allsym">
-                            {{for i in range(0, len(menu.allergens)):}}
-                            <img class='allpic' src="
-                            http://nutrition.sa.ucsc.edu/LegendImages/{{=menu.allergens[i]}}.gif"
-                            />
-                            {{pass}}
-                        </div>
-                        <div class="qty"><button class="custom" onclick="viewBack({{=menu.id}})" id="cust">
-                            Customize</button>
+    <div class="menu_page">
+        <img class="topimg" src="{{=URL('static','images/banana-joes-740.jpg')}}">
+            <h1 class="menutitle">Menu</h1>
+        <!-- Categories: -->
+        {{cate = ["Street Food", "Flatbread & Salads", "Grill", "Panini", "Fried", "Smoothies"]}}
+        {{for i in cate:}}
+        <div class="menusection">
+                <h3>{{=i}}</h3>
+        </div>
+        {{for menu in db(db.menuItems.category == i).select():}}
+        <div style="display: inline-block">
+            <ul class="sectiongrp">
+                <ul class="sglitem">
+                    <a onclick="openView({{=menu.id}})" href="#{{=menu.id}}" id="id{{=menu.id}}" class="qvbtn">
+                        <img  class="qvbutton listImage" src="{{=menu.image}}">
+                        <div class="itmname">{{=menu.name}}<br />${{='%.2f' % menu.price}}</div>
+                    </a>
+                    <div id="quickview{{=menu.id}}" class="qvback">
+                        <div class="qv">
+                            <div class="qvimg"><img class="listImageInner" src="{{=menu.image}}" ></div>
+                            <div class="qvcontent">
+                                <div class="itmttl"><h1>{{=menu.name}}</h1></div>
+                                <div class="">Price: ${{='%.2f' % menu.price}}</div>
+                                <div class="qvcontentdis">{{=menu.description}}<div class="ingsty">
+                                    <p>Ingredients: {{=menu.ingredients}}</p>
+                                </div></div>
+                                <div class="allsym">
+                                    {{for i in range(0, len(menu.allergens)):}}
+                                    <img class='allpic' src="
+                                    http://nutrition.sa.ucsc.edu/LegendImages/{{=menu.allergens[i]}}.gif"
+                                    />
+                                    {{pass}}
+                                </div>
+                                <div class="qty"><button class="atc" onclick="viewBack({{=menu.id}})" id="cust">
+                                    Customize</button>
+                                </div>
+                                <button onclick="add_cart({{=menu}})" class="atc">Add to Cart</button>
+                            </div>
+                            <span onclick="closeView({{=menu.id}})" class="close">&times;</span>
                         </div>
                     </div>
-                    <span onclick="closeView({{=menu.id}})" class="close">&times;</span>
-                </div>
-            </div>
-
-            <!-- Custom Order Info -->
-            <div id="custorder{{=menu.id}}" class="qvback">
-                <div class="inglist">
-                    <form action="/action_page.php" method="get">
-                        <div class="listitems">
-                            <input type="checkbox" name="ingredient" value="Milk" checked> Milk<br>
-                            <input type="checkbox" name="ingredient" value="Sugar" checked> Sugar<br>
-                            <input type="checkbox" name="ingredient" value="Cream" checked> Cream<br>
-                            <input type="checkbox" name="ingredient" value="Corn" checked> Corn<br>
+                    <div id="custorder{{=menu.id}}" class="qvback">
+                        <div class="inglist">
+                            <form action="/action_page.php" method="get">
+                                <div class="listitems">
+                                    <input type="checkbox" name="ingredient" value="Milk" checked> Milk<br>
+                                    <input type="checkbox" name="ingredient" value="Sugar" checked> Sugar<br>
+                                    <input type="checkbox" name="ingredient" value="Cream" checked> Cream<br>
+                                    <input type="checkbox" name="ingredient" value="Corn" checked> Corn<br>
+                                </div>
+                                <input type="submit" class="atc" value="Add to Cart">
+                            </form>
+                            <span v-on:click="closeBack({{=menu.id}})" class="back">&hookleftarrow;</span>
                         </div>
-                        <input type="submit" class="atc" value="Add to Cart">
-                    </form>
-                    <span onclick="closeBack({{=menu.id}})" class="back">&hookleftarrow;</span>
-                </div>
-            </div>
+                    </div>
+                </ul>
+            </ul>
         </div>
+        {{pass}}
+        <hr />
+        {{pass}}
     </div>
-    {{pass}}
-    <hr />
-    {{pass}}
-</div>
 
 <script>
-
-window.onclick = function(event) {
-    console.log(event.target);
-};
-
-openView = function(id) {
-    var link = 'quickview' + id;
-    document.getElementById(link).style.display = "block";
-    document.getElementById(link).onclick = function(event) {
-        if (event.target == document.getElementById(link)) {
-            document.getElementById(link).style.display = "none";
-        }
-    }
-};
-
-closeView = function(id) {
-    var link = 'quickview' + id;
-    document.getElementById(link).style.display = "none";
-};
-
-viewBack = function(id) {
-    var link = 'custorder' + id;
-    var temp = 'quickview' + id;
-    document.getElementById(temp).style.display = "none";
-    document.getElementById(link).style.display = "block";
-    document.getElementById(link).onclick = function(event) {
-        if (event.target == document.getElementById(link)) {
-            document.getElementById(link).style.display = "none";
-        }
-    }
-};
-
-closeBack = function(id) {
-    var link = 'custorder' + id;
-    var temp = 'quickview' + id;
-    document.getElementById(link).style.display = "none";
-    document.getElementById(temp).style.display = "block";
-};
 
 // var modal = document.getElementById('quickview');
 // var link = document.getElementById("myhref");
@@ -148,3 +107,6 @@ closeBack = function(id) {
 // }
 
 </script>
+
+<script src="{{=URL('static', 'js/menu.js')}}"></script>
+<script src="{{=URL('static', 'js/default_menu.js')}}"></script>
