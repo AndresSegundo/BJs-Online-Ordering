@@ -13,7 +13,7 @@ db.define_table('menuItems',
                 Field('category'),
                 Field('id'),
                 Field('ingredients'),
-                Field('is_featured')
+                Field('is_featured', 'boolean')
                 )
 
 db.define_table('menuItems_data',
