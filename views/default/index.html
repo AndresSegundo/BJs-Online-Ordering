@@ -13,10 +13,10 @@ Green: 416743
 -->
 <div class="media">
     <div class="album">
-        <img class="album-image" src=""/>
-        <img class="album-image" src=""/>
-        <img class="album-image" src=""/>
-        <img class="album-image" src=""/>
+        {{for menu in db(db.menuItems.is_featured == 'true').select():}}
+        <a href="menu.html/#id{{=menu.id}}"><img class="album-image" src="{{=menu.image}}"/>
+        <span>{{=menu.description}}</span></a>
+        {{pass}}
     </div>
 </div>
 <div class="info">
@@ -47,9 +47,7 @@ Green: 416743
             cards, flexi dollars, and meal equivalencies accepted. <a href="https://dining.ucsc.edu/eat/">Read More</a></p><br />
         <h1 class="center"><i class="fa fa-phone"></i></h1>
         <p class="center">(831) 459-1445</p>
-        <button class="commentCard">
-        <a href="http://diningcomment.ucsc.edu/">Dining Comment Card</a><br />
-        </button>
+        <a class="commentCard" href="http://diningcomment.ucsc.edu/">Dining Comment Card</a><br />
     </div>
 </div>
 <div class="faq-container">
@@ -63,4 +61,21 @@ Green: 416743
         order in person.</div>
     </div>
 </div>
+
+<script>
+var myIndex = 0;
+carousel();
+
+function carousel() {
+    var i;
+    var x = document.getElementsByClassName("album-image");
+    for (i = 0; i < x.length; i++) {
+       x[i].style.display = "none";
+    }
+    myIndex++;
+    if (myIndex > x.length) {myIndex = 1}
+    x[myIndex-1].style.display = "block";
+    setTimeout(carousel, 6000); // Change image every 6 seconds
+}
+</script>
 

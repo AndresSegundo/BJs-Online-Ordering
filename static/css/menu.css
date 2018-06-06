@@ -37,6 +37,14 @@
   width: 100%;
 }
 
+.listImage {
+    width: 225px
+}
+
+.listImageInner {
+    width: 400px;
+}
+
 .sectiongrp {
     width: 100%;
     margin: 0 auto 0 auto;
