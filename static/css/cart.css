@@ -1,7 +1,7 @@
 .btn.test{
 	margin:20px;
 	background-color:gray;
-	width:200px;
+	width:300px;
 	height:50px;
 }
 
@@ -25,6 +25,20 @@
 	text-align: left;
 	border-bottom: 1px solid #262626;
 	border-right: 1px solid #b3b3b3;
+	font-size: 20px;
+}
+
+.cancel_btn{
+	float:right;
+	margin-right: 15px;
+}
+
+.cancel_btn:hover{
+	color:#e22828;
+}
+
+.order_row:hover{
+	background-color: #fff8d6;
 }
 
 .price{
@@ -32,6 +46,23 @@
 	width:200px;
 	text-align: left;
 	border-bottom: 1px solid #262626;
+	font-size: 20px;
+}
+
+.checkout_btn{
+	background-color:darkgray;
+	font-size:30px;
+	margin:15px;
+	margin-bottom:10px;
+	margin-left: 80%;
+}
+
+.checkout_btn:hover{
+	background-color:green;
+}
+
+.check_icon:hover{
+	color:black;
 }
 
 .footer{

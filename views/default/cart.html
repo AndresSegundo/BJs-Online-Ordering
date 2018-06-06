@@ -1,9 +1,10 @@
 {{extend 'navbar.html'}}
 	<link rel="stylesheet" href="{{=URL('static','css/cart.css')}}"/>
-	<script src={{=URL('static','js/cart.js')}}></script>
+	<script src="{{=URL('static','js/vue.js')}}"></script>
 	
 {{block head}}
 {{end}}
+	<div id="vue-div" style="display:none">
 	
 	<div class="cart"> 
 		<div class="cart container">
@@ -13,29 +14,31 @@
 					<th class="price">Price</th>
 				</tr>
 				
-				<tr>
-					<td class="item">test_1</th>
-					<td class="price">$100.00</th>
+				<tr v-for="order in orders" class="order_row">
+					<td class="item">Item ${order.id}</th>
+					<i class="fa fa-times-rectangle fa-2x cancel_btn" v-on:click="remove_order(order)"></i>
+					<td class="price">$${order.price}</th>
 				</tr>
 				
 				<tr>
 					<th class="item"></th>
-					<th class="price">Total: $100.00</th>
+					<th class="price">Total: $${cart_total}</th>
 				</tr>
 			</table>
+			<button class="checkout_btn">Checkout <i class="fa fa-check-square check_icon"></i></button>
 		</div>
 		
-		<div class="footer">
-			<h3>Copyright @2018</h3>
+		<div class="btn test" v-on:click="create_test_order">
+			Create New Random Order
 		</div>
+		
 	</div>
+	
+	</div>
+	
+	<script src="{{=URL('static', 'js/cart-vue.js')}}"></script>
 
-	<div class="center">
-		<div class="btn test" href="{{=URL('default', 'add_item', args=[1, 'woow'])}}">create test item</div>
-		<div class="btn test" onClick="retrieveOrder()">retrieve cookies</div>
-		<div class="btn test" onClick="clearListCookies()">delete cookies</div>
-	</div>
-	<!-- Cart should display all current orders stored on the local machine via cookies 
+	<!-- Cart should display all current orders stored on the local machine via localStorage 
 		Total price should then be calculated then displayed on the bottom
 		At the bottom, there will be a checkout button which links to the checkout -->
 	<!-- After checkout, order data should be uploaded to the database in order to store
