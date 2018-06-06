@@ -3,6 +3,24 @@ import datetime
 def get_user_email():
     return auth.user.email if auth.user else None
 
+
+db.define_table('myuser',
+                Field('username'),
+                Field('password'),
+                Field('token')
+                )
+
+#Gets the identity of the logged in user.
+logged_in_user = None
+if request.vars.token is not None: 
+    r = db(db.myuser.token ==
+        request.vars.token).select().first()
+    if r is not None:
+        logged_in_user = dict(
+            username = r.username
+            )
+        logger.info("User: %r" % r.username)
+
 db.define_table('menuItems',
                 Field('name'),
                 Field('price'),
@@ -37,6 +55,7 @@ db.define_table('account',
                 Field('cc_address'),
                 Field('log_info'),
                 )
+
 
 db.define_table('orders',
                 Field('user_email'),

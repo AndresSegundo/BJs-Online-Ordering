@@ -124,3 +124,11 @@ CREATE TABLE "menuItems_data"(
     "mime_type" CHAR(512)
 );
 success!
+timestamp: 2018-06-05T14:47:31.349047
+CREATE TABLE "myuser"(
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "username" CHAR(512),
+    "password" CHAR(512),
+    "token" CHAR(512)
+);
+success!

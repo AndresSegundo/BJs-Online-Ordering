@@ -7,8 +7,14 @@
 }
 
 /* Set min width */
+
 body{
 	min-width:800px;
+}
+
+.dropdown-content p{
+    font-family: "Yesteryear", cursive;
+    color: #0EAFAD;
 }
 
 .navbar{
@@ -101,7 +107,13 @@ i:hover{
     color: yellow;
 }
 
-.account.btn{
+.ul.dropdown-menu{
+	width: 123px;
+	height: 110px;
+
+}
+
+.account.btn.expand{
 	float:right;
 	margin-top:20px;
 	margin-right:45px;
@@ -112,9 +124,41 @@ i:hover{
 	padding:6px;
 	width:65px;
 	height:65px;
+
+
 }
 
-.cart.btn{
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #545454;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {background-color: #ddd}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown:hover .dropbtn {
+    background-color: #3e8e41;
+}
+.cart.btn.expand{
 	float:right;
 	margin-top:20px;
 	margin-right:45px;
