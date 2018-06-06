@@ -3,6 +3,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css?family=Shrikhand&effect=outline" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Yesteryear" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
 
 
     <script src={{=URL('static','js/account.js')}}></script>
@@ -12,59 +13,73 @@
     <div class="menu_page">
         <img class="topimg" src="{{=URL('static','images/banana-joes-740.jpg')}}">
             <h1 class="menutitle">Menu</h1>
-        <!-- Categories: -->
         {{cate = ["Street Food", "Flatbread & Salads", "Grill", "Panini", "Fried", "Smoothies"]}}
+        <div class="alllinks">
+            {{for l in cate:}}
+            <div id="jumplink" class="jl">
+                <a class="link_to_jump" href="#{{=l}}">  |  {{=l}}  |  </a>
+            </div>
+            {{pass}}
+        </div>
+        <!-- Categories: -->
         {{for i in cate:}}
         <div class="menusection">
-                <h3>{{=i}}</h3>
+                <a name="{{=i}}">{{=i}}</a>
         </div>
         {{for menu in db(db.menuItems.category == i).select():}}
         <div style="display: inline-block">
             <ul class="sectiongrp">
-                <ul class="sglitem">
-                    <a onclick="openView({{=menu.id}})" href="#{{=menu.id}}" id="id{{=menu.id}}" class="qvbtn">
-                        <img  class="qvbutton listImage" src="{{=menu.image}}">
-                        <div class="itmname">{{=menu.name}}<br />${{='%.2f' % menu.price}}</div>
-                    </a>
-                    <div id="quickview{{=menu.id}}" class="qvback">
-                        <div class="qv">
-                            <div class="qvimg"><img class="listImageInner" src="{{=menu.image}}" ></div>
-                            <div class="qvcontent">
-                                <div class="itmttl"><h1>{{=menu.name}}</h1></div>
-                                <div class="">Price: ${{='%.2f' % menu.price}}</div>
-                                <div class="qvcontentdis">{{=menu.description}}<div class="ingsty">
-                                    <p>Ingredients: {{=menu.ingredients}}</p>
-                                </div></div>
-                                <div class="allsym">
-                                    {{for i in range(0, len(menu.allergens)):}}
-                                    <img class='allpic' src="
-                                    http://nutrition.sa.ucsc.edu/LegendImages/{{=menu.allergens[i]}}.gif"
-                                    />
-                                    {{pass}}
-                                </div>
-                                <div class="qty"><button class="atc" onclick="viewBack({{=menu.id}})" id="cust">
-                                    Customize</button>
-                                </div>
+                <a onclick="openView({{=menu.id}})" href="#{{=menu.id}}" id="id{{=menu.id}}" class="qvbtn">
+                    <img  class="listImage" src="{{=menu.image}}">
+                    <div class="itmname">{{=menu.name}}<br/>${{='%.2f' % menu.price}}</div>
+                </a>
+                <div id="quickview{{=menu.id}}" class="qvback">
+                    <div class="qv">
+                        <div class="qvimg"><img class="listImageInner half" src="{{=menu.image}}" ></div>
+                        <div class="qvcontent half">
+                            <div class="itmttl"><h1>{{=menu.name}}</h1></div>
+                            <div class=""><b>Price:</b> ${{='%.2f' % menu.price}}</div>
+                            <div class="qvcontentdis">{{=menu.description}}<div class="ingsty">
+                                <p>Ingredients: {{=menu.ingredients}}</p>
+                            </div></div>
+                            <form>
+                                Customize your order:
+                                <textarea rows="3" cols="45" name="comment" class="commentbox"
+                                          placeholder="Enter text here..."></textarea>
+                            </form>
+                            <div class="allsym">
+                                {{for i in range(0, len(menu.allergens)):}}
+                                <img class='allpic' src="
+                                http://nutrition.sa.ucsc.edu/LegendImages/{{=menu.allergens[i]}}.gif"
+                                />
+                                {{pass}}
+                            </div>
+                         <!--   <div class="qty"><button class="atc" onclick="viewBack({{=menu.id}})" id="cust">
+                                Customize</button>
+                            </div>  -->
+                            <div class="atcbutton">
                                 <button onclick="add_cart(true, {{=menu.id}})" class="atc">Add to Cart</button>
                             </div>
-                            <span onclick="closeView({{=menu.id}})" class="close">&times;</span>
                         </div>
+                        <span onclick="closeView({{=menu.id}})" class="close">&times;</span>
                     </div>
-                    <div id="custorder{{=menu.id}}" class="qvback">
-                        <div class="inglist">
-                            <form action="/action_page.php" method="get">
-                                <div class="listitems">
-                                    <input type="checkbox" name="ingredient" value="Milk" checked> Milk<br>
-                                    <input type="checkbox" name="ingredient" value="Sugar" checked> Sugar<br>
-                                    <input type="checkbox" name="ingredient" value="Cream" checked> Cream<br>
-                                    <input type="checkbox" name="ingredient" value="Corn" checked> Corn<br>
-                                </div>
-                                <button onclick="add_cart(false, {{=menu.id}})" class="atc">Add to Cart</button>
-                            </form>
-                            <span v-on:click="closeBack({{=menu.id}})" class="back">&hookleftarrow;</span>
-                        </div>
+                </div>
+        <!--        <div id="custorder{{=menu.id}}" class="qvback">
+                    <div class="inglist">
+                        <form action="/action_page.php" method="get">
+                            <div class="listitems">
+                                <input type="checkbox" name="ingredient" value="Milk" checked> Milk<br>
+                                <input type="checkbox" name="ingredient" value="Sugar" checked> Sugar<br>
+                                <input type="checkbox" name="ingredient" value="Cream" checked> Cream<br>
+                                <input type="checkbox" name="ingredient" value="Corn" checked> Corn<br>
+                            </div>
+                            <button onclick="add_cart(false, {{=menu.id}})" class="atc">Add to Cart</button>
+
+                        </form>
+                        <span v-on:click="closeBack({{=menu.id}})" class="back">&hookleftarrow;</span>
+
                     </div>
-                </ul>
+                </div> -->
             </ul>
         </div>
         {{pass}}

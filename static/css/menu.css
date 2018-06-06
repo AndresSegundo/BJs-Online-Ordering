@@ -10,35 +10,47 @@
     color: black;
     text-align: center;
     margin: 20px;
-    font-family: 'Yesteryear', cursive;
+    font-family: 'Pacifico', cursive;
     font-size: 6em;
 }
 
 .menu_page>.menusection {
-    margin-left: 78px;
-    margin-top: 25px;
+    margin: 25px 0 25px 55px;
     font-weight: bold;
-    font-family: 'Yesteryear', cursive;
+    font-family: 'Pacifico', cursive;
     font-size: 20px;
     float: top;
+}
+
+.jl {
+    font-family: 'Pacifico', cursive;
+    font-size: 19px;
+    display: inline-block;
+}
+
+.alllinks{
+    width: 100%;
+    text-align: center;
+}
+.link_to_jump {
+    color: black;
+ }
+
+.link_to_jump:hover {
+    color: black;
+    text-decoration: none;
 }
 
 .menusection>.menuitems{
     margin: 25px;
 }
 
-.sglitem {
-  position: relative;
-  margin: 0 0 2px 0;
-  float: left;
-}
-.sglitem > img {
-  display: block;
-  width: 100%;
-}
+
 
 .listImage {
-    width: 225px
+    width: 250px;
+    display: block;
+    margin: 0 auto 0 auto;
 }
 
 .listImageInner {
@@ -47,9 +59,11 @@
 
 .sectiongrp {
     width: 100%;
-    margin: 0 auto 0 auto;
-
+    margin: 0 25px 0 0;
+    position: relative;
+    float: left;
 }
+
 .sectiongrp:after {
   content: "";
   display: table;
@@ -70,37 +84,37 @@
 }
 
 .qv{
-    width: 50%;
-    height: 345px;
+    width: fit-content;
+    height: auto;
     margin: auto;
     padding: 20px;
     background-color: white;
     display: flex;
-
+    justify-content: right;
 }
 
 .qvcontentdis {
-    overflow-y: scroll;
     max-width: 400px;
-    max-height: 140px;
     word-wrap: break-word;
+    margin: 2px 0 0 0;
 }
 
 .qvimg {
     height:100%;
-    width: 100%;
-    horiz-align: center;
-    float: left;
-    padding-right: 20px;
+    width: auto;
+    margin: auto 15px auto auto;
+
 }
 
 .qvcontent {
-    align-content: right;
-    position: relative;
+    width:auto;
+    margin:auto;
+    max-width: 380px;
+    overflow: hidden;
 }
 
 .ingsty{
-    font-size: 10px;
+    font-size: 12px;
     font-style: italic;
 }
 
@@ -114,7 +128,7 @@
 }
 
 .itmttl{
-    padding: 20px 0 20px 0;
+    margin: 10px auto 10px auto
 }
 .exit {
     color: dimgray;
@@ -151,16 +165,11 @@
 }
 
 .atc:hover{
-    background-color: darkgreen;
+    background-color: #268e8d;
 }
 
-.qvbutton{
-
-}
-
-.qvbutton:hover{
+.listImage:hover {
     opacity: 0.7;
-
 }
 
 .itmname{
@@ -182,12 +191,16 @@
     background-color: #0eafad;
     color: white;
     margin:  15px 0 0 0;
+}
 
+.atcbutton {
+    position: relative;
+    left: 0px;
 }
 
 .inglist {
     width: 50%;
-    height: 345px;
+    height: auto;
     margin: auto;
     padding: 20px;
     background-color: white;
@@ -198,3 +211,25 @@
 .listitems {
     padding-left: 25px;
 }
+
+.listImageInner {
+    margin: 10px;
+    border: #000000 2px solid;
+}
+
+.close {
+    padding-left: 20px;
+}
+
+.menusection > a {
+    font-size: 30px;
+    font-weight: normal;
+    margin: 0 0 5px 0;
+}
+
+.commentbox {
+    margin-bottom: 3px;
+}
+
+
+
