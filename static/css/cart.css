@@ -52,9 +52,10 @@
 .checkout_btn{
 	background-color:darkgray;
 	font-size:30px;
+	width:195px;
 	margin:15px;
 	margin-bottom:10px;
-	margin-left: 80%;
+	margin-left: 79%;
 }
 
 .checkout_btn:hover{
