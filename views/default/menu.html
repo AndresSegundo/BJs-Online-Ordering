@@ -3,40 +3,63 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css?family=Shrikhand&effect=outline" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Yesteryear" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
 
 
     <script src={{=URL('static','js/account.js')}}></script>
 {{block head}}
 {{end}}
 
-<div class="menu_page">
-    <img class="topimg" src="{{=URL('static','images/banana-joes-740.jpg')}}">
-        <h1 class="menutitle">Menu</h1>
-    <div class="menusection">
-            <h3>Street Food</h3>
-    </div>
-    {{for menu in db(db.menuItems.id > 0).select():}}
-    <div style="display: inline-block">
-        <ul class="sectiongrp">
-            <ul class="sglitem">
-                <a onclick="openView({{=menu.id}})" href="#1" id="myhref" class="qvbtn">
-                    <img  class="qvbutton" src="{{=URL('static','images/drink1.jpg')}}">
-                    <div class="itmname">{{=menu.name}}</div>
+    <div class="menu_page">
+        <img class="topimg" src="{{=URL('static','images/banana-joes-740.jpg')}}">
+            <h1 class="menutitle">Menu</h1>
+        {{cate = ["Street Food", "Flatbread & Salads", "Grill", "Panini", "Fried", "Smoothies"]}}
+        <div class="alllinks">
+            {{for l in cate:}}
+            <div id="jumplink" class="jl">
+                <a class="link_to_jump" href="#{{=l}}">  |  {{=l}}  |  </a>
+            </div>
+            {{pass}}
+        </div>
+        <!-- Categories: -->
+        {{for i in cate:}}
+        <div class="menusection">
+                <a name="{{=i}}">{{=i}}</a>
+        </div>
+        {{for menu in db(db.menuItems.category == i).select():}}
+        <div style="display: inline-block">
+            <ul class="sectiongrp">
+                <a onclick="openView({{=menu.id}})" href="#{{=menu.id}}" id="id{{=menu.id}}" class="qvbtn">
+                    <img  class="listImage" src="{{=menu.image}}">
+                    <div class="itmname">{{=menu.name}}<br/>${{='%.2f' % menu.price}}</div>
                 </a>
                 <div id="quickview{{=menu.id}}" class="qvback">
                     <div class="qv">
-                        <div class="qvimg"><img src="{{=URL('static','images/drink1.jpg')}}" ></div>
-                        <div class="qvcontent">
+                        <div class="qvimg"><img class="listImageInner half" src="{{=menu.image}}" ></div>
+                        <div class="qvcontent half">
                             <div class="itmttl"><h1>{{=menu.name}}</h1></div>
+                            <div class=""><b>Price:</b> ${{='%.2f' % menu.price}}</div>
                             <div class="qvcontentdis">{{=menu.description}}<div class="ingsty">
                                 <p>Ingredients: {{=menu.ingredients}}</p>
                             </div></div>
+                            <form>
+                                Customize your order:
+                                <textarea rows="3" cols="45" name="comment" class="commentbox"
+                                          placeholder="Enter text here..."></textarea>
+                            </form>
                             <div class="allsym">
-                                <img src="{{=URL('static', 'images/eggs.jpg')}}" class="allpic">
-                                <img src="{{=URL('static', 'images/fish.jpg')}}" class="allpic">
+                                {{for i in range(0, len(menu.allergens)):}}
+                                <img class='allpic' src="
+                                http://nutrition.sa.ucsc.edu/LegendImages/{{=menu.allergens[i]}}.gif"
+                                />
+                                {{pass}}
                             </div>
-                            <div class="qty"><button class="custom" onclick="viewBack({{=menu.id}})" id="cust">
+                         <!--   <div class="qty"><button class="atc" onclick="viewBack({{=menu.id}})" id="cust">
                                 Customize</button>
+                            </div>  -->
+                            <div class="atcbutton">
+                                <button onclick="add_cart({{=menu}})" class="atc">Add to Cart</button>
+
                             </div>
                         </div>
                         <span onclick="closeView({{=menu.id}})" class="close">&times;</span>
@@ -53,54 +76,18 @@
                             </div>
                             <input type="submit" class="atc" value="Add to Cart">
                         </form>
-                        <span onclick="closeBack({{=menu.id}})" class="back">&hookleftarrow;</span>
+                        <span v-on:click="closeBack({{=menu.id}})" class="back">&hookleftarrow;</span>
+
                     </div>
                 </div>
             </ul>
-        </ul>
+        </div>
+        {{pass}}
+        <hr />
+        {{pass}}
     </div>
-    {{pass}}
-</div>
 
 <script>
-
-window.onclick = function(event) {
-    console.log(event.target);
-};
-
-openView = function(id) {
-    var link = 'quickview' + id;
-    document.getElementById(link).style.display = "block";
-    document.getElementById(link).onclick = function(event) {
-        if (event.target == document.getElementById(link)) {
-            document.getElementById(link).style.display = "none";
-        }
-    }
-};
-
-closeView = function(id) {
-    var link = 'quickview' + id;
-    document.getElementById(link).style.display = "none";
-};
-
-viewBack = function(id) {
-    var link = 'custorder' + id;
-    var temp = 'quickview' + id;
-    document.getElementById(temp).style.display = "none";
-    document.getElementById(link).style.display = "block";
-    document.getElementById(link).onclick = function(event) {
-        if (event.target == document.getElementById(link)) {
-            document.getElementById(link).style.display = "none";
-        }
-    }
-};
-
-closeBack = function(id) {
-    var link = 'custorder' + id;
-    var temp = 'quickview' + id;
-    document.getElementById(link).style.display = "none";
-    document.getElementById(temp).style.display = "block";
-};
 
 // var modal = document.getElementById('quickview');
 // var link = document.getElementById("myhref");
@@ -135,3 +122,6 @@ closeBack = function(id) {
 // }
 
 </script>
+
+<script src="{{=URL('static', 'js/menu.js')}}"></script>
+<script src="{{=URL('static', 'js/default_menu.js')}}"></script>

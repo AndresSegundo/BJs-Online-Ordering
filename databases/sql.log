@@ -1,4 +1,4 @@
-timestamp: 2018-05-01T00:57:58.560000
+timestamp: 2018-06-05T12:57:21.317000
 CREATE TABLE "auth_user"(
     "id" INTEGER PRIMARY KEY AUTOINCREMENT,
     "first_name" CHAR(128),
@@ -10,21 +10,21 @@ CREATE TABLE "auth_user"(
     "registration_id" CHAR(512)
 );
 success!
-timestamp: 2018-05-01T00:57:58.737000
+timestamp: 2018-06-05T12:57:21.391000
 CREATE TABLE "auth_group"(
     "id" INTEGER PRIMARY KEY AUTOINCREMENT,
     "role" CHAR(512),
     "description" TEXT
 );
 success!
-timestamp: 2018-05-01T00:57:58.986000
+timestamp: 2018-06-05T12:57:21.449000
 CREATE TABLE "auth_membership"(
     "id" INTEGER PRIMARY KEY AUTOINCREMENT,
     "user_id" INTEGER REFERENCES "auth_user" ("id") ON DELETE CASCADE  ,
     "group_id" INTEGER REFERENCES "auth_group" ("id") ON DELETE CASCADE  
 );
 success!
-timestamp: 2018-05-01T00:57:59.238000
+timestamp: 2018-06-05T12:57:21.507000
 CREATE TABLE "auth_permission"(
     "id" INTEGER PRIMARY KEY AUTOINCREMENT,
     "group_id" INTEGER REFERENCES "auth_group" ("id") ON DELETE CASCADE  ,
@@ -33,7 +33,7 @@ CREATE TABLE "auth_permission"(
     "record_id" INTEGER
 );
 success!
-timestamp: 2018-05-01T00:57:59.344000
+timestamp: 2018-06-05T12:57:21.573000
 CREATE TABLE "auth_event"(
     "id" INTEGER PRIMARY KEY AUTOINCREMENT,
     "time_stamp" TIMESTAMP,
@@ -43,7 +43,7 @@ CREATE TABLE "auth_event"(
     "description" TEXT
 );
 success!
-timestamp: 2018-05-01T00:57:59.492000
+timestamp: 2018-06-05T12:57:21.633000
 CREATE TABLE "auth_cas"(
     "id" INTEGER PRIMARY KEY AUTOINCREMENT,
     "user_id" INTEGER REFERENCES "auth_user" ("id") ON DELETE CASCADE  ,
@@ -53,21 +53,30 @@ CREATE TABLE "auth_cas"(
     "renew" CHAR(1)
 );
 success!
-timestamp: 2018-05-17T15:55:36.714189
-CREATE TABLE "menu"(
+timestamp: 2018-06-05T12:57:21.698000
+CREATE TABLE "menuItems"(
     "id" INTEGER PRIMARY KEY AUTOINCREMENT,
     "name" CHAR(512),
-    "price" CHAR(512),
-    "allergens" CHAR(512),
+    "price" DOUBLE,
+    "allergens" TEXT,
     "image" CHAR(512),
     "description" CHAR(512),
     "nutrition" CHAR(512),
     "category" CHAR(512),
     "ingredients" CHAR(512),
-    "is_featured" CHAR(512)
+    "is_featured" CHAR(1)
 );
 success!
-timestamp: 2018-05-17T15:56:32.065897
+timestamp: 2018-06-05T12:57:21.785000
+CREATE TABLE "menuItems_data"(
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "menu_id" INTEGER REFERENCES "menuItems" ("id") ON DELETE CASCADE  ,
+    "original_filename" CHAR(512),
+    "data_blob" BLOB,
+    "mime_type" CHAR(512)
+);
+success!
+timestamp: 2018-06-05T12:57:21.867000
 CREATE TABLE "account"(
     "id" INTEGER PRIMARY KEY AUTOINCREMENT,
     "name" CHAR(512),
@@ -83,7 +92,7 @@ CREATE TABLE "account"(
     "log_info" CHAR(512)
 );
 success!
-timestamp: 2018-05-17T15:56:43.206027
+timestamp: 2018-06-05T12:57:21.966000
 CREATE TABLE "orders"(
     "id" INTEGER PRIMARY KEY AUTOINCREMENT,
     "user_email" CHAR(512),
@@ -92,6 +101,7 @@ CREATE TABLE "orders"(
     "updated_on" CHAR(512)
 );
 success!
+<<<<<<< HEAD
 timestamp: 2018-05-22T16:13:51.772223
 CREATE TABLE "menu_data"(
     "id" INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -132,3 +142,5 @@ CREATE TABLE "myuser"(
     "token" CHAR(512)
 );
 success!
+=======
+>>>>>>> fb3d25cb51453cad16ccd3bb41f6e9a21bb71901
