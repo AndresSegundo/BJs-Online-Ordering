@@ -25,11 +25,11 @@ var app = function() {
 	self.remove_order = function(order){
 		var index = self.vue.orders.indexOf(order);
 		self.vue.orders.splice(index, 1);
-		self.save_order();
+		self.save_orders();
 		self.calculate_total();
 	}
 	
-	self.save_order = function(){
+	self.save_orders = function(){
 		orders_parsed = JSON.stringify(self.vue.orders);
 		localStorage.orders = orders_parsed;
 	}
@@ -45,7 +45,7 @@ var app = function() {
 		
 		self.vue.orders.push(order);
 		
-		self.save_order();
+		self.save_orders();
 		
 		self.calculate_total();
 	};
