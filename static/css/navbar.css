@@ -27,7 +27,6 @@ body{
 .navbar.container{
 	height:100%;
 	width:100%;
-	
 	display:inline-block;
 }
 
@@ -102,6 +101,7 @@ i:hover{
 .sidebar.links li a {
     color: white;
     text-decoration: none;
+	font-size: 30px;
 }
 .sidebar.links li a:hover{
     color: yellow;
