@@ -1,0 +1,23 @@
+.checkout-list {
+    background-image: url("../images/BJsChecklistPatch.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    min-width: 400px;
+    min-height: 700px;
+    position: center;
+    margin-top: 20px;
+    padding: 20px;
+}
+
+.checkout-list>.checkout-title {
+    color: white;
+    font-family: "Shrikhand", cursive;
+    margin-top: 40px;
+}
+
+.checkout-list>.checkout-columns {
+    color: white;
+    font-family: "Shrikhand", cursive;
+    margin-top: 40px;
+}
