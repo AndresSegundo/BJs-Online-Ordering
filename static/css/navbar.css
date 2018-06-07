@@ -13,15 +13,18 @@ body{
 }
 
 .dropdown-content p, .user_status p{
-    font-family: "Yesteryear", cursive;
+    font-family: "Pacifico", cursive;
     color: #0EAFAD;
+}
+
+.navbarlink {
+	font-size: 16px;
 }
 
 .navbar{
 	background-color:var(--charcoal);
 	height:100px;
 	width:100%;
-	
 	padding:0;
 }
 .navbar.container{
