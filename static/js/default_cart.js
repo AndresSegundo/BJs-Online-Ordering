@@ -7,52 +7,52 @@ var app = function() {
     Vue.config.silent = false; // show all warnings
 	
 	
-	self.retrieve_orders = function(){
-		if (localStorage.orders) {
-			self.vue.orders = JSON.parse(localStorage.orders);
+	self.retrieve_cart = function(){
+		if (localStorage.cart) {
+			self.vue.cart = JSON.parse(localStorage.cart);
 		};
 	};
 	
 	self.calculate_total = function(){
 		var total = 0;
-		orders = self.vue.orders;
-		for (var i = 0; i < orders.length; i++){
-			total += parseFloat(orders[i].price);
+		cart = self.vue.cart;
+		for (var i = 0; i < cart.length; i++){
+			total += parseFloat(cart[i].price);
 		};
 		self.vue.cart_total = total.toFixed(2);
 	};
 	
 	self.remove_order = function(order){
-		var index = self.vue.orders.indexOf(order);
-		self.vue.orders.splice(index, 1);
-		self.save_orders();
+		var index = self.vue.cart.indexOf(order);
+		self.vue.cart.splice(index, 1);
+		self.save_cart();
 		self.calculate_total();
 	}
 	
-	self.save_orders = function(){
-		orders_parsed = JSON.stringify(self.vue.orders);
-		localStorage.orders = orders_parsed;
+	self.save_cart = function(){
+		cart_parsed = JSON.stringify(self.vue.cart);
+		localStorage.cart = cart_parsed;
 	}
 	
 	self.delete_comment = function(order){
-		var index = self.vue.orders.indexOf(order);
-		order = self.vue.orders[index];
+		var index = self.vue.cart.indexOf(order);
+		order = self.vue.cart[index];
 		order.is_comment = false;
 		order.comment = "";
-		self.vue.orders[index] = order;
-		self.save_orders();
+		self.vue.cart[index] = order;
+		self.save_cart();
 	}
 	
 	self.add_comment = function(order){
-		var index = self.vue.orders.indexOf(order);
-		order = self.vue.orders[index];
+		var index = self.vue.cart.indexOf(order);
+		order = self.vue.cart[index];
 		order.is_comment = true;
-		self.vue.orders[index] = order;
-		self.save_orders();
+		self.vue.cart[index] = order;
+		self.save_cart();
 	}
 	
 	self.save_comment = function(order){
-		self.save_orders();
+		self.save_cart();
 	}
 	
 	self.create_test_order = function(){
@@ -74,9 +74,9 @@ var app = function() {
 			comment: comment,
 		};
 		
-		self.vue.orders.push(order);
+		self.vue.cart.push(order);
 		
-		self.save_orders();
+		self.save_cart();
 		
 		self.calculate_total();
 	};
@@ -95,12 +95,12 @@ var app = function() {
 			save_comment: self.save_comment,
         },
         data: {
-			orders: [],
+			cart: [],
 			cart_total: 0,
         }
     });
 	
-	self.retrieve_orders();
+	self.retrieve_cart();
 	self.calculate_total();
 	
 	$("#vue-div").show();
