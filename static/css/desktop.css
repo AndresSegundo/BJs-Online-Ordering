@@ -233,6 +233,11 @@ https://www.w3schools.com/howto/howto_js_slideshow.asp
 /* Hide the images by default */
 .mySlides {
     display: none;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.mySlides a {
+    opacity: 1;
 }
 
 /* Next & previous buttons */
@@ -266,7 +271,7 @@ https://www.w3schools.com/howto/howto_js_slideshow.asp
     color: #0EAFAD;
     font-family: Pacifico;
     font-size: 2em;
-    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+    text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
     padding: 8px 12px;
     position: absolute;
     top: 8px;
