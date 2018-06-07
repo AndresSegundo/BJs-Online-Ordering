@@ -24,7 +24,7 @@
         <!-- Categories: -->
         {{for i in cate:}}
         <div class="menusection">
-                <a name="{{=i}}">{{=i}}</a>
+                <a class="ms" name="{{=i}}">{{=i}}</a>
         </div>
         {{for menu in db(db.menuItems.category == i).select():}}
         <div style="display: inline-block">

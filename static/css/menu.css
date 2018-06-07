@@ -160,6 +160,10 @@
     align-self: flex-end;
 }
 
+.ms:hover {
+    color: #000000;
+    opacity: 1;
+}
 .nmbx{
     width: 40px;
 }
@@ -226,6 +230,8 @@
     font-weight: normal;
     margin: 0 0 5px 0;
 }
+
+
 
 .commentbox {
     margin-bottom: 3px;
