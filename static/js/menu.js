@@ -62,6 +62,41 @@ add_cart = function(bool, id) {
     }
 };
 
+add_cart_1 = function(bool, id, name, price, image) {
+    comment = [String(document.getElementById('comment'+id).value)];
+    document.getElementById('comment'+id).value = "";
+    var cart_item = {
+            id: id,
+            name: name,
+            price: price,
+            image: "static/" + image
+    };
+    cart = JSON.stringify([cart_item]);
+    // Set cart to string value of id
+    //cart = [String(cart_item.id)];
+    if (localStorage.cart != undefined) {
+
+        console.log("FUCKING HERE");
+        //Grab cart list from local storage
+        var temp = JSON.parse(localStorage.getItem('cart'));
+        temp.push(cart_item);
+        cart = JSON.stringify(temp);
+        //append cart list to string of current item id
+        //cart = cart.concat(temp);
+    }
+    if (localStorage.comment != undefined) {
+        var temp = JSON.parse(localStorage.getItem('comment'));
+        comment = comment.concat(temp);
+    }
+    localStorage.setItem('cart', cart);
+    localStorage.setItem('comment', JSON.stringify(comment));
+    if (bool) {
+        closeView(id);
+    } else {
+        closeBack(id);
+    }
+};
+
 remove = function() {
     localStorage.removeItem('cart');
     localStorage.removeItem('comment');

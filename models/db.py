@@ -97,8 +97,6 @@ db.define_table(
     Field('password', 'password', length=512,            # required
           readable=False, label='Password'),
     Field('address'),
-    Field('city'),
-    Field('zip'),
     Field('phone'),
     Field('is_ucsc_student', 'boolean'),
     Field('registration_key', length=512,                # required

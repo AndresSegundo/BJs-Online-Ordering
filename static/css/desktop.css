@@ -70,29 +70,6 @@ body {
     color: #3D3D44;
 }
 
-.checkout-list {
-    background-image: url("../images/BJsChecklistPatch.png");
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: contain;
-    min-width: 400px;
-    min-height: 700px;
-    position: center;
-    margin-top: 20px;
-    padding: 20px;
-}
-
-.checkout-list>.checkout-title {
-    color: white;
-    font-family: "Shrikhand", cursive;
-    margin-top: 40px;
-}
-
-.checkout-list>.checkout-columns {
-    color: white;
-    font-family: "Shrikhand", cursive;
-    margin-top: 40px;
-}
 
 .media {
     width: 100%;
@@ -233,6 +210,11 @@ https://www.w3schools.com/howto/howto_js_slideshow.asp
 /* Hide the images by default */
 .mySlides {
     display: none;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.mySlides a {
+    opacity: 1;
 }
 
 /* Next & previous buttons */
@@ -266,7 +248,7 @@ https://www.w3schools.com/howto/howto_js_slideshow.asp
     color: #0EAFAD;
     font-family: Pacifico;
     font-size: 2em;
-    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+    text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
     padding: 8px 12px;
     position: absolute;
     top: 8px;

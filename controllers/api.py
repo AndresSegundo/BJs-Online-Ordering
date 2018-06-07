@@ -48,8 +48,7 @@ def login():
     if r.token is None:
          token = web2py_uuid()
          r.update_record(token = token)
-    else 
-    
+
     return response.json(dict(result='logged in', token=token))
 
 def logout():
@@ -122,6 +121,9 @@ def del_menuItem():
     db(db.menuItems.id == request.vars.menuItems_id).delete()
     # The next line is likely useless, as this is taken care by SQL deletion cascading.
     db(db.menuItems_data.menuItems_id == request.vars.menuItems_id).delete()
+    return "ok"
+
+def save_order():
     return "ok"
 
 # NOTE that we cannot hash the variables, otherwise we cannot produce the URL server-side.
