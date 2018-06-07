@@ -32,6 +32,29 @@ var app = function() {
         })
     };
 
+    /*
+    * SHOULD BE IMPLEMENTED FULLY IN CART PAGE
+    * Since the cart is just an array of ID's, we have to
+    * get the prices by looking them up on the menu database
+    * in a separate function.
+     */
+    self.get_cart_price = function() {
+        self.vue.cart_total = 20.00.toFixed(2);
+    };
+
+    self.get_cart = function() {
+        var cart_string = [];
+        if (localStorage.getItem('cart') != undefined) {
+            //have to parse JSON cart; gets parsed into array of strings
+            cart_string = (JSON.parse(localStorage.getItem('cart')));
+            //have to parse the int from each string item in array
+            for(var i = 0; i< cart_string.length; i++) {
+                self.vue.cart.push(parseInt(cart_string[i]));
+            }
+        }
+        self.get_cart_price();
+    };
+
 
     self.get_more = function () {
         var num_checklists = self.vue.checklists.length;
@@ -54,94 +77,108 @@ var app = function() {
         self.vue.is_editting_checklist = !self.vue.is_editting_checklist;
     }
 
-    self.edit_checklist = function(checklist_id) {
-        $.post(edit_checklist_url,
+    self.upload_saved_order = function() {
+        self.toggle_save_order();
+        $.post(save_order_url,
             {
-                checklist_id: checklist_id,
-                edit_title: self.vue.edit_title,
-                edit_memo: self.vue.edit_memo
+                order: self.vue.cart,
+                order_name: self.vue.saved_order_name
             },
-            function () {
-                for (var i = 0; i < self.vue.checklists.length; i++) {
-                    if (self.vue.checklists[i].id === checklist_id) {
-                        self.vue.checklists[i].title = self.vue.edit_title;
-                        self.vue.checklists[i].memo = self.vue.edit_memo;   
-                        break;
-                    }
-                }
+            function (data) {
+                console.log("here")
+                self.vue.saved_order_name = ""
             });
     };
 
-    self.delete_checklist = function (checklist_id) {
-        $.post(del_checklist_url,
-            {
-                checklist_id: checklist_id
-            },
-            function () {
-                var idx = null;
-                for (var i = 0; i < self.vue.checklists.length; i++) {
-                    if (self.vue.checklists[i].id === checklist_id) {
-                        idx = i + 1;
-                        break;
-                    }
-                }
-                if (idx) {
-                    self.vue.checklists.splice(idx - 1, 1);
-                }
-            }
-        )
+    self.save_order = function() {
+
     };
 
-    self.pay = function () {
-        self.stripe_instance.open({
-            name: "Your nice cart",
-            description: "Buy cart content",
-            billingAddress: true,
-            shippingAddress: true,
-            amount: Math.round(self.vue.cart_total * 100),
-        });
+    self.toggle_save_order = function() {
+        self.vue.is_saving_order = !self.vue.is_saving_order;
+        self.vue.show_save_order_btn = !self.vue.show_save_order_btn;
     };
 
-    self.goto = function (page) {
-        self.vue.page = page;
-        if (page == 'cart') {
-            // prepares the form.
+    self.toggle_checkout = function() {
             self.stripe_instance = StripeCheckout.configure({
-                key: 'pk_test_CeE2VVxAs3MWCUDMQpWe8KcX',    //put your own publishable key here
-                image: 'https://stripe.com/img/documentation/checkout/marketplace.png',
+                key: 'pk_test_SWTNPU7yQR2AvHIxKOZ1VbzH',    //put your own publishable key here
+                image: 'https://dining.ucsc.edu/images/banana-joes-740.jpg',
                 locale: 'auto',
                 token: function(token, args) {
                     console.log('got a token. sending data to localhost.');
                     self.stripe_token = token;
-                    self.customer_info = args;
-                    self.send_data_to_server();
+                    //self.customer_info = args;
+                    //self.send_data_to_server();
                 }
             });
-        };
 
     };
 
-    // Complete as needed.
+    self.pay = function () {
+        self.stripe_instance.open({
+            name: "Checkout",
+            description: "Pay with Card",
+            billingAddress: true,
+            amount: Math.round(self.vue.cart_total * 100),
+        });
+    };
+
+    self.send_data_to_server = function () {
+        console.log("Payment for:", self.customer_info);
+        // Calls the server.
+        $.post(purchase_url,
+            {
+                customer_info: JSON.stringify(self.customer_info),
+                transaction_token: JSON.stringify(self.stripe_token),
+                amount: self.vue.cart_total,
+                cart: JSON.stringify(self.vue.cart),
+            },
+            function (data) {
+                // The order was successful.
+                self.vue.cart = [];
+                self.update_cart();
+                self.store_cart();
+                //self.goto('prod');
+                $.web2py.flash("Thank you for your purchase");
+            }
+        );
+    };
+
+
+
+
     self.vue = new Vue({
         el: "#vue-div",
         delimiters: ['${', '}'],
         unsafeDelimiters: ['!{', '}'],
         data: {
-            cart_total: 10,
-            page: 'prod',
-            auth_user: null,
-            
+            is_uploading: false,
+            user_images: [],
+            users_list: [],
+            current_user: "",
+            price: null,
+            cart: [],
+            cart_total: 0.00,
+            cart_images: [],
+            save_order_bool: false,
+            saved_order_name: "",
+            show_save_order_btn: true,
+            is_saving_order: false
         },
         methods: {
-            get_more: self.get_more,
-            edit_button: self.edit_button,
-            edit_checklist: self.edit_checklist,
-            delete_checklist: self.delete_checklist,
+            get_cart: self.get_cart,
+            get_cart_price: self.get_cart_price,
+            toggle_checkout: self.toggle_checkout,
+            toggle_save_order: self.toggle_save_order,
+            save_order: self.save_order,
+            upload_saved_order: self.upload_saved_order,
             pay: self.pay
         }
+
     });
 
-    self.get_checklists();
+    self.get_cart();
+    self.toggle_checkout();
     $("#vue-div").show();
 
     return self;

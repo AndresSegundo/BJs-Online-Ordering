@@ -1,23 +1,64 @@
 .checkout-list {
-    background-image: url("../images/BJsChecklistPatch.png");
+    background-image: url("../images/CheckoutCard.png");
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
-    min-width: 400px;
+    /*min-width: 400px;*/
+    width: 50%;
+    margin: 20px auto auto auto;
     min-height: 700px;
     position: center;
-    margin-top: 20px;
     padding: 20px;
+    border-color: red;
+    border-width: 5px;
+    border-style: solid;
 }
 
-.checkout-list>.checkout-title {
+.checkout-title {
     color: white;
-    font-family: "Shrikhand", cursive;
-    margin-top: 40px;
+    font-family: "Yesteryear", cursive;
+    margin: 60px auto 50px auto;
+    text-align: center;
 }
 
-.checkout-list>.checkout-columns {
+.border-v {
+    border-style: solid;
+    border-width: 5px;
+    border-color: blue;
+    margin: 30px auto auto auto;
     color: white;
-    font-family: "Shrikhand", cursive;
-    margin-top: 40px;
+    font-family: "Yesteryear", cursive;
+}
+
+table.cart_total {
+    margin: auto;
+    width: 90%;
+    table-layout: fixed;
+}
+
+table.cart_total th, table.cart_total td {
+    text-align: center;
+    height: 80px;
+}
+
+button.meal_plan {
+    width: 20%;
+}
+
+
+button.save_order {
+    width: 20%;
+}
+
+.cart_total_header {
+    border-color: #2ecc40;
+    border-style: solid;
+    border-width: 5px;
+}
+
+.cart_total_value {
+    border-color: orange;
+    border-style: solid;
+    border-width: 5px;
+    color: yellow;
 }
