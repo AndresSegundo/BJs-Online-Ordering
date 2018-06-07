@@ -16,7 +16,7 @@
 				
 				<tr v-for="order in cart" class="order_row">
 					<td class="item_cell">
-						<div class="item"> Item ${order.id}
+						<div class="item"> ${order.name}
 							<button class="add_comment_btn" v-if="!order.is_comment" v-on:click="add_comment(order)">
 								Add Comment
 							</button>						
