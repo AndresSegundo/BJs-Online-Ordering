@@ -60,6 +60,7 @@
 	width: 150px;
 	margin-left: 20px;
 	height:40px;
+	background-color:#33b7b6;
 }
 
 .cancel_btn{
@@ -73,13 +74,14 @@
 }
 
 .cancel_comment_btn{
+	background-color: #268e8d;
 	height:40px;
-	background-color:grey;
 	padding:2px;
 	margin-bottom: 5px;
 	margin-left: 20px;
 	width: 150px;
 }
+
 
 .order_row:hover{
 	background-color: #fff8d6;
@@ -103,7 +105,7 @@
 }
 
 .checkout_btn:hover{
-	background-color:green;
+	background-color:#268e8d;
 }
 
 .check_icon:hover{

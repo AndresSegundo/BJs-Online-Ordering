@@ -13,7 +13,10 @@ body{
 }
 
 .dropdown-content p, .user_status p{
-    font-family: "Pacifico", cursive;
+
+	font-size: 24px;
+    font-family: "Yesteryear", cursive;
+
     color: #0EAFAD;
 }
 
@@ -142,10 +145,6 @@ i:hover{
 	
 }
 
-.dropdown {
-    position: relative;
-    display: inline-block;
-}
 
 .dropdown-content {
     display: none;
@@ -163,10 +162,13 @@ i:hover{
     display: block;
 }
 
-.dropdown-content a:hover {background-color: #ddd}
+.dropdown-content a:hover {
+	background-color: #ddd;
+}
 
 .dropdown:hover .dropdown-content {
     display: block;
+
 }
 
 .dropdown:hover .dropbtn {
