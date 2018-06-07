@@ -33,7 +33,7 @@
                     <li class="highlight"><a href="{{=URL('default','menu')}}"><i class="fa fa-cutlery"></i>&nbsp;&nbsp;Menu</a></li>
                     <li class="highlight"><a href="{{=URL('default','index#faq')}}"><i class="fa fa-question"></i>&nbsp;&nbsp;FAQ</a></li>
 					<li class="highlight"><a href="{{=URL('default','cart')}}"><i class="fa fa-shopping-cart"></i>&nbsp;&nbsp;Cart</a></li>
-					<li class="highlight"><a href="{{=URL('default','account')}}"><i class="fa fa-user"></i>&nbsp;&nbsp;Account</a></li>
+					<li class="highlight"><a href="{{=URL('default','user')}}"><i class="fa fa-user"></i>&nbsp;&nbsp;Account</a></li>
                 </ul>
             </div>
         </nav>
@@ -72,7 +72,7 @@
 			              	{{else:}}
 					      	<a href="{{=URL('default','user/login')}}"><p>Login</p></a>
               				<a href="{{=URL('default','user/register')}}"><p>Sign Up</p></a>
-              				<a href="{{=URL('default','user/request_password')}}"><p>Lost Password</p></a>
+              				<a href="{{=URL('default','user/request_reset_password')}}"><p>Lost Password</p></a>
               				{{pass}}
 
 					    </div>
