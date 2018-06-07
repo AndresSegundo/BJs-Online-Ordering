@@ -144,3 +144,32 @@ CREATE TABLE "myuser"(
 success!
 =======
 >>>>>>> fb3d25cb51453cad16ccd3bb41f6e9a21bb71901
+timestamp: 2018-06-07T11:52:48.030369
+ALTER TABLE "auth_user" ADD "city" CHAR(512);
+timestamp: 2018-06-07T11:52:48.043481
+ALTER TABLE "auth_user" ADD "zip" CHAR(512);
+timestamp: 2018-06-07T11:52:48.046757
+ALTER TABLE "auth_user" ADD "phone" CHAR(512);
+timestamp: 2018-06-07T11:52:48.060229
+ALTER TABLE "auth_user" ADD "address" CHAR(512);
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+timestamp: 2018-06-07T11:56:01.084702
+ALTER TABLE "auth_user" ADD "user_is_student" CHAR(1);
+success!
+success!
+timestamp: 2018-06-07T11:59:23.525725
+ALTER TABLE "auth_user" ADD "user_UCSC_student" CHAR(1);
+success!
+success!
+timestamp: 2018-06-07T11:59:39.198513
+ALTER TABLE "auth_user" ADD "is_UCSC_student" CHAR(1);
+success!
+success!
+success!

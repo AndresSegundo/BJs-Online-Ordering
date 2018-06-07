@@ -16,7 +16,9 @@ def check():
     you = 'None' if logged_in_user is None else logged_in_user['username']
     return response.json(dict(result=you))
 
+
 def regester():
+    
     response.headers['Access-Control-Allow-Origin']= '*'
     username = request.vars.username
     #Checks new
