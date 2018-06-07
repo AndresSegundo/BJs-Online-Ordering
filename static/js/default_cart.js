@@ -58,6 +58,7 @@ var app = function() {
 	self.create_test_order = function(){
 		var id = Math.floor(Math.random() * 10);
 		var price = (Math.random() * 12).toFixed(2);
+		var name = "Delicioso Cheeserino"
 		var comment = '';
 		
 		var is_comment;
@@ -68,6 +69,7 @@ var app = function() {
 		}
 		
 		var order = {
+			name: name,
 			id: id,
 			price: price,
 			is_comment: is_comment,

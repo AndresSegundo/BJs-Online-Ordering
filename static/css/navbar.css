@@ -63,6 +63,10 @@ i:hover{
 	width: 100px;
 }
 
+#sidebar{
+	overflow-y:hidden;
+}
+
 
 .menu.btn{
 	float:left;
