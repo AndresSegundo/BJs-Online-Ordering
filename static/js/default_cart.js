@@ -34,13 +34,44 @@ var app = function() {
 		localStorage.orders = orders_parsed;
 	}
 	
+	self.delete_comment = function(order){
+		var index = self.vue.orders.indexOf(order);
+		order = self.vue.orders[index];
+		order.is_comment = false;
+		order.comment = "";
+		self.vue.orders[index] = order;
+		self.save_orders();
+	}
+	
+	self.add_comment = function(order){
+		var index = self.vue.orders.indexOf(order);
+		order = self.vue.orders[index];
+		order.is_comment = true;
+		self.vue.orders[index] = order;
+		self.save_orders();
+	}
+	
+	self.save_comment = function(order){
+		self.save_orders();
+	}
+	
 	self.create_test_order = function(){
 		var id = Math.floor(Math.random() * 10);
 		var price = (Math.random() * 12).toFixed(2);
+		var comment = '';
+		
+		var is_comment;
+		if (comment == ''){
+			is_comment = false;
+		}else{
+			is_comment = true;
+		}
 		
 		var order = {
 			id: id,
 			price: price,
+			is_comment: is_comment,
+			comment: comment,
 		};
 		
 		self.vue.orders.push(order);
@@ -59,6 +90,9 @@ var app = function() {
 			create_test_order: self.create_test_order,
 			calculate_total: self.calculate_total,
 			remove_order: self.remove_order,
+			delete_comment: self.delete_comment,
+			add_comment: self.add_comment,
+			save_comment: self.save_comment,
         },
         data: {
 			orders: [],
