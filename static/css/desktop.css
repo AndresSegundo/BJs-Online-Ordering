@@ -109,7 +109,8 @@ body {
 .album_image {
     display: none;
     transition: display 1s;
-    /*height: 100%;*/
+    border: #000000 2px solid;
+    width: 100%;
 }
 
 .info {
@@ -147,7 +148,7 @@ body {
     border-right: 1px solid #C4C4C4;
 }
 .hours h1, .location h1, .misc h1, .faq h1 {
-    font-family: "Yesteryear", cursive;
+    font-family: "Pacifico", cursive;
     color: #0EAFAD;
 }
 
