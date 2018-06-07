@@ -49,10 +49,11 @@
                 </tr>
             </table>
 
-            <div class="revier_order">
+            <div class="review_order">
                 <table>
-                    <tr v-for="">
-                        <td></td>
+                    <tr v-for="item in cart">
+                        <td>${item.name}</td>
+                        <td>${item.price}</td>
                     </tr>
                 </table>
             </div>

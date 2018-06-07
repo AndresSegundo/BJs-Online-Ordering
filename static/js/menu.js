@@ -68,7 +68,7 @@ add_cart_1 = function(bool, id, name, price, image) {
     var cart_item = {
             id: id,
             name: name,
-            price: price,
+            price: parseFloat(price).toFixed(2),
             image: "static/" + image
     };
     cart = JSON.stringify([cart_item]);
