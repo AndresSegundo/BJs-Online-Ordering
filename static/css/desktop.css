@@ -207,4 +207,12 @@ https://www.labnol.org/internet/embed-responsive-google-maps/28333/
     color: #0EAFAD;
 }
 
+.infolink {
+    font-size: 16px;
+    color: #0EAFAD;
+}
+
+.infolink:hover {
+    color: #0EAFAD;
+}
 

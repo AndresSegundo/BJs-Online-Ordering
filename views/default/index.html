@@ -16,7 +16,7 @@ Green: 416743
 <div class="media">
     <div class="album">
         {{for menu in db(db.menuItems.is_featured == 'true').select():}}
-        <a href="menu.html/#id{{=menu.id}}"><img class="album-image" src="{{=menu.image}}"/>
+        <a href="menu.html/#id{{=menu.id}}"><img class="album-image" src="{{=URL('static', menu.image)}}"/>
         <span>{{=menu.description}}</span></a>
         {{pass}}
     </div>
@@ -46,7 +46,8 @@ Green: 416743
         <h1 class="center">Info</h1>
         <p>Located near the Crown College fountain this cafe and convenience store has everything you
             need all in one place. Banana Joe's also coordinates the UCSC online grocery. Cash, credit
-            cards, flexi dollars, and meal equivalencies accepted. <a href="https://dining.ucsc.edu/eat/">Read More</a></p><br />
+            cards, flexi dollars, and meal equivalencies accepted. <a class="infolink" href="https://dining.ucsc.edu/eat/">
+                Read More</a></p><br />
         <h1 class="center"><i class="fa fa-phone"></i></h1>
         <p class="center">(831) 459-1445</p>
      <!--   <a class="commentCard" href="http://diningcomment.ucsc.edu/">Dining Comment Card</a><br /> -->
