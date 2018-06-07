@@ -49,6 +49,14 @@
                 </tr>
             </table>
 
+            <div class="revier_order">
+                <ul>
+                    <li v-for="item in cart">
+                        ${item.name}
+                    </li>
+                </ul>
+            </div>
+
             <div class="options">
                 <button class="save_order" v-if="show_save_order_btn" v-on:click="toggle_save_order">
                     <i class="fa fa-lg fa-save"> Order</i>
