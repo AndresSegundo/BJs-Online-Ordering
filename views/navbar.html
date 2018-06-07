@@ -52,18 +52,38 @@
 					</a>
 					<!-- Account Icon -->
 					<div class="dropdown right">
+
 					  <a class="account btn expand" href="{{=URL('default','user')}}">
+					      
 			            	<i class="fa fa-user fa-3x"></i>
 			          </a>
+			           
+
 			            <div class="dropdown-content">
 				 			
-					        <a href="{{=URL('default','user')}}"><p>Sign Up</p></a>
-					        <a href="{{=URL('default','user')}}"><p>Lost Password</p></a>
-					        <a href="{{=URL('default','user')}}"><p>Log In</p></a>
-					            	
-					           
+					       	{{if auth.user:}}
 					        
+					        <a href="{{=URL('default','user/profile')}}"><p>Profile</p></a>
+			              	<a href="{{=URL('default','user/change_password')}}"><p>Change Password</p></a>
+			              	<a href="{{=URL('default','user/logout')}}"><p>Logout</p></a>
+					     
+			              	{{else:}}
+					      	<a href="{{=URL('default','user/login')}}"><p>Login</p></a>
+              				<a href="{{=URL('default','user/register')}}"><p>Sign Up</p></a>
+              				<a href="{{=URL('default','user/request_password')}}"><p>Lost Password</p></a>
+              				{{pass}}
+
 					    </div>
+					    <div class="user_status">
+					     	{{if auth.user:}}
+					      	<p>Welcome {{=auth.user.first_name}}</p> 
+			              	{{else:}}
+					        <p>Please login</p> 
+					        {{pass}}
+					    </div>
+						
+
+
 					</div>
 			         
 				            	
@@ -113,7 +133,7 @@
 		    <div class="bot-text">
                 <p>Banana Joe's is managed by UCSC Dining.<br />
                 Do you have questions, comments, or concerns? Please feel free to contact us or
-                fill out a comment card online. <a href="#">Contact Us</a>&nbsp;|&nbsp;<a href="#">Dining
+                fill out a comment card online. <a href="https://dining.ucsc.edu/contact/index.html">Contact Us</a>&nbsp;|&nbsp;<a href="http://diningcomment.ucsc.edu/">Dining
                 Comment Card</a></p>
             </div>
             <div class="bot-bar">

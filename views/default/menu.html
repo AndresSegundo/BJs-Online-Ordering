@@ -24,13 +24,15 @@
         <!-- Categories: -->
         {{for i in cate:}}
         <div class="menusection">
-                <a name="{{=i}}">{{=i}}</a>
+                <a class="ms" name="{{=i}}">{{=i}}</a>
         </div>
         {{for menu in db(db.menuItems.category == i).select():}}
         <div style="display: inline-block">
             <ul class="sectiongrp">
                 <a onclick="openView({{=menu.id}})" href="#{{=menu.id}}" id="id{{=menu.id}}" class="qvbtn">
-                    <img  class="listImage" src="{{=menu.image}}">
+
+                    <img class="listImage" src="{{=URL('static', menu.image)}}">
+
                     <div class="itmname">{{=menu.name}}<br/>${{='%.2f' % menu.price}}</div>
                 </a>
                 <div id="quickview{{=menu.id}}" class="qvback">
