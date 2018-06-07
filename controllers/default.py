@@ -69,6 +69,15 @@ def user():
     to decorate functions that need access control
     also notice there is http://..../[app]/appadmin/manage/auth to allow administrator to manage users
     """
+    # if request.args(0) == "register":
+    #     # Use my own view.
+    #     response.view = "views/default/regester.html"
+    #     form = auth.register(next=auth.settings.register_next)
+    #     return dict(form=form)
+    # else:
+    #     # Provide the default view for the remaining actions (log in, log out, etc.)
+    #     return dict(form=auth())
+
     return dict(form=auth())
 
 # ---- action to server uploaded static content (required) ---
