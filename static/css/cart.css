@@ -19,7 +19,7 @@
 	padding: 8px;
 }
 
-.item{
+.item_title{
 	padding:8px 0px 8px 8px;
 	width:800px;
 	text-align: left;
@@ -28,13 +28,57 @@
 	font-size: 25px;
 }
 
+.item_cell{
+	width:800px;
+	text-align: left;
+	border-bottom: 1px solid #262626;
+	border-right: 1px solid #b3b3b3;
+	font-size: 25px;
+}
+
+.item{
+	padding:8px 0px 8px 8px;
+	width:600px;
+	margin:0px;
+	float:left;
+}
+
+.comment_container{
+	padding:0px 0px 0px 8px;
+	width:600px;
+	font-size: 18px;
+	float: left;
+	margin-top: -4px;
+	margin-bottom: 4px;
+}
+
+.comment_input{
+	width:770px;
+}
+
+.add_comment_btn{
+	width: 150px;
+	margin-left: 20px;
+	height:40px;
+}
+
 .cancel_btn{
 	float:right;
 	margin-right: 15px;
+	margin-top: 2px;
 }
 
 .cancel_btn:hover{
 	color:#e22828;
+}
+
+.cancel_comment_btn{
+	height:40px;
+	background-color:grey;
+	padding:2px;
+	margin-bottom: 5px;
+	margin-left: 20px;
+	width: 150px;
 }
 
 .order_row:hover{
@@ -63,7 +107,7 @@
 }
 
 .check_icon:hover{
-	color:black;
+	color:white;
 }
 
 .footer{

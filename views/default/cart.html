@@ -10,18 +10,36 @@
 		<div class="cart container">
 			<table>
 				<tr>
-					<th class="item">Item</th>
+					<th class="item_title">Item</th>
 					<th class="price">Price</th>
 				</tr>
 				
 				<tr v-for="order in orders" class="order_row">
-					<td class="item">Item ${order.id}</th>
-					<i class="fa fa-times-rectangle fa-2x cancel_btn" v-on:click="remove_order(order)"></i>
-					<td class="price">$${order.price}</th>
+					<td class="item_cell">
+						<div class="item"> Item ${order.id}
+							<button class="add_comment_btn" v-if="!order.is_comment" v-on:click="add_comment(order)">
+								Add Comment
+							</button>						
+						</div>
+						<i class="fa fa-times-rectangle fa-2x cancel_btn" v-on:click="remove_order(order)"></i>
+						<div class="comment_container" v-if="order.is_comment">
+							<div> 
+								Comment: 
+								<button class="cancel_comment_btn" v-on:click="delete_comment(order)">Delete Comment</button>
+							</div>
+							
+							<textarea type="text" v-model="order.comment" class="comment_input" v-on:blur="save_comment(order)"> 
+							</textarea>
+						</div>
+						
+						
+					</td>
+					
+					<td class="price">$${order.price}</td>
 				</tr>
 				
 				<tr>
-					<th class="item"></th>
+					<th class="item_cell"></th>
 					<th class="price">Total: $${cart_total}</th>
 				</tr>
 			</table>

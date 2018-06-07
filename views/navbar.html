@@ -8,6 +8,7 @@
 		<link href="{{=URL('static','css/navbar.css')}}" rel="stylesheet" type="text/css"/>
 		<link href="{{=URL('static','css/footer.css')}}" rel="stylesheet" type="text/css"/>
 		<link href="{{=URL('static','css/menu.css')}}" rel="stylesheet" type="text/css"/>
+        <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
 		
         <link rel="shortcut icon" href="{{=URL('static','images/favicon.ico')}}" type="image/x-icon">
         <link rel="apple-touch-icon" href="{{=URL('static','images/favicon.png')}}">
@@ -18,6 +19,7 @@
         <script src="https://use.fontawesome.com/8c6f68fcc5.js"></script>
         <script src="{{=URL('static','js/modernizr-2.8.3.min.js')}}"></script>
         <script src={{=URL('static','js/main.js')}}></script>
+
 		{{include 'web2py_ajax.html'}}
 	</head>
 	
@@ -133,7 +135,8 @@
 		    <div class="bot-text">
                 <p>Banana Joe's is managed by UCSC Dining.<br />
                 Do you have questions, comments, or concerns? Please feel free to contact us or
-                fill out a comment card online. <a href="#">Contact Us</a>&nbsp;|&nbsp;<a href="#">Dining
+                fill out a comment card online. <a class="navbarlink" href="https://dining.ucsc.edu/contact/index.html">
+                        Contact Us</a>&nbsp;|&nbsp;<a class="navbarlink" href="http://diningcomment.ucsc.edu/">Dining
                 Comment Card</a></p>
             </div>
             <div class="bot-bar">
