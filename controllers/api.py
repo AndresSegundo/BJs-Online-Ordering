@@ -17,24 +17,10 @@ def check():
     return response.json(dict(result=you))
 
 
-def regester():
+def saved_orders():
+    response.flash = T("Hello World")
+    return dict(message=T('Welcome to web2py!'))
     
-    response.headers['Access-Control-Allow-Origin']= '*'
-    username = request.vars.username
-    #Checks new
-    if not db(db.myuser.username ==username).isempty():
-        return response.json(dict(result='duplicate'))
-        h = hashlib.sha256(SECRET_KEY)
-        h.update(request.vars.password)
-        token = web2py_uuid()
-        #Insert the User
-        db.myuser.insert(
-            username = username,
-            password = password,
-            token = token,
-            )
-        #Creates the cookie
-        return response.json(dict(result='created',token=token))
 def login():
     response.headers['Access-Control-Allow-Origin']= '*'
     username = request.vars.username

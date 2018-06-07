@@ -22,6 +22,10 @@ def cart():
     response.flash = T("Hello World")
     return dict(message=T('Welcome to web2py!'))
 
+def saved_orders():
+    response.flash = T("Hello World")
+    return dict(message=T('Welcome to web2py!'))
+
 @auth.requires_login()
 def admin():
     response.flash = T("Hello World")
