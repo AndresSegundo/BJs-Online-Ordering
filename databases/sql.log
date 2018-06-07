@@ -302,3 +302,57 @@ success!
 success!
 success!
 success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+timestamp: 2018-06-07T14:20:25.400048
+ALTER TABLE "auth_user" ADD "ucsc_student" CHAR(1);
+success!
+success!
+success!
+timestamp: 2018-06-07T14:21:40.520006
+ALTER TABLE "auth_user" ADD "U_C_S_C_student" CHAR(1);
+success!
+success!
+success!
+success!
+success!
+success!
+success!

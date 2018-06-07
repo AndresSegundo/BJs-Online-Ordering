@@ -25,9 +25,22 @@
                 form.add_button(T('Lost Password'),URL(args='request_reset_password'),_class='btn btn-default')
             pass
         pass
+
+
         =form
         }}
         </div>
+        <div class="btn">
+            {{if auth.user is not None:}}
+                <div id="vue-div" class="display:none">
+                    <button class="order_button">
+                        Past Orders
+                    </button>
+                </div>
+        
+            {{pass}}
+        </div>
+
     </div>
 </div>
 
