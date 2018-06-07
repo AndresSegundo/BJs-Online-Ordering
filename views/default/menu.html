@@ -30,7 +30,8 @@
         <div style="display: inline-block">
             <ul class="sectiongrp">
                 <a onclick="openView({{=menu.id}})" href="#{{=menu.id}}" id="id{{=menu.id}}" class="qvbtn">
-                    <img  class="listImage"  src="{{=URL('static', menu.image)}}">
+
+                    <img class="listImage" src="{{=URL('static', menu.image)}}">
 
                     <div class="itmname">{{=menu.name}}<br/>${{='%.2f' % menu.price}}</div>
                 </a>
