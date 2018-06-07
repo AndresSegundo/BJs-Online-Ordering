@@ -29,11 +29,12 @@
             <div id="sidebar-container">
                 <ul class="sidebar links">
 				
-                    <li class="highlight"><a href="{{=URL('default','index')}}"><i class="fa fa-home"></i>&nbsp;&nbsp;Home</a></li>
-                    <li class="highlight"><a href="{{=URL('default','menu')}}"><i class="fa fa-cutlery"></i>&nbsp;&nbsp;Menu</a></li>
-                    <li class="highlight"><a href="{{=URL('default','index#faq')}}"><i class="fa fa-question"></i>&nbsp;&nbsp;FAQ</a></li>
-					<li class="highlight"><a href="{{=URL('default','cart')}}"><i class="fa fa-shopping-cart"></i>&nbsp;&nbsp;Cart</a></li>
-					<li class="highlight"><a href="{{=URL('default','user')}}"><i class="fa fa-user"></i>&nbsp;&nbsp;Account</a></li>
+                    <li class="highlight"><a href="{{=URL('default','index')}}">- Home &nbsp;<i class="fa fa-home"></i></a></li>
+                    <li class="highlight"><a href="{{=URL('default','menu')}}">- Menu &nbsp;<i class="fa fa-cutlery"></i></a></li>
+                    <li class="highlight"><a href="{{=URL('default','index#faq')}}">- FAQ &nbsp;<i class="fa fa-question"></i></a></li>
+					<li class="highlight"><a href="{{=URL('default','cart')}}">- Cart &nbsp;<i class="fa fa-shopping-cart"></i></a></li>
+					<li class="highlight"><a href="{{=URL('default','account')}}">- Account &nbsp;<i class="fa fa-user"></i></a></li>
+					<li class="highlight"><a href="{{=URL('default','past_orders')}}">- Past &nbsp;<i class="fa fa-clock-o"></i> <br /> Orders</a></li>
                 </ul>
             </div>
         </nav>
@@ -72,7 +73,7 @@
 			              	{{else:}}
 					      	<a href="{{=URL('default','user/login')}}"><p>Login</p></a>
               				<a href="{{=URL('default','user/register')}}"><p>Sign Up</p></a>
-              				<a href="{{=URL('default','user/request_reset_password')}}"><p>Lost Password</p></a>
+              				<a href="{{=URL('default','user/request_password')}}"><p>Lost Password</p></a>
               				{{pass}}
 
 					    </div>
@@ -82,47 +83,9 @@
 			              	{{else:}}
 					        <p>Please login</p> 
 					        {{pass}}
-					    </div>
-						
-
-
-					</div>
-			         
-				            	
-				 				
-					
-		           <!--    <li class="dropdown"> -->
-		           
-			          <!--   <a class="account btn expand right" href="{{=URL('default','user')}}">
-			            	<i class="fa fa-user fa-3x"></i>
-				            	<ul class="dropdown-content">
-				 					<li>
-					            		<a href="{{=URL('default','user')}}">
-					            			
-					            			Log In
-					            		</a>
-					            	</li>
-					            	<li>
-
-					            		<a href="{{=URL('default','password')}}">
-					            			
-					            			Lost password?
-					            		</a>
-					            	</li>
-					            	<li>
-					            		<a href="{{=URL('default','signup')}}">
-					            			
-					            			Sign Up
-					            		</a>
-				            		</li>
-				  
-				            	</ul>
-				        </a> -->
-				          
-			           
-			      
-		      		<!--   </li> -->
-		   			
+					    </div>						
+					</div>			         			            	
+				 								
 				</div>
 			</div>
 		</header>

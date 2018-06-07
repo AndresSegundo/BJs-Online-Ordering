@@ -1,0 +1,358 @@
+timestamp: 2018-06-05T12:57:21.317000
+CREATE TABLE "auth_user"(
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "first_name" CHAR(128),
+    "last_name" CHAR(128),
+    "email" CHAR(512),
+    "password" CHAR(512),
+    "registration_key" CHAR(512),
+    "reset_password_key" CHAR(512),
+    "registration_id" CHAR(512)
+);
+success!
+timestamp: 2018-06-05T12:57:21.391000
+CREATE TABLE "auth_group"(
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "role" CHAR(512),
+    "description" TEXT
+);
+success!
+timestamp: 2018-06-05T12:57:21.449000
+CREATE TABLE "auth_membership"(
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "user_id" INTEGER REFERENCES "auth_user" ("id") ON DELETE CASCADE  ,
+    "group_id" INTEGER REFERENCES "auth_group" ("id") ON DELETE CASCADE  
+);
+success!
+timestamp: 2018-06-05T12:57:21.507000
+CREATE TABLE "auth_permission"(
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "group_id" INTEGER REFERENCES "auth_group" ("id") ON DELETE CASCADE  ,
+    "name" CHAR(512),
+    "table_name" CHAR(512),
+    "record_id" INTEGER
+);
+success!
+timestamp: 2018-06-05T12:57:21.573000
+CREATE TABLE "auth_event"(
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "time_stamp" TIMESTAMP,
+    "client_ip" CHAR(512),
+    "user_id" INTEGER REFERENCES "auth_user" ("id") ON DELETE CASCADE  ,
+    "origin" CHAR(512),
+    "description" TEXT
+);
+success!
+timestamp: 2018-06-05T12:57:21.633000
+CREATE TABLE "auth_cas"(
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "user_id" INTEGER REFERENCES "auth_user" ("id") ON DELETE CASCADE  ,
+    "created_on" TIMESTAMP,
+    "service" CHAR(512),
+    "ticket" CHAR(512),
+    "renew" CHAR(1)
+);
+success!
+timestamp: 2018-06-05T12:57:21.698000
+CREATE TABLE "menuItems"(
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "name" CHAR(512),
+    "price" DOUBLE,
+    "allergens" TEXT,
+    "image" CHAR(512),
+    "description" CHAR(512),
+    "nutrition" CHAR(512),
+    "category" CHAR(512),
+    "ingredients" CHAR(512),
+    "is_featured" CHAR(1)
+);
+success!
+timestamp: 2018-06-05T12:57:21.785000
+CREATE TABLE "menuItems_data"(
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "menu_id" INTEGER REFERENCES "menuItems" ("id") ON DELETE CASCADE  ,
+    "original_filename" CHAR(512),
+    "data_blob" BLOB,
+    "mime_type" CHAR(512)
+);
+success!
+timestamp: 2018-06-05T12:57:21.867000
+CREATE TABLE "account"(
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "name" CHAR(512),
+    "email" CHAR(512),
+    "is_student" CHAR(512),
+    "phone_num" CHAR(512),
+    "order_hist" CHAR(512),
+    "cc_num" CHAR(512),
+    "cc_exp" CHAR(512),
+    "cc_cvc" CHAR(512),
+    "cc_name" CHAR(512),
+    "cc_address" CHAR(512),
+    "log_info" CHAR(512)
+);
+success!
+timestamp: 2018-06-05T12:57:21.966000
+CREATE TABLE "orders"(
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "user_email" CHAR(512),
+    "item_id" CHAR(512),
+    "comments" CHAR(512),
+    "updated_on" CHAR(512)
+);
+success!
+<<<<<<< HEAD
+timestamp: 2018-05-22T16:13:51.772223
+CREATE TABLE "menu_data"(
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "menu_id" INTEGER REFERENCES "menu" ("id") ON DELETE CASCADE  ,
+    "original_filename" CHAR(512),
+    "data_blob" BLOB,
+    "mime_type" CHAR(512)
+);
+success!
+timestamp: 2018-05-24T16:35:06.325198
+CREATE TABLE "menuItems"(
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "name" CHAR(512),
+    "price" CHAR(512),
+    "allergens" CHAR(512),
+    "image" CHAR(512),
+    "description" CHAR(512),
+    "nutrition" CHAR(512),
+    "category" CHAR(512),
+    "ingredients" CHAR(512),
+    "is_featured" CHAR(512)
+);
+success!
+timestamp: 2018-05-24T16:35:36.877096
+CREATE TABLE "menuItems_data"(
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "menu_id" INTEGER REFERENCES "menuItems" ("id") ON DELETE CASCADE  ,
+    "original_filename" CHAR(512),
+    "data_blob" BLOB,
+    "mime_type" CHAR(512)
+);
+success!
+timestamp: 2018-06-05T14:47:31.349047
+CREATE TABLE "myuser"(
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "username" CHAR(512),
+    "password" CHAR(512),
+    "token" CHAR(512)
+);
+success!
+=======
+>>>>>>> fb3d25cb51453cad16ccd3bb41f6e9a21bb71901
+timestamp: 2018-06-07T11:52:48.030369
+ALTER TABLE "auth_user" ADD "city" CHAR(512);
+timestamp: 2018-06-07T11:52:48.043481
+ALTER TABLE "auth_user" ADD "zip" CHAR(512);
+timestamp: 2018-06-07T11:52:48.046757
+ALTER TABLE "auth_user" ADD "phone" CHAR(512);
+timestamp: 2018-06-07T11:52:48.060229
+ALTER TABLE "auth_user" ADD "address" CHAR(512);
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+timestamp: 2018-06-07T11:56:01.084702
+ALTER TABLE "auth_user" ADD "user_is_student" CHAR(1);
+success!
+success!
+timestamp: 2018-06-07T11:59:23.525725
+ALTER TABLE "auth_user" ADD "user_UCSC_student" CHAR(1);
+success!
+success!
+timestamp: 2018-06-07T11:59:39.198513
+ALTER TABLE "auth_user" ADD "is_UCSC_student" CHAR(1);
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+timestamp: 2018-06-07T14:20:25.400048
+ALTER TABLE "auth_user" ADD "ucsc_student" CHAR(1);
+success!
+success!
+success!
+timestamp: 2018-06-07T14:21:40.520006
+ALTER TABLE "auth_user" ADD "U_C_S_C_student" CHAR(1);
+success!
+success!
+success!
+success!
+success!
+success!
+success!
