@@ -13,13 +13,9 @@ body{
 }
 
 .dropdown-content p, .user_status p{
-<<<<<<< HEAD
 	font-size: 24px;
     font-family: "Yesteryear", cursive;
-=======
-    font-family: "Pacifico", cursive;
->>>>>>> 4da5cf849038d2581b25d2f83526c4c313fbb131
-    color: #0EAFAD;
+  	color: #0EAFAD;
 }
 
 .navbarlink {
