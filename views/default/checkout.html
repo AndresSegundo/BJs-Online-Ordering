@@ -32,15 +32,7 @@
     <div id="vue-div" class="display:none border-v">
         <!-- Meat of the page -->
         <div v-if="cart.length > 0">
-            <table class="cart_total">
-                <tr>
-                    <th class="cart_total_header">
-                        <h2>Cart Total:</h2>
-                    </th>
-                    <th class="cart_total_value">
-                        <h2>$${cart_total}</h2>
-                    </th>
-                </tr>
+            <table class="cart_payment">
                 <tr>
                     <td><h3>Payment Options:</h3></td>
                     <td>
@@ -50,13 +42,23 @@
                     </td>
                 </tr>
             </table>
+            <table class="cart_total">
+                <tr>
+                    <th class="cart_total_header">
+                        <h2>Cart Total . . . . . . . . . . . . . . </h2>
+                    </th>
+                    <th class="cart_total_value">
+                        <h2><span class="total_value">$${cart_total}</span> . . . . . . . . . . . . . .</h2>
+                    </th>
+                </tr>
+            </table>
 
             <div class="review_order">
                 <h2 class="review_order_title">Review Order</h2>
                 <table class="review_order">
                     <tr v-for="item in cart">
-                        <td>${item.name}<span v-if="item.is_comment"> *</span></td>
-                        <td>$${item.price}</td>
+                        <td id="review_name">${item.name}<span v-if="item.is_comment"> *</span> . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . </td>
+                        <td id="review_price">$${item.price} . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .</td>
                     </tr>
                 </table>
             </div>
@@ -64,13 +66,15 @@
             <div v-if="is_logged_in" class="options">
                 <div v-if="!order_saved">
                     <button class="save_order" v-if="show_save_order_btn" v-on:click="toggle_save_order">
-                        <i class="fa fa-lg fa-save"> Order</i>
+                        <i class="fa fa-lg fa-save"></i>
                     </button>
                     <input v-if="is_saving_order" v-model="saved_order_name" placeholder="Order Name" type="text">
                     <button class="save_order" v-if="!show_save_order_btn" v-on:click="toggle_save_order"><i class="fa fa-lg fa-times-circle"></i></button>
                     <button class="save_order" v-if="!show_save_order_btn" v-on:click="save_order"><i class="fa fa-lg fa-plus"></i></button>
                 </div>
-                <i v-if="order_saved" class="fa fa-lg fa-check-circle order_saved_msg"> Order ${saved_order_name} Saved</i>
+                <div v-if="order_saved" class="fa fa-lg">
+                    Order <span style="color: yellow">${saved_order_name}</span> Saved  <i v-if="order_saved" class="fa fa-lg fa-check-circle order_saved_msg"></i>
+                    </div>
             </div>
             <div v-else class="log_in_msg">
                 <b>Log in</b> to save orders and use meal plan/flexis

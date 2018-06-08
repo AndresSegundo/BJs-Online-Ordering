@@ -9,30 +9,31 @@
     min-height: 700px;
     position: center;
     padding: 20px;
-    border-color: red;
-    border-width: 5px;
-    border-style: solid;
 }
 
 .checkout-title {
     color: white;
     font-family: "Yesteryear", cursive;
-    margin: 60px auto 50px auto;
+    margin: 60px auto 30px auto;
     text-align: center;
 }
 
 .border-v {
-    border-style: solid;
-    border-width: 5px;
-    border-color: blue;
-    margin: 30px auto auto auto;
+    margin: 10px auto auto auto;
     color: white;
     font-family: "Yesteryear", cursive;
 }
 
+table.cart_payment {
+    margin: auto auto 30px auto;
+    width: 85%;
+    table-layout: fixed;
+    text-align: center;
+}
+
 table.cart_total {
     margin: auto;
-    width: 90%;
+    width: 85%;
     table-layout: fixed;
 }
 
@@ -58,14 +59,22 @@ h2.review_order_title {
 
 table.review_order {
     margin: auto;
-    width: 90%;
+    width: 85%;
     table-layout: fixed;
 }
 
 table.review_order th, table.review_order td {
     text-align: center;
     height: 30px;
+    margin: auto 0 auto 0;
     font-size: 20px;
+    overflow: hidden;
+    white-space: nowrap;
+    border-width: 0px;
+}
+
+#review_price {
+    direction: rtl;
 }
 
 button.payment_method {
@@ -74,11 +83,12 @@ button.payment_method {
 
 div.options {
     margin: 10px auto auto auto;
-    text-align: center;
+    text-align: right;
+    width: 85%;
 }
 
 button.save_order {
-    width: 15%;
+    width: 10%;
     text-align: center;
 }
 
@@ -89,14 +99,16 @@ button.save_order {
 }
 
 .cart_total_header {
-    border-color: #2ecc40;
-    border-style: solid;
-    border-width: 5px;
+    overflow: hidden;
+    white-space: nowrap;
 }
 
 .cart_total_value {
-    border-color: orange;
-    border-style: solid;
-    border-width: 5px;
+    overflow: hidden;
+    white-space: nowrap;
+    direction: rtl;
+}
+
+span.total_value {
     color: yellow;
 }
