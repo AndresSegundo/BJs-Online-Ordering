@@ -48,7 +48,7 @@
 				</tr>
 			</table>
 			
-			<button class="checkout_btn">Checkout <i class="fa fa-check-square check_icon"></i></button>
+			<button class="checkout_btn" onclick="location.href='{{=URL('default','checkout')}}'">Checkout <i class="fa fa-check-square check_icon"></i></button>
 			
 			<div class="empty_cart message" v-if="cart.length == 0">
 				Your cart is empty! Go to the menu to add items to your cart.

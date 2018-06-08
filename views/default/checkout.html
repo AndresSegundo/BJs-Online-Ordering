@@ -50,10 +50,11 @@
             </table>
 
             <div class="review_order">
-                <table>
+                <h2 class="review_order_title">Review Order</h2>
+                <table class="review_order">
                     <tr v-for="item in cart">
-                        <td>${item.name}</td>
-                        <td>${item.price}</td>
+                        <td>${item.name}<span v-if="item.is_comment"> *</span></td>
+                        <td>$${item.price}</td>
                     </tr>
                 </table>
             </div>

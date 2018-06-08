@@ -38,7 +38,25 @@ table.cart_total {
 
 table.cart_total th, table.cart_total td {
     text-align: center;
-    height: 80px;
+    height: 60px;
+}
+
+h2.review_order_title {
+    margin: 10px auto 10px auto;
+    text-align: center;
+
+}
+
+table.review_order {
+    margin: auto;
+    width: 90%;
+    table-layout: fixed;
+}
+
+table.review_order th, table.review_order td {
+    text-align: center;
+    height: 30px;
+    font-size: 20px;
 }
 
 button.meal_plan {

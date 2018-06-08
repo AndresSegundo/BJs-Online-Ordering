@@ -33,17 +33,17 @@ var app = function() {
     };
 
     /*
-    * SHOULD BE IMPLEMENTED FULLY IN CART PAGE
     * Since the cart is just an array of ID's, we have to
     * get the prices by looking them up on the menu database
     * in a separate function.
      */
     self.get_cart_price = function() {
-        self.vue.cart_total = 20.00.toFixed(2);
+        var total = 0;
         items = self.vue.cart;
         for (var i = 0; i < items.length; i++) {
-            self.vue.cart_total = parseFloat(items[i].price).toFixed(2);
+            total += parseFloat(items[i].price);
         }
+        self.vue.cart_total = total.toFixed(2);
     };
 
     self.get_cart_images = function() {
