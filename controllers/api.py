@@ -1,4 +1,6 @@
 import tempfile
+import traceback
+import json
 
 # Cloud-safe of uuid, so that many cloned servers do not all use the same uuids.
 from gluon.utils import web2py_uuid
@@ -74,6 +76,47 @@ def get_menuItems():
         logged_in=logged_in,
         has_more=has_more
     ))
+
+# used in checkout to either display or hide different options
+def check_logged_in():
+    logged_in = auth.user is not None
+    return response.json(dict(
+        logged_in=logged_in
+    ))
+
+def purchase():
+    logger.info("PART 1")
+    """Ajax function called when a customer orders and pays for the cart."""
+    logger.info("PART 2")
+    # Creates the charge.
+    import stripe
+    logger.info("PART 3")
+    # Your secret key.
+    stripe.api_key = configuration.get('stripe.private_key')
+    logger.info("PART 4")
+    token = json.loads(request.vars.transaction_token)
+    logger.info("PART 5")
+    amount = float(request.vars.amount)
+    logger.info("PART 6")
+    try:
+        logger.info("PART 7")
+        charge = stripe.Charge.create(
+            amount=int(amount * 100),
+            currency="usd",
+            source=token['id'],
+            description="Purchase",
+        )
+    except stripe.error.CardError as e:
+        logger.info("The card has been declined.")
+        logger.info("%r" % traceback.format_exc())
+        return "nok"
+    """
+    db.customer_order.insert(
+        customer_info=request.vars.customer_info,
+        transaction_token=json.dumps(token),
+        cart=request.vars.cart)
+        """
+    return "ok"
 
 @auth.requires_signature()
 def get_insertion_id():
