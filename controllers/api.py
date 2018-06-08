@@ -16,23 +16,11 @@ def check():
     you = 'None' if logged_in_user is None else logged_in_user['username']
     return response.json(dict(result=you))
 
-def regester():
-    response.headers['Access-Control-Allow-Origin']= '*'
-    username = request.vars.username
-    #Checks new
-    if not db(db.myuser.username ==username).isempty():
-        return response.json(dict(result='duplicate'))
-        h = hashlib.sha256(SECRET_KEY)
-        h.update(request.vars.password)
-        token = web2py_uuid()
-        #Insert the User
-        db.myuser.insert(
-            username = username,
-            password = password,
-            token = token,
-            )
-        #Creates the cookie
-        return response.json(dict(result='created',token=token))
+
+def saved_orders():
+    response.flash = T("Hello World")
+    return dict(message=T('Welcome to web2py!'))
+    
 def login():
     response.headers['Access-Control-Allow-Origin']= '*'
     username = request.vars.username

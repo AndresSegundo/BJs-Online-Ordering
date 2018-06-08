@@ -1,0 +1,33 @@
+.container h2{
+	font-size: 30px;
+	padding-left: 20px;
+	font-family: "Yesteryear", cursive;
+    color: #0EAFAD;
+}
+
+
+
+.row{
+	font-size: 20px;
+	padding-left: 20px;
+	font-family: "Pacifico";
+    color: #1D1D21;
+}
+
+.btn{
+	float:right;
+	margin: 20px;
+
+}
+
+.order_button{
+	float:right;
+	font-family: "Pacifico";
+	font-size: 20px;
+	margin-top:20px;
+	margin-right:45px;
+	padding:6px;
+	width:240px;
+	height:120px;
+
+}

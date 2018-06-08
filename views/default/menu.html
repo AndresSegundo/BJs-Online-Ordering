@@ -24,18 +24,18 @@
         <!-- Categories: -->
         {{for i in cate:}}
         <div class="menusection">
-                <a name="{{=i}}">{{=i}}</a>
+            <a class="ms" name="{{=i}}">{{=i}}</a>
         </div>
         {{for menu in db(db.menuItems.category == i).select():}}
         <div style="display: inline-block">
             <ul class="sectiongrp">
                 <a onclick="openView({{=menu.id}})" href="#{{=menu.id}}" id="id{{=menu.id}}" class="qvbtn">
-                    <img  class="listImage" src="{{=menu.image}}">
+                    <img class="listImage" src="{{=URL('static', menu.image)}}">
                     <div class="itmname">{{=menu.name}}<br/>${{='%.2f' % menu.price}}</div>
                 </a>
                 <div id="quickview{{=menu.id}}" class="qvback">
                     <div class="qv">
-                        <div class="qvimg"><img class="listImageInner half" src="{{=menu.image}}" ></div>
+                        <div class="qvimg"><img class="listImageInner half" src="{{=URL('static', menu.image)}}" ></div>
                         <div class="qvcontent half">
                             <div class="itmttl"><h1>{{=menu.name}}</h1></div>
                             <div class=""><b>Price:</b> ${{='%.2f' % menu.price}}</div>
@@ -44,7 +44,7 @@
                             </div></div>
                             <form>
                                 Customize your order:
-                                <textarea rows="3" cols="45" name="comment" class="commentbox"
+                                <textarea rows="3" cols="45" name="comment" id="comment{{=menu.id}}" class="commentbox"
                                           placeholder="Enter text here..."></textarea>
                             </form>
                             <div class="allsym">
@@ -58,7 +58,7 @@
                                 Customize</button>
                             </div>  -->
                             <div class="atcbutton">
-                                <button onclick="add_cart(true, {{=menu.id}})" class="atc">Add to Cart</button>
+                                <button onclick="add_cart_1(true, '{{=menu.id}}', '{{=menu.name}}', '{{=menu.price}}', '{{=menu.image}}')" class="atc">Add to Cart</button>
                             </div>
                         </div>
                         <span onclick="closeView({{=menu.id}})" class="close">&times;</span>

@@ -1,6 +1,7 @@
 {{extend 'navbar.html'}}
     <link href="https://fonts.googleapis.com/css?family=Yesteryear" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
     <script src={{=URL('static','js/account.js')}}></script>
 {{block head}}
 {{end}}
@@ -12,14 +13,25 @@ Blue: 3B4358
 Green: 416743
 -->
 
-<div class="media">
-    <div class="album">
-        {{for menu in db(db.menuItems.is_featured == 'true').select():}}
-        <a href="menu.html/#id{{=menu.id}}"><img class="album-image" src="{{=menu.image}}"/>
-        <span>{{=menu.description}}</span></a>
-        {{pass}}
+<!-- https://www.w3schools.com/howto/howto_js_slideshow.asp -->
+<!-- Slideshow container -->
+<div class="slideshow-container">
+
+  <!-- Full-width images with number and caption text -->
+    {{for menu in db(db.menuItems.is_featured == 'true').select():}}
+    <div class="mySlides">
+        <a href="menu.html/#id{{=menu.id}}">
+            <div class="text">{{=menu.name}}</div>
+            <img src="{{=URL('static', menu.image)}}" style="width:100%">
+        </a>
     </div>
+    {{pass}}
+
+<!-- Next and previous buttons -->
+<a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+<a class="next" onclick="plusSlides(1)">&#10095;</a>
 </div>
+
 <div class="info">
     <div class="hours">
         <i class="center fa fa-clock-o fa-2x"></i>
@@ -43,12 +55,20 @@ Green: 416743
     </div>
     <div class="misc">
         <h1 class="center">Info</h1>
-        <p>Located near the Crown College fountain this cafe and convenience store has everything you
+        <p>
+            Located near the Crown College fountain this cafe and convenience store has everything you
             need all in one place. Banana Joe's also coordinates the UCSC online grocery. Cash, credit
-            cards, flexi dollars, and meal equivalencies accepted. <a href="https://dining.ucsc.edu/eat/">Read More</a></p><br />
+                cards, flexi dollars, and meal equivalencies accepted.
+            <a class="infolink" href="https://dining.ucsc.edu/eat/">
+            Read More</a>
+        </p><br />
+        <p>
+            This site was designed for our CMPS 183 final project. You can view our GitHub repository
+            <a class='infolink' href="https://github.com/AndresSegundo/BJs-Online-Ordering">here</a>.
+        </p><br />
         <h1 class="center"><i class="fa fa-phone"></i></h1>
         <p class="center">(831) 459-1445</p>
-        <a class="commentCard" href="http://diningcomment.ucsc.edu/">Dining Comment Card</a><br />
+     <!--   <a class="commentCard" href="http://diningcomment.ucsc.edu/">Dining Comment Card</a><br /> -->
     </div>
 </div>
 <div class="faq-container">
@@ -56,27 +76,74 @@ Green: 416743
         <h1 class="center">Frequently Asked Questions</h1>
         <hr class="lightgrey"/>
         <div class="question">What types of payment methods are accepted?</div>
-        <div class="answer">Flexi dollars, meal equivalencies, cash, credit, and debit cards.</div>
+        <div class="answer">Banana Joe's accepts Flexi dollars, meal equivalencies, cash, credit, and debit cards.
+        However, the online ordering website currently only accepts credit/debit.</div>
         <div class="question">Do you deliver?</div>
         <div class="answer">Currently Banana Joe's does not deliver food. After ordering food you must pick up your
         order in person.</div>
+        <div class="question">Who is Joe?</div>
+        <div class="answer">Originally Banana Joe's was going to be named after our courageous chancellor George
+        Blumenthal, however due to copyright issues, the store was named after Joe the Cow we keep cloning to
+        harvest meat.</div>
+        <div class="question">How long until my food is ready?</div>
+        <div class="answer">After ordering, you will receive a rough time estimate; however, due to too many variables
+        it is difficult to give a perfect time estimate. Please account for +/-10 minutes.</div>
+        <div class="question"></div>
+        <div class="question">Who built this website?</div>
+        <div class="answer">This website was built by Andres Segundo, Ben Sherriff, Joelle Steichen, Vivian Lu, and
+        Winston Cooper for the course CMPS 183.</div>
     </div>
 </div>
 
 <script>
-var myIndex = 0;
-carousel();
+/*
+https://www.w3schools.com/howto/howto_js_slideshow.asp
+ */
 
-function carousel() {
+var slideI = 0;
+showSlide();
+
+function showSlide() {
     var i;
-    var x = document.getElementsByClassName("album-image");
-    for (i = 0; i < x.length; i++) {
-       x[i].style.display = "none";
+    var slides = document.getElementsByClassName("mySlides");
+    for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
     }
-    myIndex++;
-    if (myIndex > x.length) {myIndex = 1}
-    x[myIndex-1].style.display = "block";
-    setTimeout(carousel, 6000); // Change image every 6 seconds
+    slideI++;
+    if (slideI > slides.length) {
+        slideI = 1
+    }
+    slides[slideI - 1].style.display = "block";
+    setTimeout(showSlide, 5500); // Change image every 2 seconds
+}
+
+var slideIndex = 1;
+showSlides(slideIndex);
+
+// Next/previous controls
+function plusSlides(n) {
+    showSlides(slideIndex += n);
+}
+
+// Thumbnail image controls
+function currentSlide(n) {
+    showSlides(slideIndex = n);
+}
+
+function showSlides(n) {
+    var i;
+    var slides = document.getElementsByClassName("mySlides");
+    // var dots = document.getElementsByClassName("dot");
+    if (n > slides.length) {slideIndex = 1}
+    if (n < 1) {slideIndex = slides.length}
+    for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+    }
+    // for (i = 0; i < dots.length; i++) {
+    //     dots[i].className = dots[i].className.replace(" active", "");
+    // }
+    slides[slideIndex-1].style.display = "block";
+    // dots[slideIndex-1].className += " active";
 }
 </script>
 

@@ -12,22 +12,25 @@ body{
 	min-width:800px;
 }
 
-.dropdown-content p{
+.dropdown-content p, .user_status p{
+	font-size: 24px;
     font-family: "Yesteryear", cursive;
-    color: #0EAFAD;
+  	color: #0EAFAD;
+}
+
+.navbarlink {
+	font-size: 16px;
 }
 
 .navbar{
 	background-color:var(--charcoal);
 	height:100px;
 	width:100%;
-	
 	padding:0;
 }
 .navbar.container{
 	height:100%;
 	width:100%;
-	
 	display:inline-block;
 }
 
@@ -54,6 +57,10 @@ i:hover{
 }
 .logo{
 	width: 100px;
+}
+
+#sidebar{
+	overflow-y:hidden;
 }
 
 
@@ -102,6 +109,7 @@ i:hover{
 .sidebar.links li a {
     color: white;
     text-decoration: none;
+	font-size: 30px;
 }
 .sidebar.links li a:hover{
     color: yellow;
@@ -126,6 +134,17 @@ i:hover{
 	height:65px;
 
 
+}
+
+.user_status{
+	font-size: 24px;
+	float:right;
+	margin-top:20px;
+	margin-right:45px;
+	padding:6px;
+	width:65px;
+	height:65px;
+	
 }
 
 .dropdown {
@@ -169,6 +188,25 @@ i:hover{
 	padding:6px;
 	width:65px;
 	height:65px;
+}
+
+.food.btn.expand{
+	float:left;
+	margin-top:20px;
+	margin-left:85px;
+	
+	background-color:black;
+	color:white;
+	
+	padding:15px;
+	padding-top:10px;
+	width:160px;
+	height:65px;
+	font-size: 35px;
+}
+
+.food_icon{
+	margin-left: 5px;
 }
 
 nav {

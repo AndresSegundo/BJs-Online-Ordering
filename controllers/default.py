@@ -22,15 +22,15 @@ def cart():
     response.flash = T("Hello World")
     return dict(message=T('Welcome to web2py!'))
 
+def saved_orders():
+    response.flash = T("Hello World")
+    return dict(message=T('Welcome to web2py!'))
+
 @auth.requires_login()
 def admin():
     response.flash = T("Hello World")
     return dict(message=T('Welcome to web2py!'))
 
-@auth.requires_login()
-def account():
-    response.flash = T("Hello World")
-    return dict(message=T('Welcome to web2py!'))
 
 # ---- API (example) -----
 @auth.requires_login()
@@ -69,6 +69,7 @@ def user():
     to decorate functions that need access control
     also notice there is http://..../[app]/appadmin/manage/auth to allow administrator to manage users
     """
+
     return dict(form=auth())
 
 # ---- action to server uploaded static content (required) ---

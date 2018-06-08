@@ -40,18 +40,24 @@ var app = function() {
      */
     self.get_cart_price = function() {
         self.vue.cart_total = 20.00.toFixed(2);
+        items = self.vue.cart;
+        for (var i = 0; i < items.length; i++) {
+            self.vue.cart_total = parseFloat(items[i].price).toFixed(2);
+        }
+    };
+
+    self.get_cart_images = function() {
+
     };
 
     self.get_cart = function() {
         var cart_string = [];
         if (localStorage.getItem('cart') != undefined) {
             //have to parse JSON cart; gets parsed into array of strings
-            cart_string = (JSON.parse(localStorage.getItem('cart')));
+            self.vue.cart = (JSON.parse(localStorage.getItem('cart')));
             //have to parse the int from each string item in array
-            for(var i = 0; i< cart_string.length; i++) {
-                self.vue.cart.push(parseInt(cart_string[i]));
-            }
         }
+        self.get_cart_images();
         self.get_cart_price();
     };
 
@@ -167,6 +173,7 @@ var app = function() {
         },
         methods: {
             get_cart: self.get_cart,
+            get_cart_images: self.get_cart_images,
             get_cart_price: self.get_cart_price,
             toggle_checkout: self.toggle_checkout,
             toggle_save_order: self.toggle_save_order,

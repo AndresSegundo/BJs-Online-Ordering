@@ -1,0 +1,130 @@
+.btn.test{
+	margin:20px;
+	background-color:gray;
+	width:300px;
+	height:50px;
+}
+
+.cart{
+	width:100%;
+}
+
+.cart.container{
+	background-color:#e6e6e6;
+	width:1000px;
+	min-height:700px;
+	margin: 0 auto;
+	margin-top: 25px;
+	border-radius:10px;
+	padding: 8px;
+}
+
+.item_title{
+	padding:8px 0px 8px 8px;
+	width:800px;
+	text-align: left;
+	border-bottom: 1px solid #262626;
+	border-right: 1px solid #b3b3b3;
+	font-size: 25px;
+}
+
+.item_cell{
+	width:800px;
+	text-align: left;
+	border-bottom: 1px solid #262626;
+	border-right: 1px solid #b3b3b3;
+	font-size: 25px;
+}
+
+.item{
+	padding:8px 0px 8px 8px;
+	width:600px;
+	margin:0px;
+	float:left;
+}
+
+.comment_container{
+	padding:0px 0px 0px 8px;
+	width:600px;
+	font-size: 18px;
+	float: left;
+	margin-top: -4px;
+	margin-bottom: 4px;
+}
+
+.comment_input{
+	width:770px;
+}
+
+.add_comment_btn{
+	width: 150px;
+	margin-left: 20px;
+	height:40px;
+	background-color:#33b7b6;
+}
+
+.cancel_btn{
+	float:right;
+	margin-right: 15px;
+	margin-top: 2px;
+}
+
+.cancel_btn:hover{
+	color:#e22828;
+}
+
+.cancel_comment_btn{
+	background-color: #268e8d;
+	height:40px;
+	padding:2px;
+	margin-bottom: 5px;
+	margin-left: 20px;
+	width: 150px;
+}
+
+
+.order_row:hover{
+	background-color: #fff8d6;
+}
+
+.price{
+	padding:8px 0px 8px 8px;
+	width:200px;
+	text-align: left;
+	border-bottom: 1px solid #262626;
+	font-size: 25px;
+}
+
+.checkout_btn{
+	background-color:darkgray;
+	font-size:30px;
+	width:195px;
+	margin:15px;
+	margin-bottom:10px;
+	margin-left: 79%;
+}
+
+.checkout_btn:hover{
+	background-color:#268e8d;
+}
+
+.check_icon:hover{
+	color:white;
+}
+
+.empty_cart.message{
+	margin-top: 20px;
+	font-size:40px;
+	text-align: center;
+	float:left;
+}
+
+.footer{
+	position:fixed;
+	left:0;
+	bottom:0;
+	width:100%;
+	text-align:center;
+	padding-top:15px;
+	background-color:transparent;
+}

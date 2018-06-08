@@ -41,20 +41,21 @@ db.define_table('menuItems_data',
                 Field('mime_type'),
                 )
 
-db.define_table('account',
-                Field('name'),
-                Field('email'),
-                Field('is_student'),
-                Field('phone_num'),
-                Field('order_hist'),
-                # Temp Credit Card Info
-                Field('cc_num'),
-                Field('cc_exp'),
-                Field('cc_cvc'),
-                Field('cc_name'),
-                Field('cc_address'),
-                Field('log_info'),
-                )
+# db.define_table('account',
+#                 Field('name'),
+#                 Field('email'),
+#                 Field('is_student'),
+#                 Field('phone_num'),
+#                 Field('order_hist'),
+#                 # Temp Credit Card Info
+#                 Field('cc_num'),
+#                 Field('cc_exp'),
+#                 Field('cc_cvc'),
+#                 Field('cc_name'),
+#                 Field('cc_address'),
+#                 Field('log_info'),
+#                 )
+
 
 
 db.define_table('orders',
