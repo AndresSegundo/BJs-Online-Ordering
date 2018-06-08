@@ -34,7 +34,7 @@
                     <li class="highlight"><a href="{{=URL('default','index#faq')}}">- FAQ &nbsp;<i class="fa fa-question"></i></a></li>
 					<li class="highlight"><a href="{{=URL('default','cart')}}">- Cart &nbsp;<i class="fa fa-shopping-cart"></i></a></li>
 					<li class="highlight"><a href="{{=URL('default','user')}}">- Account &nbsp;<i class="fa fa-user"></i></a></li>
-					<li class="highlight"><a href="{{=URL('default','past_orders')}}">- Past &nbsp;<i class="fa fa-clock-o"></i> <br /> Orders</a></li>
+					<li class="highlight"><a href="{{=URL('default','saved_orders')}}">- Saved &nbsp;<i class="fa fa-clock-o"></i> <br /> Orders</a></li>
                 </ul>
             </div>
         </nav>
@@ -49,7 +49,8 @@
 						<a href="{{=URL('default','index')}}"> <img src="{{=URL('static','images/BJsLogo.png')}}" class="logo"/> </a>
 					</div>
 
-
+					
+					
 					<!-- Cart Icon -->
 					<a class="cart btn expand" href="{{=URL('default','cart')}}"><i class="fa fa-shopping-cart fa-3x"></i>
 					</a>
@@ -67,7 +68,6 @@
 					       	{{if auth.user:}}
 					        
 					        <a href="{{=URL('default','user/profile')}}"><p>Profile</p></a>
-					        <a href="{{=URL('default','saved_orders')}}"><p>Saved Orders</p></a>
 			              	<a href="{{=URL('default','user/change_password')}}"><p>Change Password</p></a>
 			              	<a href="{{=URL('default','user/logout')}}"><p>Logout</p></a>
 					     
@@ -85,7 +85,13 @@
 					        <p>Please login</p> 
 					        {{pass}}
 					    </div>						
-					</div>			         			            	
+					</div>
+
+					<!-- Food Menu Icon -->
+					<a class="food btn expand" href="{{=URL('default','menu')}}">
+						Menu
+						<i class="fa fa-cutlery food_icon"></i>					
+					</a>
 				 								
 				</div>
 			</div>

@@ -1,6 +1,10 @@
 {{extend 'navbar.html'}}
 	<link rel="stylesheet" href="{{=URL('static','css/cart.css')}}"/>
 	<script src="{{=URL('static','js/vue.js')}}"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Shrikhand&effect=outline" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Yesteryear" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
 	
 {{block head}}
 {{end}}
@@ -43,7 +47,12 @@
 					<th class="price">Total: $${cart_total}</th>
 				</tr>
 			</table>
+			
 			<button class="checkout_btn">Checkout <i class="fa fa-check-square check_icon"></i></button>
+			
+			<div class="empty_cart message" v-if="cart.length == 0">
+				Cart is empty! Go to the menu to add items to your cart.
+			</div>
 		</div>
 		
 		<div class="btn test" v-on:click="create_test_order">

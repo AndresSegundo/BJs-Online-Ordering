@@ -190,6 +190,25 @@ i:hover{
 	height:65px;
 }
 
+.food.btn.expand{
+	float:left;
+	margin-top:20px;
+	margin-left:85px;
+	
+	background-color:black;
+	color:white;
+	
+	padding:15px;
+	padding-top:10px;
+	width:160px;
+	height:65px;
+	font-size: 35px;
+}
+
+.food_icon{
+	margin-left: 5px;
+}
+
 nav {
     height: 100%;
     width: 0;
