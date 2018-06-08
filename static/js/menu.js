@@ -63,20 +63,28 @@ add_cart = function(bool, id) {
 };
 
 add_cart_1 = function(bool, id, name, price, image) {
-    comment = [String(document.getElementById('comment'+id).value)];
+    comment = String(document.getElementById('comment'+id).value);
     document.getElementById('comment'+id).value = "";
+	
+	if (comment != ''){
+		is_comment = true;
+	}else{
+		is_comment = false;
+	}
+
     var cart_item = {
             id: id,
             name: name,
             price: parseFloat(price).toFixed(2),
-            image: "static/" + image
+            image: "static/" + image,
+			comment: comment,
+			is_comment: is_comment,
     };
     cart = JSON.stringify([cart_item]);
     // Set cart to string value of id
     //cart = [String(cart_item.id)];
     if (localStorage.cart != undefined) {
 
-        console.log("FUCKING HERE");
         //Grab cart list from local storage
         var temp = JSON.parse(localStorage.getItem('cart'));
         temp.push(cart_item);
