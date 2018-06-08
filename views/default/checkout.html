@@ -2,7 +2,7 @@
     <title>Checkout</title>
     <link rel="stylesheet" href="{{=URL('static','css/account.css')}}"/>
     <link rel="stylesheet"  href="{{=URL('static', 'css/checkout.css')}}"/>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Yesteryear" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
 
@@ -11,6 +11,8 @@
     <script src="https://checkout.stripe.com/checkout.js"></script>
     <script>
         var save_order_url = "{{=URL('api', 'save_order')}}"
+        var check_logged_in_url = "{{=URL('api', 'check_logged_in')}}"
+        var purchase_url = "{{=URL('api', 'purchase', user_signature=True)}}"
     </script>
 {{block head}}
 {{end}}
@@ -42,9 +44,9 @@
                 <tr>
                     <td><h3>Payment Options:</h3></td>
                     <td>
-                        <button class="meal_plan"><i class="fa fa-lg fa-id-card"></i></button>
-                        <button class="meal_plan" v-on:click="pay()"><i class="fa fa-lg fa-credit-card"></i></button>
-                        <button class="meal_plan"><i class="fa fa-lg fa-money-bill"></i></button>
+                        <button class="payment_method" v-on:click="pay()" title="Credit Card"><i class="fa fa-lg fa-credit-card"></i></button>
+                        <button v-if="is_logged_in" class="payment_method" title="Meals"><i class="fa fa-lg fa-id-card"></i></button>
+                        <button v-if="is_logged_in" class="payment_method" title="Flexis"><i class="fa fa-lg fa-money-bill-wave"></i></button>
                     </td>
                 </tr>
             </table>
@@ -59,13 +61,19 @@
                 </table>
             </div>
 
-            <div class="options">
-                <button class="save_order" v-if="show_save_order_btn" v-on:click="toggle_save_order">
-                    <i class="fa fa-lg fa-save"> Order</i>
-                </button>
-                <input v-if="is_saving_order" v-model="saved_order_name" placeholder="Order Name" type="text">
-                <button class="save_order" v-if="!show_save_order_btn" v-on:click="toggle_save_order"><i class="fa fa-lg fa-times-circle"></i></button>
-                <button class="save_order" v-if="!show_save_order_btn" v-on:click="upload_saved_order"><i class="fa fa-lg fa-plus"></i></button>
+            <div v-if="is_logged_in" class="options">
+                <div v-if="!order_saved">
+                    <button class="save_order" v-if="show_save_order_btn" v-on:click="toggle_save_order">
+                        <i class="fa fa-lg fa-save"> Order</i>
+                    </button>
+                    <input v-if="is_saving_order" v-model="saved_order_name" placeholder="Order Name" type="text">
+                    <button class="save_order" v-if="!show_save_order_btn" v-on:click="toggle_save_order"><i class="fa fa-lg fa-times-circle"></i></button>
+                    <button class="save_order" v-if="!show_save_order_btn" v-on:click="save_order"><i class="fa fa-lg fa-plus"></i></button>
+                </div>
+                <i v-if="order_saved" class="fa fa-lg fa-check-circle order_saved_msg"> Order ${saved_order_name} Saved</i>
+            </div>
+            <div v-else class="log_in_msg">
+                <b>Log in</b> to save orders and use meal plan/flexis
             </div>
         </div>
         <div class="cart_items">

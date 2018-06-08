@@ -50,6 +50,13 @@ var app = function() {
 
     };
 
+    self.check_logged_in = function() {
+        $.getJSON(check_logged_in_url, function (data) {
+            if (data.logged_in == false) {self.vue.is_logged_in = false}
+            else self.vue.is_logged_in = true;
+        })
+    };
+
     self.get_cart = function() {
         var cart_string = [];
         if (localStorage.getItem('cart') != undefined) {
@@ -60,6 +67,7 @@ var app = function() {
         self.get_cart_images();
         self.get_cart_price();
     };
+
 
 
     self.get_more = function () {
@@ -96,7 +104,29 @@ var app = function() {
             });
     };
 
+    // testing order saving in local storage until account db is figured out
     self.save_order = function() {
+        // can't just do this b/c we have to append non-json order to non-json orders list
+        //var order =  localStorage.cart;
+
+        var order = {
+            name: self.vue.saved_order_name,
+            cart: self.vue.cart
+        };
+        var saved_orders = JSON.stringify([order]);
+        // Set cart to string value of id
+        //cart = [String(cart_item.id)];
+        if (localStorage.saved_orders != undefined) {
+
+            //Grab cart list from local storage
+            var temp = JSON.parse(localStorage.getItem('saved_orders'));
+            temp.push(order);
+            saved_orders = JSON.stringify(temp);
+            //append cart list to string of current item id
+            //cart = cart.concat(temp);
+        }
+        localStorage.setItem('saved_orders', saved_orders);
+        self.vue.order_saved = true;
 
     };
 
@@ -113,6 +143,7 @@ var app = function() {
                 token: function(token, args) {
                     console.log('got a token. sending data to localhost.');
                     self.stripe_token = token;
+                    self.send_data_to_server();
                     //self.customer_info = args;
                     //self.send_data_to_server();
                 }
@@ -130,20 +161,16 @@ var app = function() {
     };
 
     self.send_data_to_server = function () {
-        console.log("Payment for:", self.customer_info);
         // Calls the server.
         $.post(purchase_url,
             {
-                customer_info: JSON.stringify(self.customer_info),
                 transaction_token: JSON.stringify(self.stripe_token),
                 amount: self.vue.cart_total,
                 cart: JSON.stringify(self.vue.cart),
             },
             function (data) {
                 // The order was successful.
-                self.vue.cart = [];
-                self.update_cart();
-                self.store_cart();
+                console.log("it worked!");
                 //self.goto('prod');
                 $.web2py.flash("Thank you for your purchase");
             }
@@ -169,7 +196,9 @@ var app = function() {
             save_order_bool: false,
             saved_order_name: "",
             show_save_order_btn: true,
-            is_saving_order: false
+            is_saving_order: false,
+            order_saved: false,
+            is_logged_in: false
         },
         methods: {
             get_cart: self.get_cart,
@@ -179,11 +208,13 @@ var app = function() {
             toggle_save_order: self.toggle_save_order,
             save_order: self.save_order,
             upload_saved_order: self.upload_saved_order,
+            check_logged_in: self.check_logged_in,
             pay: self.pay
         }
 
     });
 
+    self.check_logged_in();
     self.get_cart();
     self.toggle_checkout();
     $("#vue-div").show();
