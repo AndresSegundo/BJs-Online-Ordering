@@ -63,10 +63,12 @@ add_cart = function(bool, id) {
 };
 
 add_cart_1 = function(bool, id, name, price, image) {
-    comment = String(document.getElementById('comment'+id).value);
+    comment = [String(document.getElementById('comment'+id).value)];
     document.getElementById('comment'+id).value = "";
 	
-	if (comment != ''){
+	comment_val = comment[0];
+	
+	if (comment_val != ''){
 		is_comment = true;
 	}else{
 		is_comment = false;
@@ -77,7 +79,7 @@ add_cart_1 = function(bool, id, name, price, image) {
             name: name,
             price: parseFloat(price).toFixed(2),
             image: "static/" + image,
-			comment: comment,
+			comment: comment_val,
 			is_comment: is_comment,
     };
     cart = JSON.stringify([cart_item]);
