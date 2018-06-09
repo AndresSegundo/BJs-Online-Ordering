@@ -2,12 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3f8195d5-8965-47ba-886d-f4e027d126d1" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/controllers/api.py" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/api.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/default.py" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/default.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/databases/storage.sqlite" beforeDir="false" afterPath="$PROJECT_DIR$/databases/storage.sqlite" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/db.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/db.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/static/css/checkout.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/checkout.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/default_checkout.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/default_checkout.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/views/default/checkout.html" beforeDir="false" afterPath="$PROJECT_DIR$/views/default/checkout.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -24,26 +20,29 @@
           <file leaf-file-name="checkout.html" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/views/default/checkout.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="238">
-                  <caret line="14" column="77" selection-start-line="14" selection-start-column="77" selection-end-line="14" selection-end-column="77" />
+                <state relative-caret-position="204">
+                  <caret line="34" column="38" selection-start-line="34" selection-start-column="38" selection-end-line="34" selection-end-column="38" />
+                  <folding>
+                    <element signature="n#style#0;n#span#0;n#div#1;n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+                  </folding>
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="checkout.css" pinned="false" current-in-tab="false">
+          <file leaf-file-name="checkout.css" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/static/css/checkout.css">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="238">
-                  <caret line="74" column="13" lean-forward="true" selection-start-line="74" selection-start-column="13" selection-end-line="74" selection-end-column="13" />
+                <state relative-caret-position="170">
+                  <caret line="10" column="18" selection-start-line="10" selection-start-column="18" selection-end-line="10" selection-end-column="18" />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="default_checkout.js" pinned="false" current-in-tab="true">
+          <file leaf-file-name="default_checkout.js" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/static/js/default_checkout.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="90">
-                  <caret line="122" column="29" lean-forward="true" selection-start-line="122" selection-start-column="29" selection-end-line="122" selection-end-column="29" />
+                <state relative-caret-position="311">
+                  <caret line="128" column="36" selection-start-line="128" selection-start-column="36" selection-end-line="128" selection-end-column="36" />
                 </state>
               </provider>
             </entry>
@@ -52,7 +51,7 @@
             <entry file="file://$PROJECT_DIR$/controllers/api.py">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="85">
-                  <caret line="5" column="19" lean-forward="true" selection-start-line="5" selection-start-column="19" selection-end-line="5" selection-end-column="19" />
+                  <caret line="5" column="19" selection-start-line="5" selection-start-column="19" selection-end-line="5" selection-end-column="19" />
                 </state>
               </provider>
             </entry>
@@ -60,8 +59,8 @@
           <file leaf-file-name="desktop.css" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/static/css/desktop.css">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="170">
-                  <caret line="118" column="1" selection-start-line="118" selection-start-column="1" selection-end-line="118" selection-end-column="1" />
+                <state relative-caret-position="175">
+                  <caret line="19" column="15" selection-start-line="19" selection-start-column="15" selection-end-line="19" selection-end-column="15" />
                 </state>
               </provider>
             </entry>
@@ -79,11 +78,11 @@
       </split-first>
       <split-second>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file leaf-file-name="menu.js" pinned="false" current-in-tab="true">
+          <file leaf-file-name="menu.js" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/static/js/menu.js">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="8">
-                  <caret line="69" column="4" lean-forward="true" selection-start-line="69" selection-start-column="4" selection-end-line="69" selection-end-column="4" />
+                  <caret line="69" column="4" selection-start-line="69" selection-start-column="4" selection-end-line="69" selection-end-column="4" />
                 </state>
               </provider>
             </entry>
@@ -106,7 +105,7 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="navbar.css" pinned="false" current-in-tab="false">
+          <file leaf-file-name="navbar.css" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/static/css/navbar.css">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="85">
@@ -150,16 +149,16 @@
       <find>print</find>
       <find>local</find>
       <find>yest</find>
-      <find>cart_total</find>
       <find>log</find>
       <find>fontawe</find>
       <find>con</find>
       <find>db</find>
       <find>conf</find>
       <find>mycon</find>
-      <find>order_name</find>
       <find>call</find>
       <find>json</find>
+      <find>order_name</find>
+      <find>cart_total</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -176,12 +175,12 @@
         <option value="$PROJECT_DIR$/views/default/menu.html" />
         <option value="$PROJECT_DIR$/static/js/menu.js" />
         <option value="$PROJECT_DIR$/views/default/cart.html" />
-        <option value="$PROJECT_DIR$/static/css/checkout.css" />
         <option value="$PROJECT_DIR$/static/js/default_checkout.js" />
-        <option value="$PROJECT_DIR$/views/default/checkout.html" />
         <option value="$PROJECT_DIR$/models/db.py" />
         <option value="$PROJECT_DIR$/controllers/default.py" />
         <option value="$PROJECT_DIR$/controllers/api.py" />
+        <option value="$PROJECT_DIR$/views/default/checkout.html" />
+        <option value="$PROJECT_DIR$/static/css/checkout.css" />
       </list>
     </option>
   </component>
@@ -507,6 +506,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="272">
           <caret line="31" column="36" lean-forward="true" selection-start-line="31" selection-start-column="36" selection-end-line="31" selection-end-column="36" />
+          <folding>
+            <element signature="n#style#0;n#span#0;n#div#1;n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -647,13 +649,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/css/navbar.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="17" column="18" selection-start-line="17" selection-start-column="12" selection-end-line="17" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/views/default/user.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="73">
@@ -661,38 +656,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/js/menu.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="8">
-          <caret line="69" column="4" lean-forward="true" selection-start-line="69" selection-start-column="4" selection-end-line="69" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/views/default/cart.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="265">
           <caret line="50" column="91" selection-start-line="50" selection-start-column="91" selection-end-line="50" selection-end-column="91" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/css/checkout.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="74" column="13" lean-forward="true" selection-start-line="74" selection-start-column="13" selection-end-line="74" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/default/checkout.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" column="77" selection-start-line="14" selection-start-column="77" selection-end-line="14" selection-end-column="77" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/css/desktop.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="118" column="1" selection-start-line="118" selection-start-column="1" selection-end-line="118" selection-end-column="1" />
         </state>
       </provider>
     </entry>
@@ -737,14 +704,52 @@
     <entry file="file://$PROJECT_DIR$/controllers/api.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
-          <caret line="5" column="19" lean-forward="true" selection-start-line="5" selection-start-column="19" selection-end-line="5" selection-end-column="19" />
+          <caret line="5" column="19" selection-start-line="5" selection-start-column="19" selection-end-line="5" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/js/menu.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="8">
+          <caret line="69" column="4" selection-start-line="69" selection-start-column="4" selection-end-line="69" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/css/navbar.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="17" column="18" selection-start-line="17" selection-start-column="12" selection-end-line="17" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/css/desktop.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="175">
+          <caret line="19" column="15" selection-start-line="19" selection-start-column="15" selection-end-line="19" selection-end-column="15" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/static/js/default_checkout.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="122" column="29" lean-forward="true" selection-start-line="122" selection-start-column="29" selection-end-line="122" selection-end-column="29" />
+        <state relative-caret-position="311">
+          <caret line="128" column="36" selection-start-line="128" selection-start-column="36" selection-end-line="128" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/default/checkout.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="34" column="38" selection-start-line="34" selection-start-column="38" selection-end-line="34" selection-end-column="38" />
+          <folding>
+            <element signature="n#style#0;n#span#0;n#div#1;n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/css/checkout.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="18" selection-start-line="10" selection-start-column="18" selection-end-line="10" selection-end-column="18" />
         </state>
       </provider>
     </entry>
