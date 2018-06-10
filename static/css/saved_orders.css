@@ -17,6 +17,7 @@
 	background-color:#e6e6e6;
 	margin-bottom:50px;
 	padding-top: 1px;
+	padding-bottom: 10px;
 }
 
 .add_cart_button{
@@ -38,7 +39,7 @@
 
 .order_header{
 	height: 50px;
-	width: 290px;
+	width: 730px;
 }
 
 .order{
@@ -63,6 +64,12 @@
 .items_container{
 	margin-top:10px;
 	margin-left: 20px;
+	clear: both;
+}
+
+.empty_orders_message{
+	font-size:30px;
+	text-align:center;
 }
 
 .login_message{

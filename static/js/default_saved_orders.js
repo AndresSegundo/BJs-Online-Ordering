@@ -19,6 +19,7 @@ var app = function() {
 				saved_orders = [];
 				for (i = 0; i < data.saved_orders.length; i++){
 					order = {
+						name: data.saved_orders[i].order_name.substring(0,30),
 						price: null,
 						items: JSON.parse(data.saved_orders[i].cart),
 						order_name: data.saved_orders[i].order_name,
