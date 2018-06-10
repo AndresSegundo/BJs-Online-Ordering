@@ -1,22 +1,53 @@
 {{extend 'navbar.html'}}
     <link href="https://fonts.googleapis.com/css?family=Yesteryear" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
-    <script>
-        var get_saved_orders_url = "{{=URL('api', 'get_saved_orders')}}"
-    </script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="{{=URL('static', 'css/saved_orders.css')}}">
+	<script src="{{=URL('static','js/vue.js')}}"></script>
 {{block head}}
 {{end}}
 
-<div class="container">
-    <h2>Saved Orders</h2>
-    <div id="vue-div" class="display:none border-v">
-
-    </div>
-
-
-
-
-
+<div id="vue-div">
+    <div class="title">Saved Orders</div>
+	
+	<div class="orders_container">
+		{{if auth.user is not None:}}
+		<div class="order" v-for="order in saved_orders">
+			<div class="order_header">
+				<button class="add_cart_button" v-on:click="add_order_to_cart(order)">
+					<i class="fa fa-cart-plus"></i> Add to cart 
+				</button>
+				
+				<div class="total_price">
+					$${order.price}
+				</div>
+			</div>
+			
+			<div class="items_container">
+				<div v-for="item in order.items" class="item">
+					<div class="item_name">
+						- ${item.name} $${item.price}
+					</div>
+					<div class="comment" v-if="item.is_comment">
+						${item.comment}
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<div class="empty_orders_message" v-if="saved_orders.length == 0">
+			You have no saved orders! Once you make an order, it will be saved here so you can order it again in the future.
+		</div>
+		
+		{{else:}} 
+		<div class="login_message">
+			Please log in to see your saved orders!
+		</div>
+		{{pass}}
+	</div>
 
 </div>
+
+
+<script src="{{=URL('static', 'js/default_saved_orders.js')}}"></script>
