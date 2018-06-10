@@ -13,6 +13,22 @@ var app = function() {
 		};
 	}
 	
+	self.get_saved_orders = function(){
+		$.getJSON(get_saved_orders_url,
+			function(data){
+				
+			}	
+		);
+	}
+	
+	self.add_order_to_cart = function(order){
+		self.retrieve_cart();
+		for (var i = 0; i < order.items.length; i++){
+			self.vue.cart.push(order.items[i]);
+		}
+		self.save_cart();
+ 	}
+	
 	self.save_cart = function(){
 		cart_parsed = JSON.stringify(self.vue.cart);
 		localStorage.cart = cart_parsed;

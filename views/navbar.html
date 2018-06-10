@@ -33,10 +33,8 @@
                     <li class="highlight"><a href="{{=URL('default','index#faq')}}"> FAQ &nbsp;<i class="fa fa-question"></i></a></li>
 					<li class="highlight"><a href="{{=URL('default','cart')}}"> Cart &nbsp;<i class="fa fa-shopping-cart"></i></a></li>
 
-					{{if auth.user:}}
-					<li class="highlight"><a href="{{=URL('default','past_orders')}}"> Past &nbsp;<i class="fa fa-clock-o"></i> <br /> Orders</a></li>
 					<li class="highlight"><a href="{{=URL('default','saved_orders')}}"> Saved &nbsp;<i class="fa fa-clock-o"></i> <br /> Orders</a></li>
-					{{pass}}
+
                 </ul>
             </div>
         </nav>
@@ -84,7 +82,7 @@
 					     	{{if auth.user:}}
 					      	<p>Welcome {{=auth.user.first_name}}</p> 
 			              	{{else:}}
-					        <p>Please login</p> 
+					        <p>Please log in</p> 
 					        {{pass}}
 					    </div>						
 					</div>
