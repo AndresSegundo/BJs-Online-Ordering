@@ -1,3 +1,4 @@
+
 // This is the js for the default/cart.html view.
 
 var app = function() {
@@ -5,23 +6,7 @@ var app = function() {
     var self = {};
 
     Vue.config.silent = false; // show all warnings
-	
-	self.get_saved_orders = function(){
-		$.getJSON(get_saved_orders_url,
-			function(data){
-				
-			}	
-		);
-	}
-	
-	self.add_order_to_cart = function(order){
-		self.retrieve_cart();
-		for (var i = 0; i < order.items.length; i++){
-			self.vue.cart.push(order.items[i]);
-		}
-		self.save_cart();
-	}
-	
+		
 	self.retrieve_cart = function(){
 		if (localStorage.cart) {
 			self.vue.cart = JSON.parse(localStorage.cart);
@@ -34,6 +19,7 @@ var app = function() {
 	}
 
     // Complete as needed.
+
     self.vue = new Vue({
         el: "#vue-div",
         delimiters: ['${', '}'],

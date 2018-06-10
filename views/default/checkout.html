@@ -10,9 +10,11 @@
     <script src="{{=URL('static', 'js/vue.js')}}"></script>
     <script src="https://checkout.stripe.com/checkout.js"></script>
     <script>
-        var save_order_url = "{{=URL('api', 'save_order')}}"
+        var save_order_url = "{{=URL('api', 'save_order', user_signature=True)}}"
         var check_logged_in_url = "{{=URL('api', 'check_logged_in')}}"
         var purchase_url = "{{=URL('api', 'purchase', user_signature=True)}}"
+        var upload_saved_order_url = "{{=URL('api', 'upload_saved_order', user_signature=True)}}"
+        var get_order_url = "{{=URL('api', 'get_order', user_signature=True)}}"
     </script>
 {{block head}}
 {{end}}
@@ -32,16 +34,18 @@
     <div id="vue-div" class="display:none border-v">
         <!-- Meat of the page -->
         <div v-if="cart.length > 0">
-            <table class="cart_payment">
+            <table v-if="!order_placed" class="cart_payment">
                 <tr>
                     <td><h3>Payment Options:</h3></td>
                     <td>
                         <button class="payment_method" v-on:click="pay()" title="Credit Card"><i class="fa fa-lg fa-credit-card"></i></button>
-                        <button v-if="is_logged_in" class="payment_method" title="Meals"><i class="fa fa-lg fa-id-card"></i></button>
+                        <button v-if="is_logged_in" class="payment_method" v-on:click="order_placed=!order_placed" title="Meals"><i class="fa fa-lg fa-id-card"></i></button>
                         <button v-if="is_logged_in" class="payment_method" title="Flexis"><i class="fa fa-lg fa-money-bill-wave"></i></button>
                     </td>
                 </tr>
             </table>
+            <h1 v-else class="order_placed">Order Placed!</h1>
+            <h3 v-if="order_placed" class="wait_time">Estimated wait time: <b>10 minutes</b></h3>
             <table class="cart_total">
                 <tr>
                     <th class="cart_total_header">
@@ -64,17 +68,19 @@
             </div>
 
             <div v-if="is_logged_in" class="options">
-                <div v-if="!order_saved">
-                    <button class="save_order" v-if="show_save_order_btn" v-on:click="toggle_save_order">
-                        <i class="fa fa-lg fa-save"></i>
-                    </button>
-                    <input v-if="is_saving_order" v-model="saved_order_name" placeholder="Order Name" type="text">
-                    <button class="save_order" v-if="!show_save_order_btn" v-on:click="toggle_save_order"><i class="fa fa-lg fa-times-circle"></i></button>
-                    <button class="save_order" v-if="!show_save_order_btn" v-on:click="save_order"><i class="fa fa-lg fa-plus"></i></button>
-                </div>
-                <div v-if="order_saved" class="fa fa-lg">
-                    Order <span style="color: yellow">${saved_order_name}</span> Saved  <i v-if="order_saved" class="fa fa-lg fa-check-circle order_saved_msg"></i>
+                <div>
+                    <div v-if="!order_saved">
+                        <button class="save_order" v-if="show_save_order_btn" v-on:click="toggle_save_order">
+                            <i class="fa fa-lg fa-save"></i>
+                        </button>
+                        <input v-if="is_saving_order" v-model="saved_order_name" placeholder="Order Name" type="text">
+                        <button class="save_order" v-if="!show_save_order_btn" v-on:click="toggle_save_order"><i class="fa fa-lg fa-times-circle"></i></button>
+                        <button class="save_order" v-if="!show_save_order_btn" v-on:click="upload_saved_order"><i class="fa fa-lg fa-plus"></i></button>
                     </div>
+                    <div v-if="order_saved" class="fa fa-lg">
+                        Order <span style="color: yellow">${saved_order_name}</span> Saved  <i v-if="order_saved" class="fa fa-lg fa-check-circle order_saved_msg"></i>
+                    </div>
+                </div>
             </div>
             <div v-else class="log_in_msg">
                 <a href="{{=URL('default','user/login')}}"><b>Log in</b></a> to save orders and use meal plan/flexis

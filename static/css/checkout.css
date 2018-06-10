@@ -31,6 +31,21 @@ table.cart_payment {
     text-align: center;
 }
 
+h1.order_placed {
+    margin: auto auto auto auto;
+    text-align: center;
+    color: yellow;
+}
+
+h3.wait_time {
+    margin: auto auto 30px auto;
+    text-align: center;
+}
+
+h3.wait_time b {
+    color: #0EAFAD;
+}
+
 table.cart_total {
     margin: auto;
     width: 85%;

@@ -13,30 +13,6 @@ var app = function() {
         }
     };
 
-    self.counter = 0;  
-
-    function get_checklists_url(start_idx, end_idx) {
-        var pp = {
-            start_idx: start_idx,
-            end_idx: end_idx
-        };
-        return checklists_url + "?" + $.param(pp);
-    }
-
-    self.get_checklists = function () {
-        $.getJSON(get_checklists_url(0, 10), function (data) {
-            self.vue.checklists = data.checklists;
-            self.vue.has_more = data.has_more;
-            self.vue.logged_in = data.logged_in;
-            self.vue.auth_user = data.auth_user;
-        })
-    };
-
-    /*
-    * Since the cart is just an array of ID's, we have to
-    * get the prices by looking them up on the menu database
-    * in a separate function.
-     */
     self.get_cart_price = function() {
         var total = 0;
         items = self.vue.cart;
@@ -44,10 +20,6 @@ var app = function() {
             total += parseFloat(items[i].price);
         }
         self.vue.cart_total = total.toFixed(2);
-    };
-
-    self.get_cart_images = function() {
-
     };
 
     self.check_logged_in = function() {
@@ -64,70 +36,32 @@ var app = function() {
             self.vue.cart = (JSON.parse(localStorage.getItem('cart')));
             //have to parse the int from each string item in array
         }
-        self.get_cart_images();
         self.get_cart_price();
     };
 
 
-
-    self.get_more = function () {
-        var num_checklists = self.vue.checklists.length;
-        $.getJSON(get_checklists_url(num_checklists, num_checklists + 50), function (data) {
-            self.vue.has_more = data.has_more;
-            self.extend(self.vue.checklists, data.checklists);
-        });
+    self.get_order = function () {
+        console.log("in get_order")
+        $.getJSON(get_order_url, {
+            order_name: "Si Senor"
+        }, function (data) {
+            // left as json string to store in local storage
+            cart_string = data.cart_order;
+            // parsed so that vue can read
+            self.vue.cart = (JSON.parse(cart_string));
+            // store in local storage
+            localStorage.setItem('cart', cart_string);
+        })
     };
 
-
-    self.toggle_public_button = function() {
-        self.vue.is_public = !self.vue.is_public;
-    }
-
-
-
-    self.edit_button = function() {
-        self.vue.edit_title = null;
-        self.vue.edit_memo = null;
-        self.vue.is_editting_checklist = !self.vue.is_editting_checklist;
-    }
-
     self.upload_saved_order = function() {
-        self.toggle_save_order();
-        $.post(save_order_url,
-            {
-                order: self.vue.cart,
+        $.getJSON(upload_saved_order_url, {
+                cart: localStorage.getItem('cart'),
                 order_name: self.vue.saved_order_name
             },
             function (data) {
-                console.log("here")
-                self.vue.saved_order_name = ""
-            });
-    };
-
-    // testing order saving in local storage until account db is figured out
-    self.save_order = function() {
-        // can't just do this b/c we have to append non-json order to non-json orders list
-        //var order =  localStorage.cart;
-
-        var order = {
-            name: self.vue.saved_order_name,
-            cart: self.vue.cart
-        };
-        var saved_orders = JSON.stringify([order]);
-        // Set cart to string value of id
-        //cart = [String(cart_item.id)];
-        if (localStorage.saved_orders != undefined) {
-
-            //Grab cart list from local storage
-            var temp = JSON.parse(localStorage.getItem('saved_orders'));
-            temp.push(order);
-            saved_orders = JSON.stringify(temp);
-            //append cart list to string of current item id
-            //cart = cart.concat(temp);
-        }
-        localStorage.setItem('saved_orders', saved_orders);
+        });
         self.vue.order_saved = true;
-
     };
 
     self.toggle_save_order = function() {
@@ -170,11 +104,11 @@ var app = function() {
             },
             function (data) {
                 // The order was successful.
-                console.log("it worked!");
                 //self.goto('prod');
                 $.web2py.flash("Thank you for your purchase");
             }
         );
+        self.vue.order_placed = true;
     };
 
 
@@ -185,29 +119,27 @@ var app = function() {
         delimiters: ['${', '}'],
         unsafeDelimiters: ['!{', '}'],
         data: {
-            is_uploading: false,
             user_images: [],
             users_list: [],
             current_user: "",
             price: null,
             cart: [],
             cart_total: 0.00,
-            cart_images: [],
             save_order_bool: false,
             saved_order_name: "",
             show_save_order_btn: true,
             is_saving_order: false,
             order_saved: false,
+            order_placed: false,
             is_logged_in: false
         },
         methods: {
             get_cart: self.get_cart,
-            get_cart_images: self.get_cart_images,
             get_cart_price: self.get_cart_price,
             toggle_checkout: self.toggle_checkout,
             toggle_save_order: self.toggle_save_order,
-            save_order: self.save_order,
             upload_saved_order: self.upload_saved_order,
+            get_order: self.get_order,
             check_logged_in: self.check_logged_in,
             pay: self.pay
         }
