@@ -7,7 +7,7 @@ def get_user_email():
 db.define_table('myuser',
                 Field('username'),
                 Field('password'),
-                Field('token')
+                Field('token'),
                 )
 
 #Gets the identity of the logged in user.
@@ -60,7 +60,7 @@ db.define_table('menuItems_data',
 
 db.define_table('orders',
                 Field('user_email'),
-                Field('item_id'),
-                Field('comments'),
-                Field('updated_on'),
+                Field('order_name', 'string'),
+                Field('cart', 'text'), # will hold the cart JSON object as a string
+                Field('updated_on', default=datetime.datetime.utcnow()),
                 )

@@ -101,6 +101,7 @@ db.define_table(
     Field('address'),
     Field('phone'),
     Field('UCSC_student', 'boolean'),
+    Field('order_names', 'list:string', readable=False,writeable=False), # will store list of orders
     Field('registration_key', length=512,                # required
           writable=False, readable=False, default=''),
     Field('reset_password_key', length=512,              # required
@@ -116,6 +117,7 @@ custom_auth_table.password.requires = [IS_STRONG(), CRYPT()]
 custom_auth_table.email.requires = [
   IS_EMAIL(error_message=auth.messages.invalid_email),
   IS_NOT_IN_DB(db, custom_auth_table.email)]
+custom_auth_table.order_names.readable = custom_auth_table.order_names.writeable = False
 
 auth.settings.table_user = custom_auth_table # tell auth to use custom_auth_table
 

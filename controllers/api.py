@@ -18,11 +18,57 @@ def check():
     you = 'None' if logged_in_user is None else logged_in_user['username']
     return response.json(dict(result=you))
 
+# INPUT: order name
+# OUTPUT: cart from specified order if it exists
+def get_order():
+    # name of order should be passed in
+    name = request.vars.order_name
+    email = auth.user.email
 
-def saved_orders():
-    response.flash = T("Hello World")
-    return dict(message=T('Welcome to web2py!'))
-    
+    curr_user = db(db.auth_user.email == email).select().first()
+    # grab list of order names and add this new order
+    order_names_list = curr_user.order_names
+    # if the order exists, find in order DB
+    if name in order_names_list:
+        # grabs specified order
+        order_entry = db((db.orders.user_email == email) & (db.orders.order_name == name)).select().first()
+        # grabs cart from order
+        cart = order_entry.cart
+        # returns cart in json format
+        return response.json(dict(
+            cart_order = cart
+        ))
+    else:
+        return "No matched order"
+
+# INPUT: cart to be saved, order name
+# OUTPUT: inserts order name into user DB
+#         inserts order into order DB
+def upload_saved_order():
+    # cart should be a JSON object
+    cart = request.vars.cart
+    name = request.vars.order_name
+    email = auth.user.email
+
+    curr_user = db(db.auth_user.email==email).select().first()
+    # grab list of order names and add this new order
+    order_names_list = curr_user.order_names
+    # check for name duplicates
+    name_occ = order_names_list.count(name)
+    if name_occ > 0:
+        # will give effect name(1)
+        name += "(" + str(name_occ) + ")"
+    order_names_list.append(name)
+    # updating record outside of
+    curr_user.update_record(order_names = order_names_list)
+    # now add order to orders DB
+    db.orders.insert(
+        user_email = email,
+        order_name = name,
+        cart = cart
+    )
+    return "OK"
+
 def login():
     response.headers['Access-Control-Allow-Origin']= '*'
     username = request.vars.username
@@ -109,14 +155,14 @@ def purchase():
     except stripe.error.CardError as e:
         logger.info("The card has been declined.")
         logger.info("%r" % traceback.format_exc())
-        return "nok"
+        return response.json(dict(result="nok"))
     """
     db.customer_order.insert(
-        customer_info=request.vars.customer_info,
-        transaction_token=json.dumps(token),
-        cart=request.vars.cart)
-        """
-    return "ok"
+    customer_info=request.vars.customer_info,
+    transaction_token=json.dumps(token),
+    cart=request.vars.cart)
+    """
+    return response.json(dict(result="ok"))
 
 @auth.requires_signature()
 def get_insertion_id():

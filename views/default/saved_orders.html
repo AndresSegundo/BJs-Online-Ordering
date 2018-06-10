@@ -2,11 +2,18 @@
     <link href="https://fonts.googleapis.com/css?family=Yesteryear" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
+    <script>
+        var get_saved_orders_url = "{{=URL('api', 'get_saved_orders')}}"
+    </script>
 {{block head}}
 {{end}}
 
 <div class="container">
     <h2>Saved Orders</h2>
+    <div id="vue-div" class="display:none border-v">
+
+    </div>
+
 
 
 
