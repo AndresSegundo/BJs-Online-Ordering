@@ -5,6 +5,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" href="{{=URL('static', 'css/saved_orders.css')}}">
 	<script src="{{=URL('static','js/vue.js')}}"></script>
+	
+	<script>
+		var get_saved_orders_url = "{{=URL('api','get_saved_orders')}}";
+	</script>
 {{block head}}
 {{end}}
 

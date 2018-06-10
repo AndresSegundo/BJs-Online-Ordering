@@ -40,7 +40,21 @@ def get_order():
         ))
     else:
         return "No matched order"
+        
+def get_saved_orders():
+    if auth.user == None:
+        return "Not logged in"
 
+    email = auth.user.email
+    
+	# grabs specified order
+    saved_orders = db(db.orders.user_email == email).select()
+ 
+	# returns cart in json format
+    return response.json(dict(
+		saved_orders = saved_orders
+	))
+	
 # INPUT: cart to be saved, order name
 # OUTPUT: inserts order name into user DB
 #         inserts order into order DB

@@ -16,9 +16,29 @@ var app = function() {
 	self.get_saved_orders = function(){
 		$.getJSON(get_saved_orders_url,
 			function(data){
+				saved_orders = [];
+				for (i = 0; i < data.saved_orders.length; i++){
+					order = {
+						price: null,
+						items: JSON.parse(data.saved_orders[i].cart),
+						order_name: data.saved_orders[i].order_name,
+					};
+					
+					total_price = 0;
+					for (j = 0; j < order.items.length; j++){
+						total_price += parseFloat(order.items[j].price);
+					}
+					
+					order.price = total_price.toFixed(2);
+					
+					saved_orders.push(order);
+				};
 				
+				self.vue.saved_orders = saved_orders;
+				console.log(saved_orders);
 			}	
 		);
+		
 	}
 	
 	self.add_order_to_cart = function(order){
@@ -45,19 +65,19 @@ var app = function() {
         },
         data: {
 			saved_orders: [ 
-					{
+					/* {
 						price:"10.00", 
 						items:[{name:"Test Item", comment:"", is_comment: false, price:"10.00"}]
 					}, 
 					{ 	price:"20.00",
 						items:[{name:"Test Item 1", comment:"test comment", is_comment: true, price:"10.00"}, {name:"Test Item 2", comment:"", is_comment: false, price:"10.00"}]
-					}
+					} */
 				],
 			cart: [],
         }
     });
 	
-	
+	self.get_saved_orders();
 	$("#vue-div").show();
 
     return self;

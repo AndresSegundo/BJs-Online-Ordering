@@ -26,6 +26,10 @@
 	float:left;
 }
 
+.add_cart_button:hover{
+	background-color:#33b7b6
+}
+
 .total_price{
 	float: right;
 	font-size:30px;
