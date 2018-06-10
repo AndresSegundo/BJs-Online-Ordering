@@ -12,6 +12,7 @@ var app = function() {
 			self.vue.cart = JSON.parse(localStorage.cart);
 		};
 	};
+
 	
 	self.calculate_total = function(){
 		var total = 0;
@@ -19,6 +20,7 @@ var app = function() {
 		for (var i = 0; i < cart.length; i++){
 			total += parseFloat(cart[i].price);
 		};
+		
 		self.vue.cart_total = total.toFixed(2);
 	};
 	
@@ -99,6 +101,7 @@ var app = function() {
         data: {
 			cart: [],
 			cart_total: 0,
+			tax:0,
         }
     });
 	
