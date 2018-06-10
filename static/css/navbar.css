@@ -14,7 +14,7 @@ body{
 
 .dropdown-content p, .user_status p{
 	font-size: 24px;
-    font-family: "Yesteryear", cursive;
+    font-family: "Pacifico", cursive;
   	color: #0EAFAD;
 }
 
@@ -142,7 +142,7 @@ i:hover{
 	margin-top:20px;
 	margin-right:45px;
 	padding:6px;
-	width:65px;
+	width:auto;
 	height:65px;
 	
 }
