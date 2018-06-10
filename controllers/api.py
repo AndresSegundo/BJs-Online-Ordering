@@ -56,6 +56,18 @@ def get_saved_orders():
 		saved_orders = saved_orders
 	))
 	
+	
+def delete_saved_order():
+    if auth.user == None:
+		return "Not logged in"
+	
+    email = auth.user.email
+    order_id = request.vars.order_id
+    order = db((db.orders.user_email == email) & (db.orders.id == order_id)).delete()
+	
+    return "ok"
+		
+	
 # INPUT: cart to be saved, order name
 # OUTPUT: inserts order name into user DB
 #         inserts order into order DB
@@ -83,6 +95,7 @@ def upload_saved_order():
         cart = cart
     )
     return "OK"
+
 
 def login():
     response.headers['Access-Control-Allow-Origin']= '*'

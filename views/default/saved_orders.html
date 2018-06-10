@@ -8,6 +8,7 @@
 	
 	<script>
 		var get_saved_orders_url = "{{=URL('api','get_saved_orders')}}";
+		var delete_saved_order_url = "{{=URL('api','delete_saved_order')}}";
 	</script>
 {{block head}}
 {{end}}
@@ -24,10 +25,15 @@
 				</button>
 				
 				<div class="total_price">
-					<div style="font-weight:600; float:left;"> ${order.name} &nbsp</div> $${order.price}
+					<div style="font-weight:600; float:left;"> ${order.display_name} &nbsp</div> $${order.price}
 				</div>
+				
 			</div>
 			
+			<button class="delete_saved_button" v-on:click="delete_saved_order(order)">
+				<i class="fa fa-times-rectangle fa-2x delete_saved_icon"></i>
+			</button>
+				
 			<div class="items_container">
 				<div v-for="item in order.items" class="item">
 					<div class="item_name">

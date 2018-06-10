@@ -19,7 +19,9 @@ var app = function() {
 				saved_orders = [];
 				for (i = 0; i < data.saved_orders.length; i++){
 					order = {
-						name: data.saved_orders[i].order_name.substring(0,30),
+						id: data.saved_orders[i].id,
+						display_name: data.saved_orders[i].order_name.substring(0,30),
+						name: data.saved_orders[i].order_name,
 						price: null,
 						items: JSON.parse(data.saved_orders[i].cart),
 						order_name: data.saved_orders[i].order_name,
@@ -40,6 +42,17 @@ var app = function() {
 			}	
 		);
 		
+	}
+	
+	self.delete_saved_order = function(order){
+		$.post(delete_saved_order_url,
+			{
+				order_id: order.id,
+			},
+			function(data){
+				self.get_saved_orders();
+			}
+		);
 	}
 	
 	self.add_order_to_cart = function(order){
@@ -63,6 +76,7 @@ var app = function() {
         unsafeDelimiters: ['!{', '}'],
         methods: {
 			add_order_to_cart: self.add_order_to_cart,
+			delete_saved_order: self.delete_saved_order,
         },
         data: {
 			saved_orders: [ 
