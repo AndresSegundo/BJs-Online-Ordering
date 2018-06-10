@@ -112,6 +112,13 @@
 	color:white;
 }
 
+.empty_cart.message{
+	margin-top: 20px;
+	font-size:40px;
+	text-align: center;
+	float:left;
+}
+
 .footer{
 	position:fixed;
 	left:0;

@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
-
+import logging
+logger = logging.getLogger(request.application)
+logger.setLevel(logging.INFO)
 # -------------------------------------------------------------------------
 # AppConfig configuration made easy. Look inside private/appconfig.ini
 # Auth is for authenticaiton and access control
