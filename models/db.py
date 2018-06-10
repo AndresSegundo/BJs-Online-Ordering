@@ -93,9 +93,11 @@ auth = Auth(db, host_names=configuration.get('host.names'))
 #Adds extra fields to the auth table
 db.define_table(
     auth.settings.table_user_name,
+    Field('picture', 'upload', uploadfield='picture_file'),
+    Field('picture_file', 'blob'),
     Field('first_name', length=56, default=''),
     Field('last_name', length=56, default=''),
-    Field('email', length=56, default='', unique=True), # required
+    Field('email', length=56, default='@ucsc.edu', unique=True), # required
     Field('password', 'password', length=512,            # required
           readable=False, label='Password'),
     Field('address'),
