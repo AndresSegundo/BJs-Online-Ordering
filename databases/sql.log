@@ -142,3 +142,90 @@ CREATE TABLE "account"(
     "cc_address" CHAR(512),
     "log_info" CHAR(512)
 );
+timestamp: 2018-06-09T17:10:58.408365
+ALTER TABLE "auth_user" ADD "picture" CHAR(512);
+timestamp: 2018-06-09T17:10:58.452713
+ALTER TABLE "auth_user" ADD "picture_file" BLOB;
+success!
+timestamp: 2018-06-09T17:11:48.535332
+ALTER TABLE "auth_user" ADD "profile_picture" CHAR(512);
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+timestamp: 2018-06-09T17:20:33.888992
+ALTER TABLE "auth_user" ADD "banana_slug" BLOB;
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
