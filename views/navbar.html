@@ -55,13 +55,16 @@
 					<a class="cart btn expand" href="{{=URL('default','cart')}}"><i class="fa fa-shopping-cart fa-3x"></i>
 					</a>
 					<!-- Account Icon -->
-					<div class="dropdown right">
-
-					  <a class="account btn expand" href="{{=URL('default','user')}}">
-					      
+					<div class="dropdown right" >
+					  {{if auth.user:}}
+					  <a class="account btn expand" href="{{=URL('default','user/profile')}}">
 			            	<i class="fa fa-user fa-3x"></i>
 			          </a>
-			           
+					  {{else:}}
+					  <a class="account btn expand" href="{{=URL('default','user')}}">
+			            	<i class="fa fa-user fa-3x"></i>
+			          </a>
+			          {{pass}}
 
 			            <div class="dropdown-content">
 				 			
@@ -76,16 +79,16 @@
               				<a href="{{=URL('default','user/register')}}"><p>Sign Up</p></a>
               				<a href="{{=URL('default','user/request_reset_password')}}"><p>Lost Password</p></a>
               				{{pass}}
-
 					    </div>
-					    <div class="user_status">
-					     	{{if auth.user:}}
-					      	<p>Welcome {{=auth.user.first_name}}</p> 
-			              	{{else:}}
-					        <p>Please log in</p> 
-					        {{pass}}
-					    </div>						
+
 					</div>
+					<div class="user_status">
+                        {{if auth.user:}}
+                        <a href="{{=URL('default','user/profile')}}"><p>Welcome {{=auth.user.first_name}}</p></a>
+                        {{else:}}
+                        <a href="{{=URL('default','user/login')}}"><p>Please log in</p></a>
+                        {{pass}}
+                    </div>
 
 				 								
 				</div>
