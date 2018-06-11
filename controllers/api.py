@@ -27,7 +27,10 @@ def get_order():
 
     curr_user = db(db.auth_user.email == email).select().first()
     # grab list of order names and add this new order
-    order_names_list = curr_user.order_names
+    if curr_user is not None:
+        order_names_list = curr_user.order_names
+    else:
+        print "error"
     # if the order exists, find in order DB
     if name in order_names_list:
         # grabs specified order
@@ -79,7 +82,10 @@ def upload_saved_order():
 
     curr_user = db(db.auth_user.email==email).select().first()
     # grab list of order names and add this new order
-    order_names_list = curr_user.order_names
+    if curr_user is not None:
+        order_names_list = curr_user.order_names
+    else:
+        print "error 2"
     # check for name duplicates
     name_occ = order_names_list.count(name)
     if name_occ > 0:
