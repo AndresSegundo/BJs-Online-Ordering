@@ -72,6 +72,16 @@ h2.review_order_title {
     text-align: center;
 }
 
+
+#footer {
+  height: 20px;
+}
+
+div.review_order_container {
+    max-height: 200px;
+    overflow-y: scroll;
+}
+
 table.review_order {
     margin: auto;
     width: 85%;
@@ -94,6 +104,28 @@ table.review_order th, table.review_order td {
 
 button.payment_method {
     width: 20%;
+}
+
+.tooltip {
+    position: relative;
+    display: inline-block;
+}
+
+.coming_soon_text {
+    width: 120px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 1;
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
 }
 
 div.options {

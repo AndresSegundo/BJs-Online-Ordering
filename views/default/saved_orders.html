@@ -5,10 +5,15 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" href="{{=URL('static', 'css/saved_orders.css')}}">
 	<script src="{{=URL('static','js/vue.js')}}"></script>
+	
+	<script>
+		var get_saved_orders_url = "{{=URL('api','get_saved_orders')}}";
+		var delete_saved_order_url = "{{=URL('api','delete_saved_order')}}";
+	</script>
 {{block head}}
 {{end}}
 
-<div id="vue-div">
+<div id="vue-div" style="display:none">
     <div class="title">Saved Orders</div>
 	
 	<div class="orders_container">
@@ -20,10 +25,15 @@
 				</button>
 				
 				<div class="total_price">
-					$${order.price}
+					<div style="font-weight:600; float:left;"> ${order.display_name} &nbsp</div> $${order.price}
 				</div>
+				
 			</div>
 			
+			<button class="delete_saved_button" v-on:click="delete_saved_order(order)">
+				<i class="fa fa-times-rectangle fa-2x delete_saved_icon"></i>
+			</button>
+				
 			<div class="items_container">
 				<div v-for="item in order.items" class="item">
 					<div class="item_name">

@@ -28,15 +28,13 @@
 			<a class="menu btn sidebar" onclick="closeNav()"><i class="fa fa-bars fa-3x"></i></a>
             <div id="sidebar-container">
                 <ul class="sidebar links">
-                    <li class="highlight"><a href="{{=URL('default','index')}}">- Home &nbsp;<i class="fa fa-home"></i></a></li>
-                    <li class="highlight"><a href="{{=URL('default','menu')}}">- Menu &nbsp;<i class="fa fa-cutlery"></i></a></li>
-                    <li class="highlight"><a href="{{=URL('default','index#faq')}}">- FAQ &nbsp;<i class="fa fa-question"></i></a></li>
-					<li class="highlight"><a href="{{=URL('default','cart')}}">- Cart &nbsp;<i class="fa fa-shopping-cart"></i></a></li>
+                    <li class="highlight"><a href="{{=URL('default','index')}}"> Home &nbsp;<i class="fa fa-home"></i></a></li>
+                    <li class="highlight"><a href="{{=URL('default','menu')}}"> Menu &nbsp;<i class="fa fa-cutlery"></i></a></li>
+                    <li class="highlight"><a href="{{=URL('default','index#faq')}}"> FAQ &nbsp;<i class="fa fa-question"></i></a></li>
+					<li class="highlight"><a href="{{=URL('default','cart')}}"> Cart &nbsp;<i class="fa fa-shopping-cart"></i></a></li>
 
-					{{if auth.user:}}
-					<li class="highlight"><a href="{{=URL('default','past_orders')}}">- Past &nbsp;<i class="fa fa-clock-o"></i> <br /> Orders</a></li>
-					<li class="highlight"><a href="{{=URL('default','saved_orders')}}">- Saved &nbsp;<i class="fa fa-clock-o"></i> <br /> Orders</a></li>
-					{{pass}}
+					<li class="highlight"><a href="{{=URL('default','saved_orders')}}"> Saved &nbsp;<i class="fa fa-clock-o"></i> <br /> Orders</a></li>
+
                 </ul>
             </div>
         </nav>
@@ -48,7 +46,7 @@
 					<div class="menu btn" onclick="openNav()"><i class="fa fa-bars fa-3x"></i></div>
 					<!-- BJ's Logo -->
 					<div class="navbar logo btn" id="logo_container">
-						<a href="{{=URL('default','index')}}"> <img src="{{=URL('static','images/BJsLogo.png')}}" class="logo"/> </a>
+						<a href="{{=URL('default','index')}}"> <img src="{{=URL('static','images/BJsLogo.jpg')}}" class="logo"/> </a>
 					</div>
 
 					
@@ -84,7 +82,7 @@
 					     	{{if auth.user:}}
 					      	<p>Welcome {{=auth.user.first_name}}</p> 
 			              	{{else:}}
-					        <p>Please login</p> 
+					        <p>Please log in</p> 
 					        {{pass}}
 					    </div>						
 					</div>
