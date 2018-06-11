@@ -103,7 +103,7 @@ db.define_table(
     Field('address'),
     Field('phone'),
     Field('UCSC_student', 'boolean'),
-    Field('order_names', 'list:string', readable=False,writeable=False), # will store list of orders
+    Field('order_names', 'list:string'), # will store list of orders
     Field('registration_key', length=512,                # required
           writable=False, readable=False, default=''),
     Field('reset_password_key', length=512,              # required
@@ -113,6 +113,8 @@ db.define_table(
 
 ## do not forget validators
 custom_auth_table = db[auth.settings.table_user_name] # get the custom_auth_table
+custom_auth_table.order_names.writable = False
+custom_auth_table.order_names.readable = False
 custom_auth_table.first_name.requires =   IS_NOT_EMPTY(error_message=auth.messages.is_empty)
 custom_auth_table.last_name.requires =   IS_NOT_EMPTY(error_message=auth.messages.is_empty)
 custom_auth_table.password.requires = [IS_STRONG(), CRYPT()]
