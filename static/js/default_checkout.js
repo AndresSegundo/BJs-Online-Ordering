@@ -32,6 +32,7 @@ var app = function() {
     self.get_cart = function() {
         var cart_string = [];
         if (localStorage.getItem('cart') != undefined) {
+            self.vue.JSONcart = (localStorage.getItem('cart'));
             //have to parse JSON cart; gets parsed into array of strings
             self.vue.cart = (JSON.parse(localStorage.getItem('cart')));
             //have to parse the int from each string item in array
@@ -48,7 +49,7 @@ var app = function() {
             // left as json string to store in local storage
             cart_string = data.cart_order;
             // parsed so that vue can read
-            self.vue.cart = (JSON.parse(cart_string));
+            self.vue.cart = (self.vue.JSONcart);
             // store in local storage
             localStorage.setItem('cart', cart_string);
         })
@@ -56,7 +57,7 @@ var app = function() {
 
     self.upload_saved_order = function() {
         $.getJSON(upload_saved_order_url, {
-                cart: localStorage.getItem('cart'),
+                cart: self.vue.JSONcart,
                 order_name: self.vue.saved_order_name
             },
             function (data) {
@@ -109,6 +110,8 @@ var app = function() {
                 $.web2py.flash("Thank you for your purchase");
             }
         );
+        cart = JSON.stringify([]);
+        localStorage.setItem('cart', cart);
         self.vue.order_placed = true;
     };
 
@@ -125,6 +128,7 @@ var app = function() {
             current_user: "",
             price: null,
             cart: [],
+            JSONcart: "",
             cart_total: 0.00,
             show_msg_bool: false,
             save_order_bool: false,
