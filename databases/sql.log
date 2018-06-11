@@ -1,6 +1,8 @@
-timestamp: 2018-06-07T14:43:58.496824
+timestamp: 2018-06-11T01:45:12.184000
 CREATE TABLE "auth_user"(
     "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "picture" CHAR(512),
+    "picture_file" BLOB,
     "first_name" CHAR(56),
     "last_name" CHAR(56),
     "email" CHAR(56) UNIQUE,
@@ -8,26 +10,27 @@ CREATE TABLE "auth_user"(
     "address" CHAR(512),
     "phone" CHAR(512),
     "UCSC_student" CHAR(1),
+    "order_names" TEXT,
     "registration_key" CHAR(512),
     "reset_password_key" CHAR(512),
     "registration_id" CHAR(512)
 );
 success!
-timestamp: 2018-06-07T14:43:58.506567
+timestamp: 2018-06-11T01:45:12.363000
 CREATE TABLE "auth_group"(
     "id" INTEGER PRIMARY KEY AUTOINCREMENT,
     "role" CHAR(512),
     "description" TEXT
 );
 success!
-timestamp: 2018-06-07T14:43:58.509066
+timestamp: 2018-06-11T01:45:12.487000
 CREATE TABLE "auth_membership"(
     "id" INTEGER PRIMARY KEY AUTOINCREMENT,
     "user_id" INTEGER REFERENCES "auth_user" ("id") ON DELETE CASCADE  ,
     "group_id" INTEGER REFERENCES "auth_group" ("id") ON DELETE CASCADE  
 );
 success!
-timestamp: 2018-06-07T14:43:58.511654
+timestamp: 2018-06-11T01:45:12.661000
 CREATE TABLE "auth_permission"(
     "id" INTEGER PRIMARY KEY AUTOINCREMENT,
     "group_id" INTEGER REFERENCES "auth_group" ("id") ON DELETE CASCADE  ,
@@ -36,7 +39,7 @@ CREATE TABLE "auth_permission"(
     "record_id" INTEGER
 );
 success!
-timestamp: 2018-06-07T14:43:58.515053
+timestamp: 2018-06-11T01:45:12.860000
 CREATE TABLE "auth_event"(
     "id" INTEGER PRIMARY KEY AUTOINCREMENT,
     "time_stamp" TIMESTAMP,
@@ -46,7 +49,7 @@ CREATE TABLE "auth_event"(
     "description" TEXT
 );
 success!
-timestamp: 2018-06-07T14:43:58.520089
+timestamp: 2018-06-11T01:45:13.040000
 CREATE TABLE "auth_cas"(
     "id" INTEGER PRIMARY KEY AUTOINCREMENT,
     "user_id" INTEGER REFERENCES "auth_user" ("id") ON DELETE CASCADE  ,
@@ -56,7 +59,7 @@ CREATE TABLE "auth_cas"(
     "renew" CHAR(1)
 );
 success!
-timestamp: 2018-06-07T14:43:58.526886
+timestamp: 2018-06-11T01:45:13.196000
 CREATE TABLE "myuser"(
     "id" INTEGER PRIMARY KEY AUTOINCREMENT,
     "username" CHAR(512),
@@ -64,7 +67,7 @@ CREATE TABLE "myuser"(
     "token" CHAR(512)
 );
 success!
-timestamp: 2018-06-07T14:43:58.531128
+timestamp: 2018-06-11T01:45:13.346000
 CREATE TABLE "menuItems"(
     "id" INTEGER PRIMARY KEY AUTOINCREMENT,
     "name" CHAR(512),
@@ -78,7 +81,7 @@ CREATE TABLE "menuItems"(
     "is_featured" CHAR(1)
 );
 success!
-timestamp: 2018-06-07T14:43:58.536201
+timestamp: 2018-06-11T01:45:13.482000
 CREATE TABLE "menuItems_data"(
     "id" INTEGER PRIMARY KEY AUTOINCREMENT,
     "menu_id" INTEGER REFERENCES "menuItems" ("id") ON DELETE CASCADE  ,
@@ -87,275 +90,12 @@ CREATE TABLE "menuItems_data"(
     "mime_type" CHAR(512)
 );
 success!
-timestamp: 2018-06-07T14:43:58.541458
-CREATE TABLE "account"(
-    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
-    "name" CHAR(512),
-    "email" CHAR(512),
-    "is_student" CHAR(512),
-    "phone_num" CHAR(512),
-    "order_hist" CHAR(512),
-    "cc_num" CHAR(512),
-    "cc_exp" CHAR(512),
-    "cc_cvc" CHAR(512),
-    "cc_name" CHAR(512),
-    "cc_address" CHAR(512),
-    "log_info" CHAR(512)
-);
-success!
-timestamp: 2018-06-07T14:43:58.545867
+timestamp: 2018-06-11T01:45:13.623000
 CREATE TABLE "orders"(
     "id" INTEGER PRIMARY KEY AUTOINCREMENT,
     "user_email" CHAR(512),
-    "item_id" CHAR(512),
-    "comments" CHAR(512),
+    "order_name" CHAR(512),
+    "cart" TEXT,
     "updated_on" CHAR(512)
 );
-success!
-timestamp: 2018-06-07T15:31:39.164544
-CREATE TABLE "account"(
-    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
-    "name" CHAR(512),
-    "email" CHAR(512),
-    "is_student" CHAR(512),
-    "phone_num" CHAR(512),
-    "order_hist" CHAR(512),
-    "cc_num" CHAR(512),
-    "cc_exp" CHAR(512),
-    "cc_cvc" CHAR(512),
-    "cc_name" CHAR(512),
-    "cc_address" CHAR(512),
-    "log_info" CHAR(512)
-);
-timestamp: 2018-06-07T15:33:17.526185
-CREATE TABLE "account"(
-    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
-    "name" CHAR(512),
-    "email" CHAR(512),
-    "is_student" CHAR(512),
-    "phone_num" CHAR(512),
-    "order_hist" CHAR(512),
-    "cc_num" CHAR(512),
-    "cc_exp" CHAR(512),
-    "cc_cvc" CHAR(512),
-    "cc_name" CHAR(512),
-    "cc_address" CHAR(512),
-    "log_info" CHAR(512)
-);
-timestamp: 2018-06-09T17:10:58.408365
-ALTER TABLE "auth_user" ADD "picture" CHAR(512);
-timestamp: 2018-06-09T17:10:58.452713
-ALTER TABLE "auth_user" ADD "picture_file" BLOB;
-success!
-timestamp: 2018-06-09T17:11:48.535332
-ALTER TABLE "auth_user" ADD "profile_picture" CHAR(512);
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-timestamp: 2018-06-09T17:20:33.888992
-ALTER TABLE "auth_user" ADD "banana_slug" BLOB;
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-<<<<<<< HEAD
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-=======
->>>>>>> fd5c4f5c68d92c7e5f2f410a5c80571f65ca2459
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
 success!

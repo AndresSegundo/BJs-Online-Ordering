@@ -43,7 +43,7 @@ var app = function() {
     self.get_order = function () {
         console.log("in get_order")
         $.getJSON(get_order_url, {
-            order_name: "Si Senor"
+            order_name: "Faaat Order"
         }, function (data) {
             // left as json string to store in local storage
             cart_string = data.cart_order;
@@ -68,6 +68,7 @@ var app = function() {
         self.vue.is_saving_order = !self.vue.is_saving_order;
         self.vue.show_save_order_btn = !self.vue.show_save_order_btn;
     };
+
 
     self.toggle_checkout = function() {
             self.stripe_instance = StripeCheckout.configure({
@@ -125,6 +126,7 @@ var app = function() {
             price: null,
             cart: [],
             cart_total: 0.00,
+            show_msg_bool: false,
             save_order_bool: false,
             saved_order_name: "",
             show_save_order_btn: true,
