@@ -144,22 +144,30 @@ i:hover{
 	padding:6px;
 	width:auto;
 	height:65px;
-	
+	cursor: pointer;
+}
+
+.user_status:hover a{
+	text-decoration: none;
 }
 
 .dropdown {
 	float: right;
     position: relative;
     display: inline-block;
+    padding-bottom: 20px;
 }
 
 .dropdown-content {
     display: none;
     position: absolute;
+    right: 1px;
     background-color: #545454;
-    min-width: 160px;
+    min-width: 200px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
+    margin: 100px auto 0 auto;
+    text-align: center;
 }
 
 .dropdown-content a {

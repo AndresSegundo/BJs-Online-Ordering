@@ -13,7 +13,7 @@
 
 .checkout-title {
     color: white;
-    font-family: "Yesteryear", cursive;
+    font-family: "Pacifico", cursive;
     margin: 60px auto 30px auto;
     text-align: center;
 }
@@ -21,7 +21,7 @@
 .border-v {
     margin: 10px auto auto auto;
     color: white;
-    font-family: "Yesteryear", cursive;
+    font-family: "Pacifico", cursive;
 }
 
 table.cart_payment {
@@ -142,7 +142,7 @@ button.save_order {
 
 .order_saved_msg {
     margin: 10px auto auto auto;
-    font-family: "Yesteryear", cursive;
+    font-family: "Pacifico", cursive;
 }
 
 .cart_total_header {
