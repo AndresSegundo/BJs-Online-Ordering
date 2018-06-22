@@ -37,6 +37,10 @@
     color: var(--yellow_theme)
 }
 
+.blue {
+    color: var(--blue_theme)
+}
+
 /* entire vue div */
 .border_v {
     margin: 10px auto auto auto;
@@ -50,7 +54,7 @@
     text-align: center;
 }
 
-h3.red {
+.red {
     color: var(--red_theme);
 }
 

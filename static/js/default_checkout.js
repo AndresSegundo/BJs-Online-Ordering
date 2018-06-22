@@ -25,6 +25,8 @@ var app = function() {
     self.check_logged_in = function() {
         $.getJSON(check_logged_in_url, function (data) {
             self.vue.is_open = data.is_open;
+            self.vue.next_open_day_tomorrow = data.next_open_day_tomorrow;
+            self.vue.next_open_day_today = data.next_open_day_today;
             if (data.logged_in == false) {self.vue.is_logged_in = false}
             else self.vue.is_logged_in = true;
         })
@@ -152,6 +154,8 @@ var app = function() {
             order_placed: false,
             est_wait_time: 0,
             is_open: true,
+            next_open_day_tomorrow: false,
+            next_open_day_today: false,
             show_meals: true,
             show_coming_soon_icon: false,
             is_logged_in: false

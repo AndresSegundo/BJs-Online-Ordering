@@ -32,10 +32,15 @@
 <div class="checkout_list">
     <div id="vue-div" class="display:none border_v">
         <!-- Meat of the page -->
-        <!-- Checkout title text -->
-        <h1 v-if="!order_placed" class="checkout_title">Checkout</h1>
-        <!-- Order placed text -->
-        <h1 v-if="order_placed" class="checkout_title yellow">Order Placed!</h1>
+        <!-- Open -->
+        <div v-if="is_open">
+            <!-- Checkout title text -->
+            <h1 v-if="!order_placed" class="checkout_title">Checkout</h1>
+            <!-- Order placed text -->
+            <h1 v-if="order_placed" class="checkout_title yellow">Order Placed!</h1>
+        </div>
+        <!-- Closed -->
+        <h1 v-if="!is_open" class="checkout_title red">Sorry, we're closed!</h1>
         <div v-if="cart.length > 0">
             <div v-if="is_open">
                 <!-- Holds payment options -->
@@ -62,7 +67,12 @@
             </div>
             <!-- Conditional messages -->
             <!-- Closed -->
-            <h3 v-if="!is_open" class="closed_msg red">Sorry, we're closed!</h3>
+            <h4 v-if="!is_open" class="closed_msg">Checkout
+                <span v-if="!next_open_day_today" class="blue">
+                    <span v-if="next_open_day_tomorrow">tomorrow</span>
+                    <span v-else>Monday</span>
+                </span>
+                at <span class="blue">10 am</span></h4>
             <!-- Order Placed -->
             <h4 v-if="order_placed" class="wait_time">Estimated wait time: <b>${est_wait_time} minutes</b></h4>
             <!-- Holds cart total -->
