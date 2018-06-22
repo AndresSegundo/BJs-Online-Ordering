@@ -161,12 +161,28 @@ def get_menuItems():
 # used in checkout to either display or hide different options
 def check_logged_in():
     date = datetime.datetime.now()
+    weekday = date.weekday()
     is_open = True;
+
     # checks if BJs is open; test code
-    if date.hour >= 19 or date.hour < 8:
-        is_open = False;
-    # comment line below to test condition above
-    is_open = True;
+    # if Monday - Friday
+    if weekday <= 4:
+        # if Monday - Thursday
+        if weekday <=3:
+            # if it is not b/w 10am-11pm
+            if not (date.hour > 10 and date.hour < 23):
+                is_open = False
+        # if Friday
+        elif weekday == 4:
+            # if it is not b/w 10am-3pm
+            if not (date.hour > 10 and date.hour < 15):
+                is_open = False
+    # if Saturday - Sunday
+    else:
+        is_open = False
+    # comment line below to test conditions above
+    #is_open = True;
+
     logged_in = auth.user is not None
     return response.json(dict(
         logged_in=logged_in,
