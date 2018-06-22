@@ -29,74 +29,86 @@
     Green: 416743
     -->
 
-<div class="checkout-list">
-    <h1 class="checkout-title">Checkout</h1>
-
-    <div id="vue-div" class="display:none border-v">
+<div class="checkout_list">
+    <div id="vue-div" class="display:none border_v">
         <!-- Meat of the page -->
+        <!-- Checkout title text -->
+        <h1 v-if="!order_placed" class="checkout_title">Checkout</h1>
+        <!-- Order placed text -->
+        <h1 v-if="order_placed" class="checkout_title yellow">Order Placed!</h1>
         <div v-if="cart.length > 0">
-            <table v-if="!order_placed" class="cart_payment">
-                <tr>
-                    <td><h3>Payment Options:</h3></td>
-                    <td>
-                        <button class="payment_method" v-on:click="pay()" title="Credit Card"><i class="fa fa-lg fa-credit-card"></i></button>
-                        <span v-if="!show_msg_bool">
-                            <button v-if="is_logged_in" v-on:click="show_msg_bool=!show_msg_bool" class="payment_method" title="Meals"><i class="fa fa-lg fa-id-card"></i></button>
-                            <button v-if="is_logged_in" v-on:click="show_msg_bool=!show_msg_bool" class="payment_method" v-on:click="show_meal_plan_msg=!show_meal_plan_msg" title="Flexis"><i class="fa fa-lg fa-money-bill-wave"></i></button>
-                        </span>
-                        <span v-else class="coming_soon_text">Coming Soon</span>
-                    </td>
-                </tr>
-            </table>
-            <h1 v-else class="order_placed">Order Placed!</h1>
-            <h3 v-if="order_placed" class="wait_time">Estimated wait time: <b>10 minutes</b></h3>
+            <div v-if="is_open">
+                <!-- Holds payment options -->
+                <table v-if="!order_placed" class="cart_payment">
+                    <tr>
+                        <td><h4>Payment Options:</h4></td>
+                        <td>
+                            <!-- Stripe payment button -->
+                            <button class="payment_method" v-on:click="pay()" title="Credit Card"><i class="fa fa-lg fa-credit-card"></i></button>
+                            <!-- The Meals and Flexis buttons toggle icons when they are clicked and when the mouse leaves the button -->
+                            <!-- Meals button -->
+                            <button v-if="is_logged_in" id="not_available" v-on:click="show_meals=false, show_coming_soon_icon=true" @mouseleave="show_meals=true, show_coming_soon_icon=false" class="payment_method" title="Meals (Coming Soon)">
+                                <!-- Binds classes to bool vars in order to toggle icons -->
+                                <i v-bind:class="{'fa fa-lg fa-id-card':show_meals, 'fa fa-lg fa-cogs':show_coming_soon_icon}"></i>
+                            </button>
+                            <!-- Flexis button -->
+                            <button v-if="is_logged_in" id="not_available" v-on:click="show_meals=false, show_coming_soon_icon=true" @mouseleave="show_meals=true, show_coming_soon_icon=false" class="payment_method" title="Flexis (Coming Soon)">
+                                <!-- Binds classes to bool vars in order to toggle icons -->
+                                <i v-bind:class="{'fa fa-lg fa-money-bill-wave':show_meals, 'fa fa-lg fa-cogs':show_coming_soon_icon}"></i>
+                            </button>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <!-- Conditional messages -->
+            <!-- Closed -->
+            <h3 v-if="!is_open" class="closed_msg red">Sorry, we're closed!</h3>
+            <!-- Order Placed -->
+            <h4 v-if="order_placed" class="wait_time">Estimated wait time: <b>${est_wait_time} minutes</b></h4>
+            <!-- Holds cart total -->
             <table class="cart_total">
                 <tr>
                     <th class="cart_total_header">
-                        <h2>Cart Total . . . . . . . . . . . . . . </h2>
+                        <h3>Cart Total . . . . . . . . . . . . . . </h3>
                     </th>
                     <th class="cart_total_value">
-                        <h2><span class="total_value">$${cart_total}</span> . . . . . . . . . . . . . .</h2>
+                        <h3><span class="total_value">$${cart_total}</span> . . . . . . . . . . . . . .</h3>
                     </th>
                 </tr>
             </table>
-            <h2 class="review_order_title">Review Order</h2>
+            <!-- Review Order section -->
+            <h3 class="review_order_title">Review Order</h3>
             <div class="review_order_container" style="overflow-y:scroll">
                     <table class="review_order">
                         <tr v-for="item in cart">
-                            <td id="review_name">${item.name}<span v-if="item.is_comment"> *</span> . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . </td>
+                            <td>${item.name}<span v-if="item.is_comment"> *</span> . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . </td>
                             <td id="review_price">$${item.price} . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .</td>
                         </tr>
                     </table>
-
             </div>
-
+            <!-- Save order section -->
             <div v-if="is_logged_in" class="options">
                 <div>
                     <div v-if="!order_saved">
-                        <button class="save_order" v-if="show_save_order_btn" v-on:click="toggle_save_order">
+                        <!-- Save order button -->
+                        <button class="save_order" v-if="show_save_order_btn" title="Save Order" v-on:click="toggle_save_order">
                             <i class="fa fa-lg fa-save"></i>
                         </button>
-                        <input v-if="is_saving_order" v-model="saved_order_name" placeholder="Order Name" type="text">
-                        <button class="save_order" v-if="!show_save_order_btn" v-on:click="toggle_save_order"><i class="fa fa-lg fa-times-circle"></i></button>
-                        <button class="save_order" v-if="!show_save_order_btn" v-on:click="upload_saved_order"><i class="fa fa-lg fa-plus"></i></button>
+                        <!-- Order name input -->
+                        <input id="save_order_input_box" v-if="is_saving_order" v-model="saved_order_name" placeholder="Order Name" type="text">
+                        <!-- Cancel and Save buttons -->
+                        <button id="cancel_name_input_btn" class="save_order" v-if="!show_save_order_btn" v-on:click="toggle_save_order"><i class="fa fa-lg fa-times-circle"></i></button>
+                        <button id="save_name_input_btn" class="save_order" v-if="!show_save_order_btn" v-on:click="upload_saved_order"><i class="fa fa-lg fa-plus"></i></button>
                     </div>
-                    <div v-if="order_saved" class="fa fa-lg">
+                    <div v-if="order_saved" class="order_saved_msg">
                         Order <span style="color: yellow">${saved_order_name}</span> Saved  <i v-if="order_saved" class="fa fa-lg fa-check-circle order_saved_msg"></i>
                     </div>
                 </div>
             </div>
+            <!-- Tells user to log in to be able to use special features -->
             <div v-else class="log_in_msg">
-                <a href="{{=URL('default','user/login')}}"><b>Log in</b></a> to save orders and use meal plan/flexis
+                <a href="{{=URL('default','user/login')}}" title="Log in screen">Log in</a> to save orders and use meal plan/flexis
             </div>
-        </div>
-        <div class="cart_items">
-            <!--
-            <table>
-                <tr><th>Item</th><th>Price</th></tr>
-                <tr v-for="item in cart">${item}</tr>
-            </table>
-            -->
         </div>
     </div>
 

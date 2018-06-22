@@ -1,54 +1,86 @@
-.checkout-list {
+:root {
+    --card_width: 624px;
+    --card_height: 700px; /* this height is necessary bc it closely matches the image size */
+    --width_inside_vue: 85%; /* width of tables inside vue div */
+    --blue_theme: #0EAFAD; /* blue color used throughout website */
+    --review_order_height: 200px; /* height of review order container */
+    --font_theme: "Pacifico", cursive; /* font used throughout website */
+    --red_theme: #ff2400; /* red used throughout page */
+    --yellow_theme: yellow; /* yellow used throughout website */
+    --box_radius: 4px; /* radius used throughout page */
+    --normal_font_size: 20px; /* font size used for normal text throughout page */
+}
+
+/* the parent div */
+.checkout_list {
     background-image: url("../images/CheckoutCard.png");
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
     /*min-width: 400px;*/
-    width: 624px;
+    width: var(--card_width);
     margin: 20px auto auto auto;
-    min-height: 700px;
+    min-height: var(--card_height);
     position: center;
     padding: 20px;
 }
 
-.checkout-title {
+/* 'Checkout' title text */
+.checkout_title {
     color: white;
-    font-family: "Pacifico", cursive;
-    margin: 60px auto 30px auto;
+    font-family: var(--font_theme);
+    margin: 90px auto 25px auto;
     text-align: center;
 }
 
-.border-v {
-    margin: 10px auto auto auto;
-    color: white;
-    font-family: "Pacifico", cursive;
+.yellow {
+    color: var(--yellow_theme)
 }
 
+/* entire vue div */
+.border_v {
+    margin: 10px auto auto auto;
+    color: white;
+    font-family: var(--font_theme);
+}
+
+/* 'Sorry we're closed' text */
+.closed_msg {
+    margin: auto auto 10px auto;
+    text-align: center;
+}
+
+h3.red {
+    color: var(--red_theme);
+}
+
+/* payment options table */
 table.cart_payment {
-    margin: auto auto 30px auto;
-    width: 85%;
+    margin: auto auto 20px auto;
+    width: var(--width_inside_vue);
     table-layout: fixed;
     text-align: center;
 }
 
-h1.order_placed {
-    margin: auto auto auto auto;
-    text-align: center;
-    color: yellow;
+#not_available:hover, #not_available i:hover {
+    color: var(--red_theme);
 }
 
-h3.wait_time {
-    margin: auto auto 30px auto;
+/* 'Estimated wait time:' text */
+h4.wait_time {
+    margin: auto auto 20px auto;
     text-align: center;
 }
 
-h3.wait_time b {
+/* Estimated time quantity */
+h4.wait_time b {
     color: #0EAFAD;
 }
 
+/* cart total table */
 table.cart_total {
     margin: auto;
-    width: 85%;
+    width: var(--width_inside_vue);
     table-layout: fixed;
 }
 
@@ -57,105 +89,114 @@ table.cart_total th, table.cart_total td {
     height: 60px;
 }
 
-.log_in_msg {
-    margin: 20px auto auto auto;
-    text-align: center;
-    font-size: 20px;
-}
-
-.log_in_msg b {
-    color: #0EAFAD;
-}
-
-h2.review_order_title {
-    margin: 10px auto 10px auto;
-    text-align: center;
-}
-
-
-#footer {
-  height: 20px;
-}
-
-div.review_order_container {
-    max-height: 200px;
-    overflow-y: scroll;
-}
-
-table.review_order {
-    margin: auto;
-    width: 85%;
-    table-layout: fixed;
-}
-
-table.review_order th, table.review_order td {
-    text-align: center;
-    height: 30px;
-    margin: auto 0 auto 0;
-    font-size: 20px;
-    overflow: hidden;
-    white-space: nowrap;
-    border-width: 0px;
-}
-
-#review_price {
-    direction: rtl;
-}
-
-button.payment_method {
-    width: 20%;
-}
-
-.tooltip {
-    position: relative;
-    display: inline-block;
-}
-
-.coming_soon_text {
-    width: 120px;
-    background-color: black;
-    color: #fff;
-    text-align: center;
-    border-radius: 6px;
-    padding: 5px 0;
-
-    /* Position the tooltip */
-    position: absolute;
-    z-index: 1;
-}
-
-.tooltip:hover .tooltiptext {
-    visibility: visible;
-}
-
-div.options {
-    margin: 10px auto auto auto;
-    text-align: right;
-    width: 85%;
-}
-
-button.save_order {
-    width: 10%;
-    text-align: center;
-}
-
-
-.order_saved_msg {
-    margin: 10px auto auto auto;
-    font-family: "Pacifico", cursive;
-}
-
+/* Cart Total..... text */
 .cart_total_header {
     overflow: hidden;
     white-space: nowrap;
 }
 
+span.total_value {
+    color: var(--yellow_theme);
+}
+
+/* ....Cart Price */
 .cart_total_value {
     overflow: hidden;
     white-space: nowrap;
+    /* helps with the ....Cart Price */
     direction: rtl;
 }
 
-span.total_value {
-    color: yellow;
+/* 'Review Order' title text */
+h3.review_order_title {
+    margin: 10px auto 10px auto;
+    text-align: center;
+}
+
+/* div surrounding review order table */
+div.review_order_container {
+    max-height: var(--review_order_height);
+    overflow-y: scroll;
+}
+
+/* review order table */
+table.review_order {
+    margin: auto;
+    width: var(--width_inside_vue);
+    table-layout: fixed;
+}
+
+/* set up to give appearance of {name}........{price} */
+table.review_order th, table.review_order td {
+    text-align: center;
+    height: 30px;
+    margin: auto 0 auto 0;
+    font-size: var(--normal_font_size);
+    /* These attributes help set up {name}..... */
+    overflow: hidden;
+    white-space: nowrap;
+    border-width: 0px;
+}
+
+/* price inside of review order table */
+#review_price {
+    /* has to go from right-to-left to allow ....{price} */
+    direction: rtl;
+}
+
+/* style for payment method buttons */
+button.payment_method {
+    width: 25%;
+    text-align: center;
+}
+
+/* div that holds save order area */
+div.options {
+    margin: 10px auto auto auto;
+    text-align: right;
+    width: var(--width_inside_vue);
+}
+
+/* save order button */
+button.save_order {
+    width: 10%;
+    text-align: center;
+}
+
+button.save_order:hover {
+    color: var(--yellow_theme);
+}
+
+/* Order name input box */
+#save_order_input_box {
+    font-family: var(--font_theme);
+    border-radius: var(--box_radius);
+}
+
+/* Cancel order name input button */
+#cancel_name_input_btn:hover, #cancel_name_input_btn i:hover {
+    color: var(--red_theme);
+}
+
+/* Save order name input button */
+#save_name_input_btn:hover, #save_name_input_btn i:hover {
+    color: var(--yellow_theme)
+}
+
+/* order saved text */
+.order_saved_msg {
+    margin: 10px auto auto auto;
+    font-family: var(--font_theme);
+    font-size: var(--normal_font_size);
+}
+
+/* message telling user to log in to save orders and more */
+.log_in_msg {
+    margin: 20px auto auto auto;
+    text-align: center;
+    font-size: var(--normal_font_size);
+}
+
+.log_in_msg a {
+    color: var(--blue_theme);
 }

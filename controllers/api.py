@@ -1,6 +1,7 @@
 import tempfile
 import traceback
 import json
+import datetime
 
 # Cloud-safe of uuid, so that many cloned servers do not all use the same uuids.
 from gluon.utils import web2py_uuid
@@ -159,27 +160,28 @@ def get_menuItems():
 
 # used in checkout to either display or hide different options
 def check_logged_in():
+    date = datetime.datetime.now()
+    is_open = True;
+    # checks if BJs is open; test code
+    if date.hour >= 19 or date.hour < 8:
+        is_open = False;
+    # comment line below to test condition above
+    is_open = True;
     logged_in = auth.user is not None
     return response.json(dict(
-        logged_in=logged_in
+        logged_in=logged_in,
+        is_open=is_open
     ))
 
 def purchase():
-    logger.info("PART 1")
     """Ajax function called when a customer orders and pays for the cart."""
-    logger.info("PART 2")
     # Creates the charge.
     import stripe
-    logger.info("PART 3")
     # Your secret key.
     stripe.api_key = configuration.get('stripe.private_key')
-    logger.info("PART 4")
     token = json.loads(request.vars.transaction_token)
-    logger.info("PART 5")
     amount = float(request.vars.amount)
-    logger.info("PART 6")
     try:
-        logger.info("PART 7")
         charge = stripe.Charge.create(
             amount=int(amount * 100),
             currency="usd",
