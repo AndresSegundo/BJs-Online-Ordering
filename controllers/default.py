@@ -7,28 +7,56 @@
 # ---- example index page ----
 def index():
     response.flash = T("Hello World")
-    return dict(message=T('Welcome to web2py!'))
+    user_image = None
+    if auth.user:
+        curr_user = db(db.auth_user.email == auth.user.email).select().first()
+        # name stored in picture field, NOT picture_file
+        user_image = curr_user.picture
+    return dict(message=T('Welcome to web2py!'), user_image=user_image)
 
-def checkout():
-    response.flash = T("Hello World")
-    return dict(message=T('Welcome to web2py!'))
-
+def navbar():
+    user_image = None
+    if auth.user:
+        curr_user = db(db.auth_user.email == auth.user.email).select().first()
+        # name stored in picture field, NOT picture_file
+        user_image = curr_user.picture
+    return dict(user_image=user_image)
 
 def menu():
     response.flash = T("Hello World")
-    return dict(message=T('Welcome to web2py!'))
+    user_image = None
+    if auth.user:
+        curr_user = db(db.auth_user.email == auth.user.email).select().first()
+        # name stored in picture field, NOT picture_file
+        user_image = curr_user.picture
+    return dict(message=T('Welcome to web2py!'), user_image=user_image)
 
 def cart():
     response.flash = T("Hello World")
-    return dict(message=T('Welcome to web2py!'))
+    user_image = None
+    if auth.user:
+        curr_user = db(db.auth_user.email == auth.user.email).select().first()
+        # name stored in picture field, NOT picture_file
+        user_image = curr_user.picture
+    return dict(message=T('Welcome to web2py!'), user_image=user_image)
 
 def checkout():
     response.flash = T("Hello World")
-    return dict(message=T('Welcome to web2py!'))
+    user_image = None
+    if auth.user:
+        curr_user = db(db.auth_user.email == auth.user.email).select().first()
+        # name stored in picture field, NOT picture_file
+        user_image = curr_user.picture
+    return dict(message=T('Welcome to web2py!'), user_image=user_image)
 
 def saved_orders():
     response.flash = T("Hello World")
-    return dict(message=T('Welcome to web2py!'))
+    user_image = None
+    if auth.user:
+        curr_user = db(db.auth_user.email == auth.user.email).select().first()
+        # name stored in picture field, NOT picture_file
+        user_image = curr_user.picture
+    return dict(message=T('Welcome to web2py!'),user_image=user_image)
 
 @auth.requires_login()
 def admin():
@@ -73,8 +101,12 @@ def user():
     to decorate functions that need access control
     also notice there is http://..../[app]/appadmin/manage/auth to allow administrator to manage users
     """
-
-    return dict(form=auth())
+    user_image = None
+    if auth.user:
+        curr_user = db(db.auth_user.email == auth.user.email).select().first()
+        # name stored in picture field, NOT picture_file
+        user_image = curr_user.picture
+    return dict(form=auth(), user_image=user_image)
 
 # ---- action to server uploaded static content (required) ---
 @cache.action()
