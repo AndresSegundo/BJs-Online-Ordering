@@ -1,6 +1,7 @@
 import tempfile
 import traceback
 import json
+import datetime
 
 # Cloud-safe of uuid, so that many cloned servers do not all use the same uuids.
 from gluon.utils import web2py_uuid
@@ -159,27 +160,73 @@ def get_menuItems():
 
 # used in checkout to either display or hide different options
 def check_logged_in():
+    date = datetime.datetime.now()
+    weekday = date.weekday()
+    next_open_day = weekday
+    next_open_day_tomorrow = False
+    next_open_day_today = False
+    is_open = True
+
+    # checks if BJs is open; test code
+    # if Monday - Friday
+    if weekday <= 4:
+        # if Monday - Thursday
+        if weekday <=3:
+            # if it is not b/w 10am-11pm
+            if date.hour < 10 or date.hour > 23:
+                is_open = False
+                # it is early in the morning before we open
+                if date.hour < 10:
+                    next_open_day_today = True
+                    next_open_day_tomorrow = False
+                # it is past 11 pm and we just closed
+                else:
+                    next_open_day+=1
+                    next_open_day_today = False
+                    next_open_day_tomorrow = True
+        # if Friday
+        elif weekday == 4:
+            next_open_day_tomorrow = False
+            # if it is not b/w 10am-3pm
+            if date.hour < 10 or date.hour > 15:
+                is_open = False
+                # It's early Friday morning, so next open day is today
+                if date.hour < 10:
+                    next_open_day_today = True
+                else:
+                    next_open_day_today = False
+                    next_open_day = 0
+    # if Saturday - Sunday
+    else:
+        is_open = False
+        # Next open day is Monday
+        next_open_day = 0
+        next_open_day_today = False
+        next_open_day_tomorrow = False
+        if weekday == 6:
+            next_open_day_tomorrow = True
+
+    # comment line below to test conditions above
+    # is_open = True;
+
     logged_in = auth.user is not None
     return response.json(dict(
-        logged_in=logged_in
+        logged_in=logged_in,
+        is_open=is_open,
+        today=weekday,
+        next_open_day_is_tomorrow=next_open_day_tomorrow,
+        next_open_day_today=next_open_day_today
     ))
 
 def purchase():
-    logger.info("PART 1")
     """Ajax function called when a customer orders and pays for the cart."""
-    logger.info("PART 2")
     # Creates the charge.
     import stripe
-    logger.info("PART 3")
     # Your secret key.
     stripe.api_key = configuration.get('stripe.private_key')
-    logger.info("PART 4")
     token = json.loads(request.vars.transaction_token)
-    logger.info("PART 5")
     amount = float(request.vars.amount)
-    logger.info("PART 6")
     try:
-        logger.info("PART 7")
         charge = stripe.Charge.create(
             amount=int(amount * 100),
             currency="usd",

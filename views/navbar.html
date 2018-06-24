@@ -9,14 +9,14 @@
 		<link href="{{=URL('static','css/footer.css')}}" rel="stylesheet" type="text/css"/>
 		<link href="{{=URL('static','css/menu.css')}}" rel="stylesheet" type="text/css"/>
         <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
-		
+
         <link rel="shortcut icon" href="{{=URL('static','images/favicon.ico')}}" type="image/x-icon">
         <link rel="apple-touch-icon" href="{{=URL('static','images/favicon.png')}}">
 		
         <link rel="stylesheet" media="screen and (min-width:601px)" href="{{=URL('static', 'css/desktop.css')}}"/>
         <link rel="stylesheet" media="screen and (max-width:600px)" href="{{=URL('static', 'css/mobile.css')}}"/>
 		
-        <script src="https://use.fontawesome.com/8c6f68fcc5.js"></script>
+        <!-- <script src="https://use.fontawesome.com/8c6f68fcc5.js"></script> -->
         <script src="{{=URL('static','js/modernizr-2.8.3.min.js')}}"></script>
         <script src={{=URL('static','js/main.js')}}></script>
 
@@ -57,13 +57,24 @@
 					<!-- Account Icon -->
 					<div class="dropdown right" >
 					  {{if auth.user:}}
-					  <a class="account btn expand" href="{{=URL('default','user/profile')}}">
-			            	<i class="fa fa-user fa-3x"></i>
-			          </a>
-					  {{else:}}
-					  <a class="account btn expand" href="{{=URL('default','user')}}">
-			            	<i class="fa fa-user fa-3x"></i>
-			          </a>
+                          <!-- USER PICTURE -->
+                          <!-- <img src="{{=URL('download',args=user_image)}}"/> -->
+                          {{if user_image is not '':}}
+                              <a style="background-image: url({{=URL('download',args=user_image)}})"
+                                 class="user_image account btn expand" href="{{=URL('default','user/profile')}}">
+                                    <!-- <i class="fa fa-user fa-3x"></i> -->
+                              </a>
+                          {{else:}}
+                            <a class="account btn expand" href="{{=URL('default','user/profile')}}">
+                                    <i class="fa fa-user fa-3x"></i>
+                            </a>
+                            {{pass}}
+                    {{else:}}
+                          <a class="account btn expand" href="{{=URL('default','user')}}">
+                                <!-- More relevant icon imo -->
+                                <!-- <i class="fas fa-3x fa-sign-in-alt"></i> -->
+                                <i class="fa fa-user fa-3x"></i>
+                          </a>
 			          {{pass}}
 
 			            <div class="dropdown-content">

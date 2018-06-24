@@ -24,6 +24,9 @@ var app = function() {
 
     self.check_logged_in = function() {
         $.getJSON(check_logged_in_url, function (data) {
+            self.vue.is_open = data.is_open;
+            self.vue.next_open_day_tomorrow = data.next_open_day_tomorrow;
+            self.vue.next_open_day_today = data.next_open_day_today;
             if (data.logged_in == false) {self.vue.is_logged_in = false}
             else self.vue.is_logged_in = true;
         })
@@ -70,6 +73,18 @@ var app = function() {
         self.vue.show_save_order_btn = !self.vue.show_save_order_btn;
     };
 
+    /*
+     * Will one day calculate estimated wait time
+     * Just gives random number for now
+     */
+    self.est_wait = function() {
+        cart = JSON.stringify([]);
+        localStorage.setItem('cart', cart);
+
+        self.vue.order_placed = true;
+        self.vue.est_wait_time = Math.floor(Math.random() * 15);
+    };
+
 
     self.toggle_checkout = function() {
             self.stripe_instance = StripeCheckout.configure({
@@ -110,9 +125,10 @@ var app = function() {
                 $.web2py.flash("Thank you for your purchase");
             }
         );
-        cart = JSON.stringify([]);
-        localStorage.setItem('cart', cart);
-        self.vue.order_placed = true;
+        //cart = JSON.stringify([]);
+        //localStorage.setItem('cart', cart);
+        //self.vue.order_placed = true;
+        self.vue.est_wait()
     };
 
 
@@ -130,13 +146,18 @@ var app = function() {
             cart: [],
             JSONcart: "",
             cart_total: 0.00,
-            show_msg_bool: false,
             save_order_bool: false,
             saved_order_name: "",
             show_save_order_btn: true,
             is_saving_order: false,
             order_saved: false,
             order_placed: false,
+            est_wait_time: 0,
+            is_open: true,
+            next_open_day_tomorrow: false,
+            next_open_day_today: false,
+            show_meals: true,
+            show_coming_soon_icon: false,
             is_logged_in: false
         },
         methods: {
@@ -144,6 +165,7 @@ var app = function() {
             get_cart_price: self.get_cart_price,
             toggle_checkout: self.toggle_checkout,
             toggle_save_order: self.toggle_save_order,
+            est_wait: self.est_wait,
             upload_saved_order: self.upload_saved_order,
             get_order: self.get_order,
             check_logged_in: self.check_logged_in,

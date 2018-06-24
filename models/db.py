@@ -97,7 +97,7 @@ db.define_table(
     Field('picture_file', 'blob'),
     Field('first_name', length=56, default=''),
     Field('last_name', length=56, default=''),
-    Field('email', length=56, default='@ucsc.edu', unique=True), # required
+    Field('email', length=56, default='', unique=True), # required
     Field('password', 'password', length=512,            # required
           readable=False, label='Password'),
     Field('address'),
@@ -113,15 +113,15 @@ db.define_table(
 
 ## do not forget validators
 custom_auth_table = db[auth.settings.table_user_name] # get the custom_auth_table
-# custom_auth_table.order_names.writable = False
-# custom_auth_table.order_names.readable = False
+custom_auth_table.order_names.writable = False
+custom_auth_table.order_names.readable = False
 custom_auth_table.first_name.requires =   IS_NOT_EMPTY(error_message=auth.messages.is_empty)
 custom_auth_table.last_name.requires =   IS_NOT_EMPTY(error_message=auth.messages.is_empty)
 custom_auth_table.password.requires = [IS_STRONG(), CRYPT()]
 custom_auth_table.email.requires = [
   IS_EMAIL(error_message=auth.messages.invalid_email),
   IS_NOT_IN_DB(db, custom_auth_table.email)]
-custom_auth_table.order_names.readable = custom_auth_table.order_names.writeable = False
+
 
 auth.settings.table_user = custom_auth_table # tell auth to use custom_auth_table
 

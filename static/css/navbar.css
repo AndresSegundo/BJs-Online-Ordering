@@ -120,6 +120,11 @@ i:hover{
 	height: 110px;
 
 }
+.user_image{
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+}
 
 .account.btn.expand{
 	float:right;
