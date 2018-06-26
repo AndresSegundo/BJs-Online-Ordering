@@ -27,8 +27,8 @@ var app = function() {
             self.vue.is_open = data.is_open;
             self.vue.next_open_day_tomorrow = data.next_open_day_tomorrow;
             self.vue.next_open_day_today = data.next_open_day_today;
-            if (data.logged_in == false) {self.vue.is_logged_in = false}
-            else self.vue.is_logged_in = true;
+            if (data.logged_in) {self.vue.is_logged_in = true;}
+            else self.vue.is_logged_in = false;
         })
     };
 

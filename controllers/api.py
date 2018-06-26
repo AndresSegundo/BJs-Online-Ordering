@@ -207,7 +207,7 @@ def check_logged_in():
             next_open_day_tomorrow = True
 
     # comment line below to test conditions above
-    # is_open = True;
+    is_open = True
 
     logged_in = auth.user is not None
     return response.json(dict(
